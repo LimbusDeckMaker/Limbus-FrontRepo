@@ -4,32 +4,32 @@
 
 @font-face {
   font-family: "KOTRA_BOLD";
-  src: url("./assets/fonts/KOTRA_BOLD.ttf");
+  src: url("./assets/fonts/KOTRA_BOLD.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "GmarketSansBold";
-  src: url("./assets/fonts/GmarketSansTTFBold.ttf");
+  src: url("./assets/fonts/GmarketSansTTFBold.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "GmarketSansMedium";
-  src: url("./assets/fonts/GmarketSansTTFMedium.ttf");
+  src: url("./assets/fonts/GmarketSansTTFMedium.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "GmarketSansLight";
-  src: url("./assets/fonts/GmarketSansTTFLight.ttf");
+  src: url("./assets/fonts/GmarketSansTTFLight.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "ExcelsiorSans";
-  src: url("./assets/fonts/ExcelsiorSans.ttf");
+  src: url("./assets/fonts/ExcelsiorSans.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "BebasKai";
-  src: url("./assets/fonts/BebasKai.ttf");
+  src: url("./assets/fonts/BebasKai.ttf") format("truetype");
 }
 
 @font-face {
