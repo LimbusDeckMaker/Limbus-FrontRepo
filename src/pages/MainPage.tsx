@@ -1,7 +1,8 @@
-import ThumbnailCard from "@components/ThumbnailCard";
 import React from "react";
 
+import ThumbnailCard from "@components/ThumbnailCard";
 import YouTube from "react-youtube";
+import main from "@constants/main.json";
 
 const MainPage = () => {
   return (
@@ -13,9 +14,9 @@ const MainPage = () => {
         </div>
         <span className="hidden md:flex">2023.01.14</span>
       </div>
-      <div className="w-full md:w-1/2 mx-auto my-10">
+      <div className="w-full md:w-1/2 mx-auto my-4 md:my-10">
         <YouTube
-          videoId="liylBoT0FCs"
+          videoId="nYPiiiBbP18"
           className="aspect-video"
           opts={{
             width: "100%",
@@ -30,8 +31,15 @@ const MainPage = () => {
           }}
         />
       </div>
-      <div className="grid grid-cols-3 gap-10">
-        <ThumbnailCard />
+      <div className="grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-10">
+        {main.map((item) => (
+          <ThumbnailCard
+            key={`main_thumbnail:${item.title}`}
+            title={item.title}
+            image={item.image}
+            link={item.link}
+          />
+        ))}
       </div>
     </div>
   );
