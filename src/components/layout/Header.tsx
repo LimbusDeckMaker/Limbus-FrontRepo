@@ -27,12 +27,12 @@ const Header = () => {
       className="mx-auto max-w-full px-4 md:px-10 py-3 rounded-none border-none"
       placeholder={undefined}
     >
-      <div className="md:h-24 flex items-center justify-between text-blue-gray-900">
+      <div className="md:h-14 flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
           href="/"
           variant="h6"
-          className="mr-4 cursor-pointer py-1.5 font-title md:text-2xl"
+          className="mr-4 cursor-pointer py-1.5 font-title md:text-xl"
           placeholder={undefined}
         >
           단테의 빵과 수프
