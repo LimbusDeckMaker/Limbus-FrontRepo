@@ -10,6 +10,11 @@ const Router = () => {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<MainPage />} />
+          <Route path="/dictionary" element={<div>도감</div>} />
+          <Route path="/building" element={<div>덱 빌딩</div>} />
+          <Route path="/tier" element={<div>티어리스트</div>} />
+          <Route path="/notice" element={<div>공지사항</div>} />
+          <Route path="/ask" element={<div>문의하기</div>} />
         </Route>
       </Routes>
     </BrowserRouter>
