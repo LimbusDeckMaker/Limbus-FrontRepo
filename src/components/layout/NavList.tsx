@@ -2,14 +2,7 @@ import React from "react";
 
 import { Typography } from "@material-tailwind/react";
 import { NavLink } from "react-router-dom";
-
-const nav = [
-  { title: "도감", link: "/dictionary" },
-  { title: "덱 빌딩", link: "/building" },
-  { title: "티어리스트", link: "/tier" },
-  { title: "공지사항", link: "/notice" },
-  { title: "문의하기", link: "/ask" },
-];
+import nav from "@constants/nav.json";
 
 const NavList = () => {
   return (
