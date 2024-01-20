@@ -11,7 +11,7 @@ const MainLayout = () => {
   return (
     <div>
       <Header />
-      <div className="px-4 md:px-10 py-4">
+      <div className="px-4 md:px-10 py-4 max-w-7xl mx-auto">
         <Outlet />
         <Footer />
       </div>
