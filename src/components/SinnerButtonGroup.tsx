@@ -98,9 +98,9 @@ const SinnerButtonGroup = () => {
   };
 
   return (
-    <div className="overflow-x-scroll">
+    <div className="overflow-x-scroll py-2">
       {/* <div className="flex"> */}
-      <div className="grid grid-rows-2 md:grid-rows-1 grid-flow-col gap-2 w-fit">
+      <div className="grid grid-rows-1 grid-flow-col gap-2 w-fit">
         {sinners.map((sinner) => (
           <SinnerButton
             key={sinner.name}

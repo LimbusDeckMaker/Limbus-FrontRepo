@@ -5,7 +5,7 @@ import FilteringGroup from "@components/FilteringGroup";
 
 const DictionaryPage = () => {
   return (
-    <div className="text-faust">
+    <div className="">
       <SinnerButtonGroup />
       <FilteringGroup />
     </div>

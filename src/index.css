@@ -36,3 +36,18 @@
   font-family: "SCDream5";
   src: url("./assets/fonts/SCDream5.otf");
 }
+
+.range-slider {
+  @apply w-full m-0 mx-auto;
+}
+
+#mySlider .range-slider__thumb {
+  @apply w-4 h-4 bg-white rounded-full shadow;
+  @apply lg:w-6 lg:h-6;
+  @apply appearance-none cursor-pointer;
+  @apply outline-none border-none;
+}
+
+#mySlider .range-slider__range {
+  @apply h-2;
+}

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
 import { Button, ButtonGroup } from "@material-tailwind/react";
+import Slider from "./Slider";
 
-const buttonStyle = "py-1 px-2.5 border-none w-full md:text-lg";
+const buttonStyle =
+  "py-0.5 px-1.5 md:py-1 md:px-2.5 border-none w-full text-xs md:text-lg lg:text-xl";
 
 const FilteringGroup = () => {
   const [selectedType, setSelectedType] = useState<string>("전체");
@@ -23,10 +25,13 @@ const FilteringGroup = () => {
   const isSelectedType = (type: string) => selectedType === type;
 
   return (
-    <div className="grid grid-rows-3 grid-flow-col my-3 gap-1 md:grid-flow-row md:gird-rows-2 md:grid-cols-3">
-      <div>키워드, 자원, 유형</div>
-      <div>속도</div>
-      <div>가중치</div>
+    <div className="grid grid-rows-2 grid-flow-col my-3 gap-1 md:gap-6 lg:gap-8 items-end">
+      <div className="min-w-40">
+        <Slider title="속도" minValue={1} maxValue={9} />
+      </div>
+      <div className="min-w-40">
+        <Slider title="가중치" minValue={1} maxValue={9} />
+      </div>
       <div>
         <ButtonGroup
           className="rounded-full gap-0.5 max-w-80"
