@@ -1,11 +1,11 @@
 import React from "react";
 
-import SinnerButton from "@components/SinnerButton";
+import SinnerButtonGroup from "@components/SinnerButtonGroup";
 
 const DictionaryPage = () => {
   return (
     <div className="text-faust">
-      <SinnerButton />
+      <SinnerButtonGroup />
     </div>
   );
 };
