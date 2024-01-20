@@ -90,7 +90,6 @@ const SinnerButtonGroup = () => {
   const [selectedButtons, setSelectedButtons] = useState<string[]>([]);
 
   const toggleButton = (name: string) => {
-    // 현재 선택 상태에 따라 버튼을 선택 또는 선택 해제합니다.
     setSelectedButtons((prevSelected) =>
       prevSelected.includes(name)
         ? prevSelected.filter((btnName) => btnName !== name)
