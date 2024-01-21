@@ -25,7 +25,7 @@ const KeywordModal = ({ open, handler }: Props) => {
       handler={handler}
     >
       <DialogBody className="text-sm font-title" placeholder={undefined}>
-        <Tabs>
+        <Tabs value="html">
           <TabsHeader placeholder={undefined}>
             <Tab key="전투" value="전투" placeholder={undefined}>
               전투
