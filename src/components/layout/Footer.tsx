@@ -7,7 +7,7 @@ import { FaGithub, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-white">
+    <footer className="w-full bg-white px-4 md:px-10">
       <hr className="my-8 border-black" />
       <div className="md:flex md:justify-between">
         <div className="text-center md:text-left mt-2">

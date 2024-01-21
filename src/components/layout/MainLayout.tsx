@@ -9,12 +9,12 @@ import Footer from "./Footer";
  */
 const MainLayout = () => {
   return (
-    <div>
+    <div className="bg-gray-50">
       <Header />
-      <div className="px-4 md:px-10 py-4 max-w-7xl mx-auto">
+      <div className="w-full max-w-7xl py-4 mx-auto bg-white px-4 md:px-10 font-content">
         <Outlet />
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };
