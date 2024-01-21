@@ -25,14 +25,14 @@ const FilteringGroup = () => {
   const isSelectedType = (type: string) => selectedType === type;
 
   return (
-    <div className="grid grid-rows-2 grid-flow-col my-3 gap-1 md:gap-6 lg:gap-8 items-end">
-      <div className="min-w-40">
+    <div className="grid grid-rows-2 grid-flow-col my-3 gap-1 md:gap-6 lg:gap-8 items-end justify-evenly">
+      <div className="min-w-36 md:w-80 lg:w-96">
         <Slider title="속도" minValue={1} maxValue={9} />
       </div>
-      <div className="min-w-40">
+      <div className="min-w-36 md:w-full lg:w-96">
         <Slider title="가중치" minValue={1} maxValue={9} />
       </div>
-      <div>
+      <div className="min-w-36 md:w-80 lg:w-80">
         <ButtonGroup
           className="rounded-full gap-0.5 max-w-80"
           size="sm"
@@ -73,7 +73,7 @@ const FilteringGroup = () => {
           </Button>
         </ButtonGroup>
       </div>
-      <div>
+      <div className="w-full md:w-full lg:w-80">
         <ButtonGroup
           className="rounded-full gap-0.5 max-w-80"
           size="sm"
