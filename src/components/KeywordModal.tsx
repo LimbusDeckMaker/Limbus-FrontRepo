@@ -3,7 +3,6 @@ import React from "react";
 import {
   Dialog,
   DialogBody,
-  DialogHeader,
   Tab,
   TabPanel,
   Tabs,
