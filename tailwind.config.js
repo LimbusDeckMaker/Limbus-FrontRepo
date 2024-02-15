@@ -12,6 +12,7 @@ module.exports = withMT({
         "primary-200": "#996633",
         "primary-300": "#6D421A",
         "primary-400": "#3A2716",
+        "primary-450": "#281910",
         "primary-500": "#170C0A",
         yisang: "#D4E1E8",
         faust: "#FFB1B4",
