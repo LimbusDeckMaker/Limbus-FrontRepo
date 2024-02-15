@@ -29,6 +29,13 @@ module.exports = withMT({
         "grade-1": colors.gray[400],
         "grade-2": "#FF0000",
         "grade-3": "#FFEF23",
+        "res-red": "#8A3126", // 분노
+        "res-orange": "#B3622E", // 색욕
+        "res-yellow": "#E48800", // 나태
+        "res-green": "#618129", // 탐식
+        "res-blue": "#316672", // 우울
+        "res-navy": "#175184", // 오만
+        "res-purple": "#653E76", // 질투
       },
       fontFamily: {
         sans: ["GmarketSansMedium", "Roboto", "sans-serif"],
