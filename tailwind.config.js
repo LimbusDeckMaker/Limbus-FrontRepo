@@ -33,8 +33,8 @@ module.exports = withMT({
       fontFamily: {
         sans: ["GmarketSansMedium", "Roboto", "sans-serif"],
         title: ["KOTRA_BOLD", "sans-serif"],
-        gBold: ["GmarketSansBold", "sans-serif"],
-        gLight: ["GmarketSansLight", "sans-serif"],
+        sansBold: ["GmarketSansBold", "sans-serif"],
+        sansLight: ["GmarketSansLight", "sans-serif"],
         number: ["ExcelsiorSans", "sans-serif"],
         eng: ["BebasKai", "sans-serif"],
         content: ["SCDream5", "sans-serif"],
