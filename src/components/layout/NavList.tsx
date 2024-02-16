@@ -19,8 +19,8 @@ const NavList = () => {
             to={item.link}
             className={({ isActive }) =>
               isActive
-                ? "pb-1 border-b-2 border-b-black transition duration-500 ease-in-out"
-                : "bg-transparent"
+                ? "pb-1 border-b-2 border-b-primary-100 transition duration-500 ease-in-out"
+                : "bg-transparent border-b-2 border-transparent"
             }
           >
             {item.title}
