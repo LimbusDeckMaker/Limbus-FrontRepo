@@ -1,7 +1,6 @@
 [
-  { "title": "도감", "link": "/dictionary" },
+  { "title": "인격", "link": "/identity" },
+  { "title": "에고", "link": "/ego" },
   { "title": "덱 빌딩", "link": "/building" },
-  { "title": "티어리스트", "link": "/tier" },
-  { "title": "공지사항", "link": "/notice" },
-  { "title": "문의하기", "link": "/ask" }
+  { "title": "티어리스트", "link": "/tier" }
 ]
