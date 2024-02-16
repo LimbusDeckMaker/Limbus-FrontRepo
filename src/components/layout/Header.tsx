@@ -24,7 +24,7 @@ const Header = () => {
 
   return (
     <Navbar
-      className="mx-auto max-w-full px-4 md:px-10 py-3 rounded-none border-none bg-primary-400"
+      className="mx-auto max-w-full px-4 md:px-16 py-3 rounded-none border-none bg-primary-400"
       placeholder={undefined}
     >
       <div className="md:h-14 flex items-center justify-between text-blue-gray-900">

@@ -7,7 +7,7 @@ import { FaGithub, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-primary-400 px-4 md:px-10 py-6">
+    <footer className="w-full bg-primary-400 px-4 md:px-16 py-6">
       <hr className="border-primary-100 mb-6" />
       <div className="md:flex md:justify-between">
         <div className="text-center md:text-left mt-2 text-primary-100">
@@ -25,7 +25,7 @@ const Footer = () => {
                 key={`footer_nav:${item.title}`}
                 as="li"
                 variant="small"
-                className="p-1 font-content text-xs md:text-sm text-primary-100"
+                className="p-1 font-light text-xs md:text-sm text-primary-100"
                 placeholder={item.title}
               >
                 <NavLink to={item.link}>{item.title}</NavLink>
