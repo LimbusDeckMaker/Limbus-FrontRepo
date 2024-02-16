@@ -9,7 +9,7 @@ interface NewsItem {
 
 const ThumbnailCard = ({ title, url, date, image }: NewsItem) => {
   return (
-    <div className="w-full bg-primary-450 p-2 mb-2">
+    <div className="w-full bg-primary-450 p-2 mb-2 hover:underline">
       <a href={url} target="blank" className="flex gap-3 w-full">
         <div className="bg-white rounded-md shadow-md aspect-video w-1/2">
           <img
