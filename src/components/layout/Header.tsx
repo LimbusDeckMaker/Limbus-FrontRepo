@@ -24,7 +24,7 @@ const Header = () => {
 
   return (
     <Navbar
-      className="mx-auto max-w-full px-4 md:px-10 py-3 rounded-none border-none"
+      className="mx-auto max-w-full px-4 md:px-10 py-3 rounded-none border-none bg-primary-400"
       placeholder={undefined}
     >
       <div className="md:h-14 flex items-center justify-between text-blue-gray-900">
@@ -35,7 +35,7 @@ const Header = () => {
           className="mr-4 cursor-pointer py-1.5 font-title md:text-xl"
           placeholder={undefined}
         >
-          단테의 빵과 수프
+          LOGO
         </Typography>
         <div className="hidden md:block">
           <NavList />
