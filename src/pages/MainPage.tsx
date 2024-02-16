@@ -1,13 +1,13 @@
 import React from "react";
 
-// import ThumbnailCard from "@components/ThumbnailCard";
 import YouTube from "react-youtube";
-// import main from "@constants/main.json";
 import SiteLink from "@components/SiteLink";
+import ThumbnailCard from "@components/ThumbnailCard";
+import news from "@constants/news.json";
 
 const MainPage = () => {
   return (
-    <div className="font-sansBold text-primary-100">
+    <div className="font-sansBold text-primary-100 py-20">
       <div className="flex items-center justify-center w-3/4 mx-auto gap-4">
         <div className="flex flex-col gap-4 items-center justify-center w-1/2">
           <div className="bg-primary-400 w-full mx-auto p-4">
@@ -15,7 +15,7 @@ const MainPage = () => {
               <span className="text-xl">최신 유튜브</span>
             </div>
             <YouTube
-              videoId="nYPiiiBbP18"
+              videoId="0i7t1md2MsY"
               className="aspect-video"
               opts={{
                 width: "100%",
@@ -41,6 +41,16 @@ const MainPage = () => {
           <div className="pb-2">
             <span className="text-xl">최신 공지사항</span>
           </div>
+
+          {news.map((item, index) => (
+            <ThumbnailCard
+              title={item.title}
+              url={item.url}
+              date={item.date}
+              image={item.image}
+              key={index}
+            />
+          ))}
         </div>
       </div>
     </div>

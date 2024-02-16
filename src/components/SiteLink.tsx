@@ -1,8 +1,4 @@
-import {
-  FaSquareArrowUpRight,
-  FaSquareXTwitter,
-  FaSquareYoutube,
-} from "react-icons/fa6";
+import { FaSquareXTwitter, FaSquareYoutube } from "react-icons/fa6";
 
 const SiteLink = () => {
   return (
