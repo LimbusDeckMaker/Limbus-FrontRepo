@@ -7,6 +7,7 @@ import {
 } from "@material-tailwind/react";
 import NavList from "./NavList";
 import { HiMenuAlt3, HiOutlineX } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [openNav, setOpenNav] = React.useState(false);
@@ -29,11 +30,13 @@ const Header = () => {
     >
       <div className="md:h-14 flex items-center justify-between text-blue-gray-900">
         <div className="flex gap-2 items-center">
-          <img
-            src="/assets/logo.png"
-            alt="logo"
-            className="h-6 w-6 md:h-10 md:w-10"
-          />
+          <Link to="/">
+            <img
+              src="/assets/logo.png"
+              alt="logo"
+              className="h-6 w-6 md:h-10 md:w-10"
+            />
+          </Link>
           <Typography
             as="a"
             href="/"
