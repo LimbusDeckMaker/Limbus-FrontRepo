@@ -7,12 +7,12 @@ import news from "@constants/news.json";
 
 const MainPage = () => {
   return (
-    <div className="font-sansBold text-primary-100 py-20">
-      <div className="flex items-center justify-center w-3/4 mx-auto gap-4">
-        <div className="flex flex-col gap-4 items-center justify-center w-1/2">
-          <div className="bg-primary-400 w-full mx-auto p-4">
+    <div className="font-sansBold text-primary-100 py-4 md:py-20">
+      <div className="flex flex-col md:flex-row items-center justify-center lg:w-3/4 mx-auto gap-4">
+        <div className="flex flex-col gap-4 items-center justify-center w-11/12 md:w-1/2 md:mx-auto">
+          <div className="bg-primary-400 w-full mx-auto p-2 md:p-4">
             <div className="pb-2">
-              <span className="text-xl">최신 유튜브</span>
+              <span className="text-base md:text-xl">최신 유튜브</span>
             </div>
             <YouTube
               videoId="0i7t1md2MsY"
@@ -30,16 +30,16 @@ const MainPage = () => {
               }}
             />
           </div>
-          <div className="bg-primary-400 w-full mx-auto p-4">
+          <div className="bg-primary-400 w-full mx-auto p-2 md:p-4">
             <div className="pb-2">
-              <span className="text-xl">공식사이트 바로가기</span>
+              <span className="text- base md:text-xl">공식사이트 바로가기</span>
             </div>
             <SiteLink />
           </div>
         </div>
-        <div className="notice-container bg-primary-400 w-1/2 mx-auto p-4">
+        <div className="notice-container bg-primary-400 w-11/12 md:w-1/2 mx-auto p-2 md:p-4">
           <div className="pb-2">
-            <span className="text-xl">최신 공지사항</span>
+            <span className="text-base md:text-xl">최신 공지사항</span>
           </div>
 
           {news.map((item, index) => (

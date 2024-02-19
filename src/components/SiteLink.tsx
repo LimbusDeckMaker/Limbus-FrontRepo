@@ -7,7 +7,7 @@ const SiteLink = () => {
         <li className="py-1 hover:bg-primary-450">
           <a href={item.link} className="flex gap-2 items-center">
             {item.icon}
-            <span>{item.name}</span>
+            <span className="text-sm md:text-base">{item.name}</span>
           </a>
         </li>
       ))}

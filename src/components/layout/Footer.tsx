@@ -38,7 +38,7 @@ const Footer = () => {
         <img
           src="/assets/logo2.png"
           alt="footer_logo"
-          className="w-6 h-6 md:w-10 md:h-10"
+          className="w-8 h-8 md:w-10 md:h-10"
         />
         <div className="flex">
           <IconButton variant="text" placeholder={undefined}>
