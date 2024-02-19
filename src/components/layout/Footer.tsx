@@ -35,13 +35,17 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex justify-between items-center mt-4">
-        <p>LOGO</p>
+        <img
+          src="/assets/logo2.png"
+          alt="footer_logo"
+          className="w-6 h-6 md:w-10 md:h-10"
+        />
         <div className="flex">
           <IconButton variant="text" placeholder={undefined}>
-            <FaGithub size={25} />
+            <FaGithub size={25} className="text-primary-200" />
           </IconButton>
           <IconButton variant="text" placeholder={undefined}>
-            <FaYoutube size={25} />
+            <FaYoutube size={25} className="text-primary-200" />
           </IconButton>
         </div>
       </div>

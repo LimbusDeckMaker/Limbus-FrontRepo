@@ -28,15 +28,23 @@ const Header = () => {
       placeholder={undefined}
     >
       <div className="md:h-14 flex items-center justify-between text-blue-gray-900">
-        <Typography
-          as="a"
-          href="/"
-          variant="h6"
-          className="mr-4 cursor-pointer py-1.5 font-title md:text-xl"
-          placeholder={undefined}
-        >
-          LOGO
-        </Typography>
+        <div className="flex gap-2 items-center">
+          <img
+            src="/assets/logo.png"
+            alt="logo"
+            className="h-6 w-6 md:h-10 md:w-10"
+          />
+          <Typography
+            as="a"
+            href="/"
+            variant="h4"
+            className="mr-4 cursor-pointer py-1.5 font-title text-lg md:text-2xl text-primary-100"
+            placeholder={undefined}
+          >
+            단테의 빵과 수프
+          </Typography>
+        </div>
+
         <div className="hidden md:block">
           <NavList />
         </div>
@@ -47,7 +55,11 @@ const Header = () => {
           onClick={() => setOpenNav(!openNav)}
           placeholder={undefined}
         >
-          {openNav ? <HiOutlineX size={20} /> : <HiMenuAlt3 size={20} />}
+          {openNav ? (
+            <HiOutlineX size={20} className="text-primary-100" />
+          ) : (
+            <HiMenuAlt3 size={20} className="text-primary-100" />
+          )}
         </IconButton>
       </div>
       <Collapse open={openNav}>
