@@ -12,16 +12,15 @@ const NavList = () => {
           key={`nav:${item.title}`}
           as="li"
           variant="small"
-          color="blue-gray"
-          className="p-1 font-bold text-xs md:text-sm"
+          className="p-1 font-bold text-xs md:text-sm text-primary-100"
           placeholder={item.title}
         >
           <NavLink
             to={item.link}
             className={({ isActive }) =>
               isActive
-                ? "pb-1 border-b-2 border-b-black transition duration-500 ease-in-out"
-                : "bg-transparent"
+                ? "pb-1 border-b-2 border-b-primary-100 transition duration-500 ease-in-out"
+                : "bg-transparent border-b-2 border-transparent"
             }
           >
             {item.title}

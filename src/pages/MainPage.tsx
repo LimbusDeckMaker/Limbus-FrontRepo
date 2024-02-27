@@ -1,45 +1,57 @@
 import React from "react";
 
-import ThumbnailCard from "@components/ThumbnailCard";
 import YouTube from "react-youtube";
-import main from "@constants/main.json";
+import SiteLink from "@components/SiteLink";
+import ThumbnailCard from "@components/ThumbnailCard";
+import news from "@constants/news.json";
 
 const MainPage = () => {
   return (
-    <div className="">
-      <div className="notice flex justify-between items-center text-xs md:text-sm cursor-pointer hover:text-blue-500">
-        <div className="flex gap-2 items-center whitespace-nowrap">
-          <span className="">[공지사항]</span>
-          <p>단테의 빵과 수프 서비스 오픈 안내</p>
+    <div className="font-sansBold text-primary-100 py-4 md:py-20">
+      <div className="flex flex-col md:flex-row items-center justify-center lg:w-3/4 mx-auto gap-4">
+        <div className="flex flex-col gap-4 items-center justify-center w-11/12 md:w-1/2 md:mx-auto">
+          <div className="bg-primary-400 w-full mx-auto p-2 md:p-4">
+            <div className="pb-2">
+              <span className="text-base md:text-xl">최신 유튜브</span>
+            </div>
+            <YouTube
+              videoId="0i7t1md2MsY"
+              className="aspect-video"
+              opts={{
+                width: "100%",
+                height: "100%",
+                playerVars: {
+                  autoplay: 0,
+                  controls: 1,
+                  modestbranding: 1,
+                  rel: 0,
+                  showinfo: 0,
+                },
+              }}
+            />
+          </div>
+          <div className="bg-primary-400 w-full mx-auto p-2 md:p-4">
+            <div className="pb-2">
+              <span className="text- base md:text-xl">공식사이트 바로가기</span>
+            </div>
+            <SiteLink />
+          </div>
         </div>
-        <span className="hidden md:flex">2023.01.14</span>
-      </div>
-      <div className="w-full md:w-1/2 mx-auto my-4 md:my-10">
-        <YouTube
-          videoId="nYPiiiBbP18"
-          className="aspect-video"
-          opts={{
-            width: "100%",
-            height: "100%",
-            playerVars: {
-              autoplay: 0,
-              controls: 1,
-              modestbranding: 1,
-              rel: 0,
-              showinfo: 0,
-            },
-          }}
-        />
-      </div>
-      <div className="grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-10">
-        {main.map((item) => (
-          <ThumbnailCard
-            key={`main_thumbnail:${item.title}`}
-            title={item.title}
-            image={item.image}
-            link={item.link}
-          />
-        ))}
+        <div className="notice-container bg-primary-400 w-11/12 md:w-1/2 mx-auto p-2 md:p-4">
+          <div className="pb-2">
+            <span className="text-base md:text-xl">최신 공지사항</span>
+          </div>
+
+          {news.map((item, index) => (
+            <ThumbnailCard
+              title={item.title}
+              url={item.url}
+              date={item.date}
+              image={item.image}
+              key={index}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

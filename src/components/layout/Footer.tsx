@@ -7,12 +7,12 @@ import { FaGithub, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-white px-4 md:px-10">
-      <hr className="my-8 border-black" />
+    <footer className="w-full bg-primary-400 px-4 md:px-16 py-6">
+      <hr className="border-primary-100 mb-6" />
       <div className="md:flex md:justify-between">
-        <div className="text-center md:text-left mt-2">
-          <p className="font-title text-sm">단테의 빵과 수프</p>
-          <p className="text-xs text-blue-gray-500 py-2 font-light">
+        <div className="text-center md:text-left mt-2 text-primary-100">
+          <p className="font-title text-md">단테의 빵과 수프</p>
+          <p className="text-xs py-2 font-light">
             팀 단테의 빵과 수프입니다.
             <br />
             이메일@gmail.com
@@ -25,31 +25,27 @@ const Footer = () => {
                 key={`footer_nav:${item.title}`}
                 as="li"
                 variant="small"
-                color="blue-gray"
-                className="p-1 font-content text-xs md:text-sm"
+                className="p-1 font-light text-xs md:text-sm text-primary-100"
                 placeholder={item.title}
               >
-                <NavLink
-                  to={item.link}
-                  className={({ isActive }) =>
-                    isActive ? "text-gray-900" : "text-gray-700"
-                  }
-                >
-                  {item.title}
-                </NavLink>
+                <NavLink to={item.link}>{item.title}</NavLink>
               </Typography>
             ))}
           </ul>
         </div>
       </div>
       <div className="flex justify-between items-center mt-4">
-        <p>LOGO</p>
+        <img
+          src="/assets/logo2.png"
+          alt="footer_logo"
+          className="w-8 h-8 md:w-10 md:h-10"
+        />
         <div className="flex">
           <IconButton variant="text" placeholder={undefined}>
-            <FaGithub size={25} />
+            <FaGithub size={25} className="text-primary-200" />
           </IconButton>
           <IconButton variant="text" placeholder={undefined}>
-            <FaYoutube size={25} />
+            <FaYoutube size={25} className="text-primary-200" />
           </IconButton>
         </div>
       </div>
