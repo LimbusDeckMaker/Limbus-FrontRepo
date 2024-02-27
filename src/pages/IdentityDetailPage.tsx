@@ -11,6 +11,7 @@ const IdentityDetailPage = () => {
       <h2 className="text-primary-100">Identity Detail Page</h2>
       <p className="text-primary-100">ID: {id}</p>
       {/* 나머지 컴포넌트 내용 추가 */}
+      test
     </div>
   );
 };
