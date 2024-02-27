@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "@components/layout/MainLayout";
 import DictionaryPage from "@pages/DictionaryPage";
 import MainPage from "@pages/MainPage";
+import IdentityDetailPage from "@pages/IdentityDetailPage";
 
 const Router = () => {
   return (
@@ -12,6 +13,7 @@ const Router = () => {
         <Route element={<MainLayout />}>
           <Route path="/" element={<MainPage />} />
           <Route path="/identity" element={<DictionaryPage />} />
+          <Route path="/identity/:id" element={<IdentityDetailPage />} />
           <Route path="/ego" element={<div>에고 목록</div>} />
           <Route path="/building" element={<div>덱 빌딩</div>} />
           <Route path="/tier" element={<div>티어리스트</div>} />
