@@ -13,7 +13,7 @@ const ThumbnailCard = ({ title, url, date, image }: NewsItem) => {
       <a href={url} target="blank" className="flex gap-3 w-full">
         <div className="bg-white rounded-md shadow-md aspect-video w-1/2">
           <img
-            src={image}
+            src={image || "https://clan.akamai.steamstatic.com/images/43587230/62e63adbc551470064256668df2ba6cae5138cad_400x225.png"}
             alt="thumbnail"
             className="w-full h-full object-cover"
           />
