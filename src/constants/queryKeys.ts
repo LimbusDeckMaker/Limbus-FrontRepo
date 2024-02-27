@@ -9,4 +9,5 @@
 
 export const Main_Keys = {
   youtube: ['youtube'] as const,
+  news: ['news'] as const,
 }
