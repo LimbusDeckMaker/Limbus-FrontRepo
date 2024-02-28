@@ -1,3 +1,4 @@
+import Filter from "@components/Filter/Filter";
 import { Button, Input } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
@@ -19,6 +20,7 @@ const IdentityPage = () => {
             초기화
           </Button>
         </div>
+        <Filter />
       </div>
       <div className="flex-auto pl-10">
         <div className="flex justify-between items-center">
