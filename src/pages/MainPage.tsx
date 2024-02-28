@@ -62,7 +62,7 @@ const MainPage = () => {
             <span className="text-base md:text-xl">최신 공지사항</span>
           </div>
 
-          {news.map((item: News, index: number) => (
+          {news?.map((item: News, index: number) => (
             <ThumbnailCard
               title={item.title}
               url={item.url}
