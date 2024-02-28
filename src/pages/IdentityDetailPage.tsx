@@ -1,17 +1,22 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+
+import InfoBox from "@components/InfoBox";
+import identity_data from "@constants/identity_detail.json";
 
 const IdentityDetailPage = () => {
-  const { id } = useParams();
-
-  // 여기에서 id를 사용하여 해당 identity에 대한 정보를 가져와서 렌더링합니다.
-
   return (
     <div>
-      <h2 className="text-primary-100">Identity Detail Page</h2>
-      <p className="text-primary-100">ID: {id}</p>
-      {/* 나머지 컴포넌트 내용 추가 */}
-      test
+      <InfoBox
+        character={identity_data.character}
+        name={identity_data.name}
+        afterProfileImage={identity_data.afterProfileImage}
+        affiliation={identity_data.affiliation}
+        grade={identity_data.grade}
+        releaseDate={identity_data.releaseDate}
+        obtainingMethod={identity_data.obtainingMethod}
+        resistance={identity_data.resistance}
+        status={identity_data.status}
+      />
     </div>
   );
 };
