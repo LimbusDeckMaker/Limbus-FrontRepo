@@ -9,7 +9,7 @@ const IdentityPage = () => {
 
   return (
     <div className="flex font-sans text-primary-100 font-bold mt-4">
-      <div className="w-[300px]">
+      <div className="w-[300px] min-w-[300px]">
         <div className="flex justify-between items-center">
           <span className="text-4xl">필터</span>
           <Button
