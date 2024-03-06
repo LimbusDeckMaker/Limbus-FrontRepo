@@ -5,9 +5,17 @@ interface FilterButtonProps {
   name: string;
   imgSrc: string;
   type?: string;
+  isSelected?: boolean;
+  onClick?: () => void;
 }
 
-const FilterButton = ({ name, imgSrc, type }: FilterButtonProps) => {
+const FilterButton = ({
+  name,
+  imgSrc,
+  type,
+  isSelected,
+  onClick,
+}: FilterButtonProps) => {
   return (
     <Tooltip
       content={name}
@@ -19,8 +27,10 @@ const FilterButton = ({ name, imgSrc, type }: FilterButtonProps) => {
         key={`button:${name}`}
         className={`bg-primary-450 w-[40px] h-[40px] px-1 py-1 text-md text-primary-100 hover:bg-primary-300 rounded ${
           type === "text" && "!pt-2"
-        }`}
+        } ${isSelected ? "bg-primary-400 border border-primary-100" : ""}`}
         placeholder={undefined}
+        onClick={onClick}
+        ripple={false}
       >
         {type === "text" ? (
           <span className="text-xl text-white">{name}</span>
