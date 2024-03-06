@@ -2,8 +2,30 @@ import FilterButtonGroup from "./FilterButtonGroup";
 import sinners from "@constants/sinners.json";
 import resource from "@constants/resource.json";
 import attackType from "@constants/attackType.json";
+import FilterSelectGroup from "./FilterSelectGroup";
+import keyword from "@constants/keyword.json";
+import affiliation from "@constants/affiliation.json";
+import useSelectOptions from "@hooks/useSelectOptions";
+
+interface Option {
+  value: string;
+  label: string;
+}
+
+const keywordOptionList: Option[] = keyword.map((item) => ({
+  value: item.name,
+  label: item.name,
+}));
 
 const Filter = () => {
+  const {
+    selectedOptions: keywordOptions,
+    handleSelectChange: handleSelectChangeKeyword,
+  } = useSelectOptions();
+  const {
+    selectedOptions: affiliationOptions,
+    handleSelectChange: handleSelectChangeAffiliation,
+  } = useSelectOptions();
   return (
     <div className="bg-primary-500 w-full mt-8 rounded p-4 flex flex-col gap-2">
       <FilterButtonGroup
@@ -15,6 +37,18 @@ const Filter = () => {
         title="자원"
         content={resource}
         src="/assets/resource/"
+      />
+      <FilterSelectGroup
+        title="키워드"
+        optionList={keywordOptionList}
+        selectedOption={keywordOptions}
+        handleSelectChange={handleSelectChangeKeyword}
+      />
+      <FilterSelectGroup
+        title="소속"
+        optionList={affiliation}
+        selectedOption={affiliationOptions}
+        handleSelectChange={handleSelectChangeAffiliation}
       />
       <FilterButtonGroup
         title="유형"
