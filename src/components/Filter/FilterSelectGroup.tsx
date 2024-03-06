@@ -10,6 +10,7 @@ interface FilterSelectGroupProps {
   optionList: Option[];
   selectedOption: Option[];
   handleSelectChange: (option: readonly Option[]) => void;
+  zIndex: string;
 }
 
 const FilterSelectGroup = ({
@@ -17,9 +18,10 @@ const FilterSelectGroup = ({
   optionList,
   selectedOption,
   handleSelectChange,
+  zIndex,
 }: FilterSelectGroupProps) => {
   return (
-    <div>
+    <div className={zIndex}>
       <span className=" text-xs">{title}</span>
       <div className="text-sm text-white font-sansLight">
         <FilterSelect

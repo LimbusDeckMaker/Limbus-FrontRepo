@@ -6,6 +6,7 @@ import FilterSelectGroup from "./FilterSelectGroup";
 import keyword from "@constants/keyword.json";
 import affiliation from "@constants/affiliation.json";
 import useSelectOptions from "@hooks/useSelectOptions";
+import FilterSliderGroup from "./FilterSliderGroup";
 
 interface Option {
   value: string;
@@ -43,18 +44,22 @@ const Filter = () => {
         optionList={keywordOptionList}
         selectedOption={keywordOptions}
         handleSelectChange={handleSelectChangeKeyword}
+        zIndex="z-20"
       />
       <FilterSelectGroup
         title="소속"
         optionList={affiliation}
         selectedOption={affiliationOptions}
         handleSelectChange={handleSelectChangeAffiliation}
+        zIndex="z-10"
       />
       <FilterButtonGroup
         title="유형"
         content={attackType}
         src="/assets/attackType/"
       />
+      <FilterSliderGroup title="속도" minValue={1} maxValue={9} />
+      <FilterSliderGroup title="가중치" minValue={1} maxValue={9} />
       <FilterButtonGroup
         title="시즌"
         content={[{ name: "1" }, { name: "2" }, { name: "3" }]}
