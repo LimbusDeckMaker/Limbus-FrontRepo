@@ -7,6 +7,8 @@ import keyword from "@constants/keyword.json";
 import affiliation from "@constants/affiliation.json";
 import useSelectOptions from "@hooks/useSelectOptions";
 import FilterSliderGroup from "./FilterSliderGroup";
+import etcKeyword from "@constants/etcKeyword.json";
+import FilterEtcButtonGroup from "./FilterEtcButtonGroup";
 
 interface Option {
   value: string;
@@ -71,6 +73,7 @@ const Filter = () => {
         content={[{ name: "1성" }, { name: "2성" }, { name: "3성" }]}
         src="/assets/common/"
       />
+      <FilterEtcButtonGroup title="기타" content={etcKeyword} />
     </div>
   );
 };
