@@ -51,7 +51,7 @@ const InfoBox = ({
 
   const renderCollapseContent = () => {
     return (
-      <div className="flex flex-col items-center" style={{ textAlign: "center" }}>
+      <div className="flex flex-col items-center">
         <Typography variant="small" className="p-1 md:text-xs flex" placeholder={status.life}>
           {statusArray.map((item, index) => (
             <span key={index} className="flex mr-2">
