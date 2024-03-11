@@ -1,10 +1,11 @@
 import { FaSquareXTwitter, FaSquareYoutube } from "react-icons/fa6";
 
 const SiteLink = () => {
+
   return (
     <ul>
-      {linkList.map((item) => (
-        <li className="py-1 hover:bg-primary-450">
+      {linkList.map((item, index) => (
+        <li className="py-1 hover:bg-primary-450" key={`linkList:${index}`}>
           <a href={item.link} className="flex gap-2 items-center">
             {item.icon}
             <span className="text-sm md:text-base">{item.name}</span>

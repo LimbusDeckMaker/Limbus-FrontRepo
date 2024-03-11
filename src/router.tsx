@@ -5,6 +5,7 @@ import MainLayout from "@components/layout/MainLayout";
 import DictionaryPage from "@pages/DictionaryPage";
 import MainPage from "@pages/MainPage";
 import IdentityDetailPage from "@pages/IdentityDetailPage";
+import IdentityPage from "@pages/IdentityPage";
 
 const Router = () => {
   return (
@@ -12,7 +13,7 @@ const Router = () => {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<MainPage />} />
-          <Route path="/identity" element={<DictionaryPage />} />
+          <Route path="/identity" element={<IdentityPage />} />
           <Route path="/identity/:id" element={<IdentityDetailPage />} />
           <Route path="/ego" element={<div>에고 목록</div>} />
           <Route path="/building" element={<div>덱 빌딩</div>} />
