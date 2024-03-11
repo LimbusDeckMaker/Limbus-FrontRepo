@@ -1,7 +1,7 @@
-import axios, { InternalAxiosRequestConfig } from "axios";
+import axios from "axios";
 
 export const instance = axios.create({
-  baseURL: `${process.env.REACT_APP_API_URL}/api`,
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 // instance.interceptors.request.use((config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {

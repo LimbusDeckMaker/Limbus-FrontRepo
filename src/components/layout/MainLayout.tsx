@@ -11,7 +11,7 @@ const MainLayout = () => {
   return (
     <div className="bg-primary-450">
       <Header />
-      <div className="w-full max-w-7xl py-4 mx-auto px-4 md:px-10 font-content">
+      <div className="w-full max-w-7xl py-4 mx-auto px-4 md:px-16 font-content">
         <Outlet />
       </div>
       <Footer />

@@ -3,9 +3,29 @@ import React from "react";
 import YouTube from "react-youtube";
 import SiteLink from "@components/SiteLink";
 import ThumbnailCard from "@components/ThumbnailCard";
-import news from "@constants/news.json";
+import { useQuery } from '@tanstack/react-query';
+import { Main_Keys } from "@constants/queryKeys";
+import { getNews, getYoutube } from "@apis/mainApi";
+
+interface News {
+  title: string;
+  url: string;
+  release: string;
+  imageUrl: string;
+}
 
 const MainPage = () => {
+
+  const { data } = useQuery({
+    queryKey: Main_Keys.youtube,
+    queryFn: getYoutube,
+  });
+
+  const { data:news } = useQuery({
+    queryKey: Main_Keys.news,
+    queryFn: getNews,
+  });
+
   return (
     <div className="font-sansBold text-primary-100 py-4 md:py-20">
       <div className="flex flex-col md:flex-row items-center justify-center lg:w-3/4 mx-auto gap-4">
@@ -15,7 +35,7 @@ const MainPage = () => {
               <span className="text-base md:text-xl">최신 유튜브</span>
             </div>
             <YouTube
-              videoId="0i7t1md2MsY"
+              videoId={data?.videoId || "HTRQgFYCXHY"} // data가 없는 경우 프로젝트문 대표 영상 출력
               className="aspect-video"
               opts={{
                 width: "100%",
@@ -42,12 +62,12 @@ const MainPage = () => {
             <span className="text-base md:text-xl">최신 공지사항</span>
           </div>
 
-          {news.map((item, index) => (
+          {news?.map((item: News, index: number) => (
             <ThumbnailCard
               title={item.title}
               url={item.url}
-              date={item.date}
-              image={item.image}
+              date={item.release}
+              image={item.imageUrl}
               key={index}
             />
           ))}
