@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import InfoBox from "@components/InfoBox";
 import identity_data from "@constants/identity_detail.json";
 import { Tabs, TabsHeader, TabsBody, Tab, TabPanel, Card, CardBody, Typography } from "@material-tailwind/react";
@@ -63,7 +63,7 @@ const IdentityDetailPage = () => {
           </TabsHeader>
         </div>
         <div>
-          <Card placeholder={"Card"} className="mx-7 rounded-lg bg-transparen">
+          <Card placeholder={"Card"} className="mx-7 rounded-md bg-transparen">
             <CardBody placeholder={"CardBody"} className="">
               <TabsBody
                 placeholder={"TabsBody"}

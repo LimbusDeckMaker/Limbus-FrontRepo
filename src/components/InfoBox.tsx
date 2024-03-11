@@ -89,7 +89,7 @@ const InfoBox = ({
   };
 
   return (
-    <div className="bg-primary-500 text-white w-64 rounded-lg">
+    <div className="bg-primary-500 text-white w-64 rounded-md">
       <div className="w-64 h-auto py-4 gap-2 flex flex-col items-center relative">
         <img src={afterProfileImage} alt="beforeImage" style={{ width: "40%", height: "auto" }} />
         <img src={imagePaths[grade - 1]} alt="grade" style={{ width: "15%", height: "auto" }} />
