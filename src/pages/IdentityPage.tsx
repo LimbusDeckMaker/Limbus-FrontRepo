@@ -1,4 +1,5 @@
 import Filter from "@components/Filter/Filter";
+import IdentityThumbnailCard from "@components/IdentityThumbnailCard";
 import { Button, Input } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
@@ -23,6 +24,7 @@ const IdentityPage = () => {
         <Filter />
       </div>
       <div className="flex-auto pl-10">
+        {/* 상단 제목, 버튼 */}
         <div className="flex justify-between items-center">
           <span className="text-4xl">인격</span>
           <div className="flex gap-2">
@@ -58,6 +60,45 @@ const IdentityPage = () => {
               </div>
             </div>
           </div>
+        </div>
+        {/* 썸네일 리스트 */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 my-8">
+          <IdentityThumbnailCard
+            id={4}
+            grade={1}
+            name="N사 중간 망치"
+            character="돈키호테"
+            imageBefore="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_normal.png"
+            imageAfter="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_gacksung.png"
+            isSync={isSync}
+          />
+          <IdentityThumbnailCard
+            id={4}
+            grade={2}
+            name="N사 중간 망치"
+            character="돈키호테"
+            imageBefore="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_normal.png"
+            imageAfter="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_gacksung.png"
+            isSync={isSync}
+          />
+          <IdentityThumbnailCard
+            id={4}
+            grade={3}
+            name="N사 중간 망치"
+            character="돈키호테"
+            imageBefore="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_normal.png"
+            imageAfter="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_gacksung.png"
+            isSync={isSync}
+          />
+          <IdentityThumbnailCard
+            id={4}
+            grade={2}
+            name="N사 중간 망치"
+            character="돈키호테"
+            imageBefore="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_normal.png"
+            imageAfter="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_gacksung.png"
+            isSync={isSync}
+          />
         </div>
       </div>
     </div>
