@@ -1,7 +1,8 @@
 import React from "react";
 import InfoBox from "@components/InfoBox";
 import identity_data from "@constants/identity_detail.json";
-import { Tabs, TabsHeader, TabsBody, Tab, TabPanel, Card, CardBody, Typography } from "@material-tailwind/react";
+import { Tabs, TabsHeader, TabsBody, Tab, TabPanel, Typography } from "@material-tailwind/react";
+import IdentitySkills from "@components/IdentitySkills";
 
 const IdentityDetailPage = () => {
   const data = [
@@ -62,27 +63,26 @@ const IdentityDetailPage = () => {
             ))}
           </TabsHeader>
         </div>
-        <div>
-          <Card placeholder={"Card"} className="mx-7 rounded-md bg-transparen">
-            <CardBody placeholder={"CardBody"} className="">
-              <TabsBody
-                placeholder={"TabsBody"}
-                animate={{ initial: { y: 250 }, mount: { y: 0 }, unmount: { y: 250 } }}
-              >
-                {data.map(({ value, desc }) => (
-                  <TabPanel key={value} value={value} className="text-white ">
-                    <Typography variant="h3" className="p-1 text-primary-100" placeholder={desc}>
-                      {value}
-                    </Typography>
-                    <Typography variant="small" className="p-1 bg-primary-500" placeholder={desc}>
-                      {desc}
-                    </Typography>
-                  </TabPanel>
-                ))}
-              </TabsBody>
-            </CardBody>
-          </Card>
-        </div>
+
+        <TabsBody placeholder={"TabsBody"} animate={{ initial: { y: 250 }, mount: { y: 0 }, unmount: { y: 250 } }}>
+          {data.map(({ value, desc }) => (
+            <TabPanel key={value} value={value} className=" text-white font-bold pl-10">
+              <span className="text-4xl text-primary-100">{value}</span>
+              <Typography variant="small" className="p-1 bg-primary-500" placeholder={desc}>
+                {desc}
+                {value === "스킬" && (
+                  <IdentitySkills
+                    identitySkills={{
+                      identitySkill1s: identity_data.identitySkill1s.slice(0, 4),
+                      identitySkill2s: identity_data.identitySkill2s.slice(0, 4),
+                      identitySkill3s: identity_data.identitySkill3s.slice(0, 4),
+                    }}
+                  />
+                )}
+              </Typography>
+            </TabPanel>
+          ))}
+        </TabsBody>
       </Tabs>
     </div>
   );
