@@ -18,8 +18,9 @@ interface InfoBoxProps {
   };
 }
 
-const imagePaths = ["/assets/grade1.png", "/assets/grade2.png", "/assets/grade3.png"];
-const tempImg = "/assets/profile/donquixote.png";
+const gradeImg = ["/assets/common/1성.png", "/assets/common/2성.png", "/assets/common/3성.png"];
+const statusImg = ["/assets/status/health.png", "/assets/status/speed.png", "/assets/status/deffense.png"];
+const resistanceImg = ["/assets/attackType/slash.png", "/assets/attackType/pierce.png", "/assets/attackType/blunt.png"];
 
 const InfoBox = ({
   character,
@@ -55,7 +56,7 @@ const InfoBox = ({
         <Typography variant="small" className="p-1 md:text-xs flex" placeholder={status.life}>
           {statusArray.map((item, index) => (
             <span key={index} className="flex mr-2">
-              <img src={tempImg} alt="beforeImage" style={{ width: "14px", height: "14px" }} />
+              <img src={statusImg[index]} alt="beforeImage" style={{ width: "14px", height: "14px" }} />
               {item}
             </span>
           ))}
@@ -67,7 +68,7 @@ const InfoBox = ({
               key={index}
               className={`flex mr-2 ${type === "내성" ? "text-gray-400" : type === "취약" ? "text-red-500" : ""}`}
             >
-              <img src={tempImg} alt="beforeImage" style={{ width: "14px", height: "14px" }} />
+              <img src={resistanceImg[index]} alt="beforeImage" style={{ width: "14px", height: "14px" }} />
               {type}{" "}
             </span>
           ))}
@@ -92,7 +93,7 @@ const InfoBox = ({
     <div className="bg-primary-500 text-white w-64 rounded-md">
       <div className="w-64 h-auto py-4 gap-2 flex flex-col items-center relative">
         <img src={afterProfileImage} alt="beforeImage" style={{ width: "40%", height: "auto" }} />
-        <img src={imagePaths[grade - 1]} alt="grade" style={{ width: "15%", height: "auto" }} />
+        <img src={gradeImg[grade - 1]} alt="grade" style={{ width: "15%", height: "auto" }} />
 
         <p className="text-xl font-bold text-primary-100">{name}</p>
         <p className="text-xl font-bold text-primary-100">{character}</p>
