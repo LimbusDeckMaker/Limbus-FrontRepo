@@ -1,10 +1,12 @@
 import React from "react";
+import SkillCard from "./SkillCard";
 
 interface Props {
   identitySkills: {
     identitySkill1s: Skill[];
     identitySkill2s: Skill[];
     identitySkill3s: Skill[];
+    identityDefSkills: Skill[];
   };
 }
 
@@ -28,45 +30,21 @@ interface Skill {
   coin5Effect: string;
 }
 
-const IdentitySkills: React.FC<Props> = ({ identitySkills }) => {
-  const { identitySkill1s, identitySkill2s, identitySkill3s } = identitySkills;
+const IdentitySkills = ({ identitySkills }: Props) => {
+  const { identitySkill1s, identitySkill2s, identitySkill3s, identityDefSkills } = identitySkills;
 
-  // Selecting only the first 4 skills
   const selectedSkill1s = identitySkill1s.slice(0, 4);
   const selectedSkill2s = identitySkill2s.slice(0, 4);
   const selectedSkill3s = identitySkill3s.slice(0, 4);
+  const selectedDefSkills = identityDefSkills.slice(0, 4);
 
   return (
     <div>
       <div>
-        <h2>Identity Skill 1s</h2>
-        <ul>
-          {selectedSkill1s.map((skill, index) => (
-            <li key={index}>
-              Name: {skill.name}, Power: {skill.power}, Type: {skill.type}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <h2>Identity Skill 2s</h2>
-        <ul>
-          {selectedSkill2s.map((skill, index) => (
-            <li key={index}>
-              Name: {skill.name}, Power: {skill.power}, Type: {skill.type}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <h2>Identity Skill 3s</h2>
-        <ul>
-          {selectedSkill3s.map((skill, index) => (
-            <li key={index}>
-              Name: {skill.name}, Power: {skill.power}, Type: {skill.type}
-            </li>
-          ))}
-        </ul>
+        <SkillCard type="1 Skill" synchronization={0} skill={selectedSkill1s} />
+        <SkillCard type="2 Skill" synchronization={0} skill={selectedSkill2s} />
+        <SkillCard type="3 Skill" synchronization={0} skill={selectedSkill3s} />
+        <SkillCard type="DEFENSE" synchronization={0} skill={selectedDefSkills} />
       </div>
     </div>
   );

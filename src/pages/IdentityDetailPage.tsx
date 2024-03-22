@@ -68,7 +68,7 @@ const IdentityDetailPage = () => {
           {data.map(({ value, desc }) => (
             <TabPanel key={value} value={value} className=" text-white font-bold pl-10">
               <span className="text-4xl text-primary-100">{value}</span>
-              <Typography variant="small" className="p-1 bg-primary-500" placeholder={desc}>
+              <Typography variant="small" className="p-1 " placeholder={desc}>
                 {desc}
                 {value === "스킬" && (
                   <IdentitySkills
@@ -76,6 +76,7 @@ const IdentityDetailPage = () => {
                       identitySkill1s: identity_data.identitySkill1s.slice(0, 4),
                       identitySkill2s: identity_data.identitySkill2s.slice(0, 4),
                       identitySkill3s: identity_data.identitySkill3s.slice(0, 4),
+                      identityDefSkills: identity_data.identityDefSkills.slice(0, 4),
                     }}
                   />
                 )}
