@@ -66,7 +66,7 @@ const IdentityDetailPage = () => {
 
         <TabsBody placeholder={"TabsBody"} animate={{ initial: { y: 250 }, mount: { y: 0 }, unmount: { y: 250 } }}>
           {data.map(({ value, desc }) => (
-            <TabPanel key={value} value={value} className=" text-white font-bold pl-10">
+            <TabPanel key={value} value={value} className=" text-white font-bold md:pl-10">
               <span className="text-4xl text-primary-100">{value}</span>
               <Typography variant="small" className="p-1 " placeholder={desc}>
                 {desc}

@@ -16,7 +16,6 @@ interface Skill {
   type: string;
   resource: string;
   skillSeq: number;
-  quantity: number;
   skillPower: number;
   coinPower: number;
   coinNum: number;
