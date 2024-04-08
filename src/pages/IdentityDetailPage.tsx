@@ -3,6 +3,7 @@ import InfoBox from "@components/InfoBox";
 import identity_data from "@constants/identity_detail.json";
 import { Tabs, TabsHeader, TabsBody, Tab, TabPanel, Typography } from "@material-tailwind/react";
 import IdentitySkills from "@components/IdentitySkills";
+import IdentityImage from "@components/IdentityImage";
 
 const IdentityDetailPage = () => {
   const data = [
@@ -79,6 +80,9 @@ const IdentityDetailPage = () => {
                       identityDefSkills: identity_data.identityDefSkills.slice(0, 4),
                     }}
                   />
+                )}
+                {value === "이미지" && (
+                  <IdentityImage beforeImage={identity_data.beforeImage} afterImage={identity_data.afterImage} />
                 )}
               </Typography>
             </TabPanel>
