@@ -21,7 +21,7 @@ const IdentityThumbnailCard = ({
 }: IdentityThumbnailCardProps) => {
   return (
     <Link to={`${id}`}>
-      <div className="w-full bg-primary-500 rounded-lg p-[10px] hover:scale-105">
+      <div className=" bg-primary-500 rounded-lg p-[10px] hover:scale-105">
         <div className="flex justify-between items-center">
           <div className="w-10 mx-auto">
             <img src={`/assets/common/${grade}성.png`} className="h-4" />
@@ -32,7 +32,11 @@ const IdentityThumbnailCard = ({
           </div>
         </div>
         {!isSync ? (
-          <img src={imageBefore} alt="beforeImage" className="rounded-lg" />
+          <img
+            src={imageBefore}
+            alt="beforeImage"
+            className="rounded-lg w-full"
+          />
         ) : (
           <img src={imageAfter} alt="afterImage" className="rounded-lg" />
         )}
