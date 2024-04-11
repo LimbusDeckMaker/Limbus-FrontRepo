@@ -21,7 +21,7 @@ const IdentityThumbnailCard = ({
 }: IdentityThumbnailCardProps) => {
   const calculateTextSize = (text: string): string => {
     return text.length > 10
-      ? "text-[0.46rem] sm:text-[0.65rem]"
+      ? "text-[0.46rem] sm:text-[0.65rem] leading-[1.05] sm:leading-[1.1]"
       : "text-[0.5rem] sm:text-[0.8rem]";
   };
 
@@ -33,7 +33,7 @@ const IdentityThumbnailCard = ({
             <img src={`/assets/common/${grade}성.png`} className="h-4" />
           </div>
           <div
-            className={`flex flex-col gap-0 justify-center text-center items-center w-full ${calculateTextSize(
+            className={`flex flex-col gap-0 justify-center text-center items-center w-full h-6 sm:h-10 ${calculateTextSize(
               name
             )}`}
           >
