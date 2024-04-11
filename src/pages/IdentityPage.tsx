@@ -1,6 +1,6 @@
 import Filter from "@components/Filter/Filter";
 import IdentityThumbnailCard from "@components/IdentityThumbnailCard";
-import { Button, Input } from "@material-tailwind/react";
+import { Button, Dialog, Input } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
@@ -24,7 +24,7 @@ const IdentityPage = () => {
     <div className="flex font-sans text-primary-100 font-bold mt-4">
       {/* 필터 */}
       <div className="w-[300px] min-w-[300px] hidden lg:block">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center mb-8">
           <span className="text-3xl lg:text-4xl">필터</span>
           <Button
             onClick={() => {}}
@@ -36,7 +36,14 @@ const IdentityPage = () => {
         </div>
         <Filter />
       </div>
-
+      <Dialog
+        open={openFilter}
+        handler={() => setOpenFilter(false)}
+        placeholder={undefined}
+        size={"xs"}
+      >
+        <Filter />
+      </Dialog>
       <div className="flex-auto md:pl-10">
         {/* 상단 제목, 버튼 */}
 
@@ -48,7 +55,7 @@ const IdentityPage = () => {
           <div className="my-2 grid grid-cols-1 sm:flex sm:justify-between w-full lg:w-fit gap-2 h-fit md:h-10">
             <Button
               className="h-8 lg:hidden bg-primary-400 lg:h-8 py-0.5 px-4 text-lg lg:text-sm text-primary-100 hover:bg-primary-300 rounded"
-              onClick={() => {}}
+              onClick={() => setOpenFilter(true)}
               placeholder={undefined}
             >
               <span className="whitespace-nowrap">필터</span>
