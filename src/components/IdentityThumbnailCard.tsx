@@ -19,6 +19,12 @@ const IdentityThumbnailCard = ({
   imageAfter,
   isSync,
 }: IdentityThumbnailCardProps) => {
+  const calculateTextSize = (text: string): string => {
+    return text.length > 10
+      ? "text-[0.46rem] sm:text-[0.65rem]"
+      : "text-[0.5rem] sm:text-[0.8rem]";
+  };
+
   return (
     <Link to={`${id}`}>
       <div className=" bg-primary-500 rounded-lg p-[10px] hover:scale-105">
@@ -26,7 +32,11 @@ const IdentityThumbnailCard = ({
           <div className="w-10 mx-auto">
             <img src={`/assets/common/${grade}성.png`} className="h-4" />
           </div>
-          <div className="flex flex-col gap-0 justify-center text-center items-center text-[0.45rem] sm:text-[0.8rem] w-full">
+          <div
+            className={`flex flex-col gap-0 justify-center text-center items-center w-full ${calculateTextSize(
+              name
+            )}`}
+          >
             <span>{name}</span>
             <span>{character}</span>
           </div>
