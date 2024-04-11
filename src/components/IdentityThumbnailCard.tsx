@@ -26,7 +26,7 @@ const IdentityThumbnailCard = ({
           <div className="w-10 mx-auto">
             <img src={`/assets/common/${grade}성.png`} className="h-4" />
           </div>
-          <div className="flex flex-col gap-0 justify-center text-center items-center text-[0.8rem] w-full">
+          <div className="flex flex-col gap-0 justify-center text-center items-center text-[0.45rem] sm:text-[0.8rem] w-full">
             <span>{name}</span>
             <span>{character}</span>
           </div>
