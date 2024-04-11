@@ -102,7 +102,7 @@ const IdentityPage = () => {
           <IdentityThumbnailCard
             id={4}
             grade={2}
-            name="N사 중간 망치"
+            name="로보토미 E.G.O::여우비"
             character="돈키호테"
             imageBefore="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_normal.png"
             imageAfter="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_gacksung.png"
@@ -111,7 +111,7 @@ const IdentityPage = () => {
           <IdentityThumbnailCard
             id={4}
             grade={3}
-            name="N사 중간 망치"
+            name="워더링하이츠 치프 버틀러"
             character="돈키호테"
             imageBefore="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_normal.png"
             imageAfter="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_gacksung.png"
