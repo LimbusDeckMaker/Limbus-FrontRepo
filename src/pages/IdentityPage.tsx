@@ -156,6 +156,11 @@ const IdentityPage = () => {
                   isSync={isSync}
                 />
               ))}
+            {data && data.length === 0 && (
+              <div className="text-primary-200 text-center w-full">
+                검색 결과가 없습니다.
+              </div>
+            )}
           </div>
         )}
       </div>
