@@ -64,7 +64,7 @@ const IdentityDetailPage = () => {
               className=" text-white font-bold md:pl-10"
             >
               <span className="text-4xl text-primary-100">{value}</span>
-              <Typography variant="small" className="p-1 " placeholder={value}>
+              <div className="py-1 ">
                 {value === "스킬" && (
                   <IdentitySkills
                     identitySkills={{
@@ -81,7 +81,7 @@ const IdentityDetailPage = () => {
                     afterImage={identity_data.afterImage}
                   />
                 )}
-              </Typography>
+              </div>
             </TabPanel>
           ))}
         </TabsBody>

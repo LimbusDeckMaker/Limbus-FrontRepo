@@ -82,7 +82,7 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
               />
             </span>
             <span className="pr-1 w-24">
-              스킬 위력
+              스킬 위력{" "}
               <span className="text-white">{currentSkill.skillPower}</span>
             </span>
             <span className=" w-24">
