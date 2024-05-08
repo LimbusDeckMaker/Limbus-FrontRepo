@@ -16,7 +16,7 @@ const IdentityDetailPage = () => {
   return (
     <div className="">
       <Tabs value="스킬" orientation="horizontal" className="md:flex ">
-        <div className=" flex flex-col md:items-start items-center gap-3 ">
+        <div className=" flex flex-col md:items-start items-center gap-3 mt-4">
           <InfoBox
             character={identity_data.character}
             name={identity_data.name}
@@ -41,7 +41,7 @@ const IdentityDetailPage = () => {
                 key={value}
                 value={value}
                 placeholder={"Tab"}
-                className="text-primary-100 font-bold md:text-xl text-base p-0 md:p-1"
+                className="text-primary-100 mt-1 font-bold md:text-xl text-base p-0 md:p-1"
               >
                 {value}
               </Tab>
