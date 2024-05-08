@@ -30,7 +30,12 @@ interface Skill {
 }
 
 const IdentitySkills = ({ identitySkills }: Props) => {
-  const { identitySkill1s, identitySkill2s, identitySkill3s, identityDefSkills } = identitySkills;
+  const {
+    identitySkill1s,
+    identitySkill2s,
+    identitySkill3s,
+    identityDefSkills,
+  } = identitySkills;
 
   const selectedSkill1s = identitySkill1s.slice(0, 4);
   const selectedSkill2s = identitySkill2s.slice(0, 4);
@@ -39,12 +44,10 @@ const IdentitySkills = ({ identitySkills }: Props) => {
 
   return (
     <div>
-      <div>
-        <SkillCard type="1 Skill" synchronization={0} skill={selectedSkill1s} />
-        <SkillCard type="2 Skill" synchronization={0} skill={selectedSkill2s} />
-        <SkillCard type="3 Skill" synchronization={0} skill={selectedSkill3s} />
-        <SkillCard type="DEFENSE" synchronization={0} skill={selectedDefSkills} />
-      </div>
+      <SkillCard type="1 Skill" synchronization={0} skill={selectedSkill1s} />
+      <SkillCard type="2 Skill" synchronization={0} skill={selectedSkill2s} />
+      <SkillCard type="3 Skill" synchronization={0} skill={selectedSkill3s} />
+      <SkillCard type="DEFENSE" synchronization={0} skill={selectedDefSkills} />
     </div>
   );
 };
