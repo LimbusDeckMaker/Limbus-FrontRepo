@@ -20,6 +20,8 @@ const useToggleButtons = (
           : button
       )
     );
+
+    return buttons;
   };
 
   return [buttons, toggleButton];

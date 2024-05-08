@@ -9,6 +9,8 @@ import useSelectOptions from "@hooks/useSelectOptions";
 import FilterSliderGroup from "./FilterSliderGroup";
 import etcKeyword from "@constants/etcKeyword.json";
 import FilterEtcButtonGroup from "./FilterEtcButtonGroup";
+import { useRecoilState } from "recoil";
+import { optionsState } from "@recoils/atoms";
 
 interface Option {
   value: string;
@@ -21,6 +23,8 @@ const keywordOptionList: Option[] = keyword.map((item) => ({
 }));
 
 const Filter = () => {
+  const [options, setOptions] = useRecoilState(optionsState);
+
   const {
     selectedOptions: keywordOptions,
     handleSelectChange: handleSelectChangeKeyword,
@@ -29,36 +33,55 @@ const Filter = () => {
     selectedOptions: affiliationOptions,
     handleSelectChange: handleSelectChangeAffiliation,
   } = useSelectOptions();
+
+  const updateOptions = (key: string, selectedOptions: any) => {
+    setOptions((prev) => ({
+      ...prev,
+      [key]: selectedOptions,
+    }));
+  };
+
+  console.log(options);
+
   return (
     <div className="bg-primary-500 w-full rounded p-4 flex flex-col gap-2">
       <FilterButtonGroup
         title="수감자"
         content={sinners}
         src="/assets/profile/logo/"
+        propertyToSaveTo="sinner"
       />
       <FilterButtonGroup
         title="자원"
         content={resource}
         src="/assets/resource/"
+        propertyToSaveTo="resources"
       />
       <FilterSelectGroup
         title="키워드"
         optionList={keywordOptionList}
         selectedOption={keywordOptions}
-        handleSelectChange={handleSelectChangeKeyword}
+        handleSelectChange={(selectedOptions: any) => {
+          handleSelectChangeKeyword(selectedOptions);
+          updateOptions("keyword", selectedOptions);
+        }}
         zIndex="z-20"
       />
       <FilterSelectGroup
         title="소속"
         optionList={affiliation}
         selectedOption={affiliationOptions}
-        handleSelectChange={handleSelectChangeAffiliation}
+        handleSelectChange={(selectedOptions) => {
+          handleSelectChangeAffiliation(selectedOptions);
+          updateOptions("affiliation", selectedOptions);
+        }}
         zIndex="z-10"
       />
       <FilterButtonGroup
         title="유형"
         content={attackType}
         src="/assets/attackType/"
+        propertyToSaveTo="types"
       />
       <FilterSliderGroup title="속도" minValue={1} maxValue={9} />
       <FilterSliderGroup title="가중치" minValue={1} maxValue={9} />
@@ -67,11 +90,13 @@ const Filter = () => {
         content={[{ name: "1" }, { name: "2" }, { name: "3" }]}
         src=""
         buttonType="text"
+        propertyToSaveTo="season"
       />
       <FilterButtonGroup
         title="등급"
         content={[{ name: "1성" }, { name: "2성" }, { name: "3성" }]}
         src="/assets/common/"
+        propertyToSaveTo="grade"
       />
       <FilterEtcButtonGroup title="기타" content={etcKeyword} />
     </div>
