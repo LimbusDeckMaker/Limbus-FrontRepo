@@ -1,34 +1,18 @@
 import React from "react";
 import InfoBox from "@components/InfoBox";
 import identity_data from "@constants/identity_detail.json";
-import { Tabs, TabsHeader, TabsBody, Tab, TabPanel, Typography } from "@material-tailwind/react";
+import {
+  Tabs,
+  TabsHeader,
+  TabsBody,
+  Tab,
+  TabPanel,
+  Typography,
+} from "@material-tailwind/react";
 import IdentitySkills from "@components/IdentitySkills";
 import IdentityImage from "@components/IdentityImage";
 
 const IdentityDetailPage = () => {
-  const data = [
-    {
-      label: "스킬",
-      value: "스킬",
-      desc: `스킬입니다.`,
-    },
-    {
-      label: "패시브",
-      value: "패시브",
-      desc: `패시브입니다.`,
-    },
-    {
-      label: "키워드",
-      value: "키워드",
-      desc: `키워드입니다.`,
-    },
-    {
-      label: "이미지",
-      value: "이미지",
-      desc: `이미지입니다.`,
-    },
-  ];
-
   return (
     <div className="">
       <Tabs value="스킬" orientation="horizontal" className="md:flex ">
@@ -52,37 +36,50 @@ const IdentityDetailPage = () => {
               className: "bg-primary-300 shadow-none mx-1 ",
             }}
           >
-            {data.map(({ label, value }) => (
+            {menu.map((value) => (
               <Tab
                 key={value}
                 value={value}
                 placeholder={"Tab"}
                 className="text-primary-100 font-bold md:text-xl text-base p-0 md:p-1"
               >
-                {label}
+                {value}
               </Tab>
             ))}
           </TabsHeader>
         </div>
 
-        <TabsBody placeholder={"TabsBody"} animate={{ initial: { y: 250 }, mount: { y: 0 }, unmount: { y: 250 } }}>
-          {data.map(({ value, desc }) => (
-            <TabPanel key={value} value={value} className=" text-white font-bold md:pl-10">
+        <TabsBody
+          placeholder={"TabsBody"}
+          animate={{
+            initial: { y: 250 },
+            mount: { y: 0 },
+            unmount: { y: 250 },
+          }}
+        >
+          {menu.map((value) => (
+            <TabPanel
+              key={value}
+              value={value}
+              className=" text-white font-bold md:pl-10"
+            >
               <span className="text-4xl text-primary-100">{value}</span>
-              <Typography variant="small" className="p-1 " placeholder={desc}>
-                {desc}
+              <Typography variant="small" className="p-1 " placeholder={value}>
                 {value === "스킬" && (
                   <IdentitySkills
                     identitySkills={{
-                      identitySkill1s: identity_data.identitySkill1s.slice(0, 4),
-                      identitySkill2s: identity_data.identitySkill2s.slice(0, 4),
-                      identitySkill3s: identity_data.identitySkill3s.slice(0, 4),
-                      identityDefSkills: identity_data.identityDefSkills.slice(0, 4),
+                      identitySkill1s: identity_data.identitySkill1s,
+                      identitySkill2s: identity_data.identitySkill2s,
+                      identitySkill3s: identity_data.identitySkill3s,
+                      identityDefSkills: identity_data.identityDefSkills,
                     }}
                   />
                 )}
                 {value === "이미지" && (
-                  <IdentityImage beforeImage={identity_data.beforeImage} afterImage={identity_data.afterImage} />
+                  <IdentityImage
+                    beforeImage={identity_data.beforeImage}
+                    afterImage={identity_data.afterImage}
+                  />
                 )}
               </Typography>
             </TabPanel>
@@ -92,5 +89,7 @@ const IdentityDetailPage = () => {
     </div>
   );
 };
+
+const menu = ["스킬", "패시브", "키워드", "이미지"];
 
 export default IdentityDetailPage;

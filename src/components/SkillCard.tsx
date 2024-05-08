@@ -4,7 +4,7 @@ import KeywordHighlighted from "./KeywordHighlighted";
 
 interface SkillCardProps {
   type: string;
-  synchronization: number;
+  synchronization: number; // 3동기화 기준 0, 4동기화 기준 1
   skill: Skill[];
 }
 
@@ -94,41 +94,39 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
       </div>
 
       <div>
+        {/* <Typography placeholder={"power"}>{currentSkill.normalEffect}</Typography> */}
+        <KeywordHighlighted text={currentSkill.normalEffect} />
         <div>
-          {/* <Typography placeholder={"power"}>{currentSkill.normalEffect}</Typography> */}
-          <KeywordHighlighted text={currentSkill.normalEffect} />
-          <div>
-            {[...Array(currentSkill.coinNum)].map((_, index) => {
-              const effectKey = `coin${index + 1}Effect`;
-              const effect = (currentSkill as any)[effectKey];
-              if (effect.trim() !== "") {
-                // Splitting the effect string based on newline characters
-                const effectParts = effect.split("\n");
+          {[...Array(currentSkill.coinNum)].map((_, index) => {
+            const effectKey = `coin${index + 1}Effect`;
+            const effect = (currentSkill as any)[effectKey];
+            if (effect.trim() !== "") {
+              // Splitting the effect string based on newline characters
+              const effectParts = effect.split("\n");
 
-                return (
-                  <div className="flex items-start" key={index}>
-                    <img
-                      src={`/assets/coin/coin${index + 1}.png`}
-                      alt="coinImg"
-                      className="mr-1 mt-0.5"
-                      style={{ width: "auto", height: "16px" }}
-                    />
-                    <div>
-                      {effectParts.map((part: any, partIndex: any) => (
-                        <React.Fragment key={partIndex}>
-                          <KeywordHighlighted text={part} />
-                          {partIndex !== effectParts.length - 1}
-                        </React.Fragment>
-                      ))}
-                    </div>
-                    {/* <Typography placeholder={"power"}>{effect}</Typography> */}
+              return (
+                <div className="flex items-start" key={index}>
+                  <img
+                    src={`/assets/coin/coin${index + 1}.png`}
+                    alt="coinImg"
+                    className="mr-1 mt-0.5"
+                    style={{ width: "auto", height: "16px" }}
+                  />
+                  <div>
+                    {effectParts.map((part: any, partIndex: any) => (
+                      <React.Fragment key={partIndex}>
+                        <KeywordHighlighted text={part} />
+                        {partIndex !== effectParts.length - 1}
+                      </React.Fragment>
+                    ))}
                   </div>
-                );
-              } else {
-                return null;
-              }
-            })}
-          </div>
+                  {/* <Typography placeholder={"power"}>{effect}</Typography> */}
+                </div>
+              );
+            } else {
+              return null;
+            }
+          })}
         </div>
       </div>
     </div>

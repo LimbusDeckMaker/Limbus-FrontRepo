@@ -37,17 +37,12 @@ const IdentitySkills = ({ identitySkills }: Props) => {
     identityDefSkills,
   } = identitySkills;
 
-  const selectedSkill1s = identitySkill1s.slice(0, 4);
-  const selectedSkill2s = identitySkill2s.slice(0, 4);
-  const selectedSkill3s = identitySkill3s.slice(0, 4);
-  const selectedDefSkills = identityDefSkills.slice(0, 4);
-
   return (
     <div>
-      <SkillCard type="1 Skill" synchronization={0} skill={selectedSkill1s} />
-      <SkillCard type="2 Skill" synchronization={0} skill={selectedSkill2s} />
-      <SkillCard type="3 Skill" synchronization={0} skill={selectedSkill3s} />
-      <SkillCard type="DEFENSE" synchronization={0} skill={selectedDefSkills} />
+      <SkillCard type="1 Skill" synchronization={0} skill={identitySkill1s} />
+      <SkillCard type="2 Skill" synchronization={0} skill={identitySkill2s} />
+      <SkillCard type="3 Skill" synchronization={0} skill={identitySkill3s} />
+      <SkillCard type="DEFENSE" synchronization={0} skill={identityDefSkills} />
     </div>
   );
 };
