@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Button, ButtonGroup } from "@material-tailwind/react";
 import Slider from "./Slider";
 
+// 안 씀
+
 const buttonStyle =
   "py-0.5 px-1.5 md:py-1 md:px-2.5 border-none w-full text-xs md:text-lg lg:text-xl";
 
@@ -105,7 +107,7 @@ const FilteringGroup = () => {
           >
             <img
               src="/assets/grade2.png"
-              alt="1성 이미지"
+              alt="2성 이미지"
               className="h-4 md:h-7 mx-auto"
             />
           </Button>
@@ -120,7 +122,7 @@ const FilteringGroup = () => {
           >
             <img
               src="/assets/grade3.png"
-              alt="1성 이미지"
+              alt="3성 이미지"
               className="h-4 md:h-7 mx-auto"
             />
           </Button>
