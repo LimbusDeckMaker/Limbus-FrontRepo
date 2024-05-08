@@ -1,6 +1,6 @@
 import Filter from "@components/Filter/Filter";
 import IdentityThumbnailCard from "@components/IdentityThumbnailCard";
-import { Button, Dialog, Input } from "@material-tailwind/react";
+import { Button, Dialog, Input, Spinner } from "@material-tailwind/react";
 import { optionsState } from "@recoils/atoms";
 import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
@@ -8,6 +8,7 @@ import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import { getIdentity } from "@apis/dictionaryApi";
+import ErrorMessage from "@components/ui/ErrorMessage";
 
 interface IdentityOptions {
   sinner?: number[];
@@ -51,6 +52,14 @@ const IdentityPage = () => {
     queryKey: ["identity", options],
     queryFn: () => getIdentity(options),
   });
+
+  if (isError) {
+    return (
+      <div className="h-screen mt-[30vh]">
+        <ErrorMessage />
+      </div>
+    );
+  }
 
   return (
     <div className="flex font-sans text-primary-100 font-bold mt-4">
@@ -128,57 +137,27 @@ const IdentityPage = () => {
           </div>
         </div>
         {/* 썸네일 리스트 */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 my-8">
-          {data &&
-            data.map((item: any, index: number) => (
-              <IdentityThumbnailCard
-                key={index}
-                id={item.id}
-                grade={item.grade}
-                name={item.name}
-                character={item.character}
-                imageBefore={item.beforeImage}
-                imageAfter={item.afterImage}
-                isSync={isSync}
-              />
-            ))}
-          {/* <IdentityThumbnailCard
-            id={4}
-            grade={1}
-            name="N사 중간 망치"
-            character="돈키호테"
-            imageBefore="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_normal.png"
-            imageAfter="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_gacksung.png"
-            isSync={isSync}
-          />
-          <IdentityThumbnailCard
-            id={4}
-            grade={2}
-            name="로보토미 E.G.O::여우비"
-            character="돈키호테"
-            imageBefore="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_normal.png"
-            imageAfter="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_gacksung.png"
-            isSync={isSync}
-          />
-          <IdentityThumbnailCard
-            id={4}
-            grade={3}
-            name="워더링하이츠 치프 버틀러ㅇㅇ"
-            character="돈키호테"
-            imageBefore="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_normal.png"
-            imageAfter="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_gacksung.png"
-            isSync={isSync}
-          />
-          <IdentityThumbnailCard
-            id={4}
-            grade={2}
-            name="N사 중간 망치"
-            character="돈키호테"
-            imageBefore="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_normal.png"
-            imageAfter="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_gacksung.png"
-            isSync={isSync}
-          /> */}
-        </div>
+        {isLoading ? (
+          <div className="flex justify-center items-center h-96">
+            <Spinner className="w-8 h-8 text-primary-200" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 my-8">
+            {data &&
+              data.map((item: any, index: number) => (
+                <IdentityThumbnailCard
+                  key={index}
+                  id={item.id}
+                  grade={item.grade}
+                  name={item.name}
+                  character={item.character}
+                  imageBefore={item.beforeImage}
+                  imageAfter={item.afterImage}
+                  isSync={isSync}
+                />
+              ))}
+          </div>
+        )}
       </div>
     </div>
   );
