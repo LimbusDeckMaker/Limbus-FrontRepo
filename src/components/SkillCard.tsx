@@ -54,7 +54,12 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
               {[...Array(currentSkill.atkWeight)].map((_, index) => (
                 <div
                   key={index}
-                  style={{ width: "12px", height: "12px", backgroundColor: "yellow", marginLeft: "2px" }}
+                  style={{
+                    width: "12px",
+                    height: "12px",
+                    backgroundColor: "yellow",
+                    marginLeft: "2px",
+                  }}
                 ></div>
               ))}
             </span>
@@ -77,10 +82,12 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
               />
             </span>
             <span className="pr-1 w-24">
-              스킬 위력<span className="text-white">{currentSkill.skillPower}</span>
+              스킬 위력
+              <span className="text-white">{currentSkill.skillPower}</span>
             </span>
             <span className=" w-24">
-              코인 위력 <span className="text-white">{currentSkill.coinPower}</span>
+              코인 위력{" "}
+              <span className="text-white">{currentSkill.coinPower}</span>
             </span>
           </div>
         </div>
@@ -103,7 +110,8 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
                     <img
                       src={`/assets/coin/coin${index + 1}.png`}
                       alt="coinImg"
-                      style={{ width: "14px", height: "auto" }}
+                      className="mr-1 mt-0.5"
+                      style={{ width: "auto", height: "16px" }}
                     />
                     <div>
                       {effectParts.map((part: any, partIndex: any) => (
