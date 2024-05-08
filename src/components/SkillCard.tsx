@@ -31,7 +31,7 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
   const currentSkill = skill[synchronization];
 
   return (
-    <div className="p-2 bg-primary-500 mb-2 ">
+    <div className="p-3 bg-primary-500 mb-2 ">
       <div className="xl:flex xl:gap-3 items-center pb-6 ">
         <div className="text-xl font-bold pr-4 lg:p-0 pb-4">
           <span className="pr-4">{type}</span>

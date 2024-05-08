@@ -24,7 +24,9 @@ const KeywordHighlighted = ({ text }: KeywordHighlightedProps) => {
         );
       } else {
         // Check if the word is in the keyword list
-        const keywordData = keyword.find((item) => item.name.toLowerCase() === word.toLowerCase());
+        const keywordData = keyword.find(
+          (item) => item.name.toLowerCase() === word.toLowerCase()
+        );
         if (keywordData) {
           // If it's a keyword, wrap it in a span with red color
           return (
@@ -41,10 +43,10 @@ const KeywordHighlighted = ({ text }: KeywordHighlightedProps) => {
   };
 
   return (
-    <Typography placeholder="effect">
+    <p className="font-sansLight">
       {/* Rendering the text with highlighted keywords */}
       {highlightKeywords(text)}
-    </Typography>
+    </p>
   );
 };
 
