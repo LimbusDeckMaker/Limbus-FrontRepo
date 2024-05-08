@@ -33,24 +33,56 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
   return (
     <div className="p-3 bg-primary-500 mb-2 ">
       <div className="xl:flex xl:gap-3 items-center pb-6 ">
-        <div className="text-xl font-bold pr-4 lg:p-0 pb-4">
+        {/* 스킬 이름 */}
+        <div
+          className={`text-xl font-bold pr-4 lg:p-0 pb-4 border-b-4 ${
+            resourceColorMap[currentSkill.resource]
+          }`}
+        >
+          {currentSkill.resource !== "없음" && (
+            <img
+              src={`/assets/resource/${currentSkill.resource}.png`}
+              alt="resourceImg"
+              style={{
+                width: "auto",
+                height: "1.1em",
+                marginRight: "4px",
+                marginBottom: "2px",
+              }}
+              className="inline-block"
+            />
+          )}
           <span className="pr-4">{type}</span>
+
           <span>{currentSkill.name}</span>
+          <img
+            src={`/assets/attackType/${currentSkill.type}.png`}
+            alt="attackTypeImg"
+            style={{
+              width: "auto",
+              height: "1.6em",
+              marginLeft: "1px",
+              marginBottom: "2px",
+            }}
+            className="inline-block"
+          />
         </div>
+        {/* 스킬 스펙 */}
         <div className=" items-center text-primary-100">
+          {/* 윗단 */}
           <div className="flex pb-2">
-            <span className="flex w-20 items-center justify-center pr-4">
+            <span className="flex items-center justify-center pr-4">
               {[...Array(currentSkill.coinNum)].map((_, index) => (
                 <img
                   key={index}
                   src={`/assets/coin/normal_coin.png`}
                   alt="coinImg"
-                  style={{ width: "12px", height: "auto", marginRight: "2px" }}
+                  style={{ width: "auto", height: "1em", marginRight: "2px" }}
                 />
               ))}
             </span>
             <span className="flex items-center pr-4">
-              가중치
+              가중치{" "}
               {[...Array(currentSkill.atkWeight)].map((_, index) => (
                 <div
                   key={index}
@@ -58,29 +90,13 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
                     width: "12px",
                     height: "12px",
                     backgroundColor: "yellow",
-                    marginLeft: "2px",
+                    marginLeft: "3px",
+                    marginBottom: "2px",
                   }}
                 ></div>
               ))}
             </span>
-            <span>{currentSkill.resource}</span>
-            {currentSkill.resource !== "없음" && (
-              <img
-                src={`/assets/resource/${currentSkill.resource}.png`}
-                alt="resourceImg"
-                style={{ width: "20px", height: "auto", marginLeft: "4px" }}
-              />
-            )}
-          </div>
-          <div className="flex">
-            <span className="flex pr-1 items-center w-16">
-              {currentSkill.type}
-              <img
-                src={`/assets/attackType/${currentSkill.type}.png`}
-                alt="resourceImg"
-                style={{ width: "20px", height: "auto", marginLeft: "4px" }}
-              />
-            </span>
+
             <span className="pr-1 w-24">
               스킬 위력{" "}
               <span className="text-white">{currentSkill.skillPower}</span>
@@ -131,6 +147,16 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
       </div>
     </div>
   );
+};
+
+const resourceColorMap: { [key: string]: string } = {
+  분노: "border-b-res-red",
+  색욕: "border-b-res-orange",
+  나태: "border-b-res-yellow",
+  탐식: "border-b-res-green",
+  우울: "border-b-res-blue",
+  오만: "border-b-res-navy",
+  질투: "border-b-res-purple",
 };
 
 export default SkillCard;
