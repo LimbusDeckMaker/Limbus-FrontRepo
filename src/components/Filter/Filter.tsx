@@ -11,6 +11,7 @@ import etcKeyword from "@constants/etcKeyword.json";
 import FilterEtcButtonGroup from "./FilterEtcButtonGroup";
 import { useRecoilState } from "recoil";
 import { optionsState } from "@recoils/atoms";
+import { useEffect } from "react";
 
 interface Option {
   value: string;
@@ -24,6 +25,10 @@ const keywordOptionList: Option[] = keyword.map((item) => ({
 
 const Filter = () => {
   const [options, setOptions] = useRecoilState(optionsState);
+
+  useEffect(() => {
+    console.log("Updated options:", options);
+  }, [options]);
 
   const {
     selectedOptions: keywordOptions,
@@ -43,8 +48,6 @@ const Filter = () => {
       [key]: newSelectedOptions,
     }));
   };
-
-  console.log(options);
 
   return (
     <div className="bg-primary-500 w-full rounded p-4 flex flex-col gap-2">
@@ -86,8 +89,13 @@ const Filter = () => {
         src="/assets/attackType/"
         propertyToSaveTo="types"
       />
-      <FilterSliderGroup title="속도" minValue={1} maxValue={9} />
-      <FilterSliderGroup title="가중치" minValue={1} maxValue={9} />
+      <FilterSliderGroup title="속도" name="Speed" minValue={1} maxValue={9} />
+      <FilterSliderGroup
+        title="가중치"
+        name="Weight"
+        minValue={1}
+        maxValue={9}
+      />
       <FilterButtonGroup
         title="시즌"
         content={[{ name: "1" }, { name: "2" }, { name: "3" }]}
@@ -97,7 +105,7 @@ const Filter = () => {
       />
       <FilterButtonGroup
         title="등급"
-        content={[{ name: "1성" }, { name: "2성" }, { name: "3성" }]}
+        content={[{ name: "1" }, { name: "2" }, { name: "3" }]}
         src="/assets/common/"
         propertyToSaveTo="grade"
       />

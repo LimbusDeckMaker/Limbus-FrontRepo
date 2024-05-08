@@ -1,20 +1,32 @@
+import { optionsState } from "@recoils/atoms";
 import React from "react";
 
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
+import { useRecoilState } from "recoil";
 
 interface Props {
-  title: string;
   minValue: number;
   maxValue: number;
+  name: string;
 }
 
-const Slider = ({ title, minValue, maxValue }: Props) => {
+const Slider = ({ name, minValue, maxValue }: Props) => {
   const [value, setValue] = React.useState([minValue, maxValue]);
 
   const handleChange = (newValue: [number, number]) => {
     setValue(newValue);
   };
+
+  const [options, setOptions] = useRecoilState(optionsState);
+
+  React.useEffect(() => {
+    setOptions((prevOptions) => ({
+      ...prevOptions,
+      ["min" + name]: value[0],
+      ["max" + name]: value[1],
+    }));
+  }, [value]);
 
   return (
     <div className="md:flex md:gap-2">

@@ -1,9 +1,11 @@
 import Filter from "@components/Filter/Filter";
 import IdentityThumbnailCard from "@components/IdentityThumbnailCard";
 import { Button, Dialog, Input } from "@material-tailwind/react";
-import React, { useState } from "react";
+import { optionsState } from "@recoils/atoms";
+import React, { useEffect, useState } from "react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
+import { useResetRecoilState } from "recoil";
 
 const IdentityPage = () => {
   const [isSync, setIsSync] = useState(false);
@@ -12,13 +14,20 @@ const IdentityPage = () => {
   const handleWindowResize = () =>
     window.innerWidth >= 640 && setOpenFilter(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener("resize", handleWindowResize);
 
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
+
+  const resetOptions = useResetRecoilState(optionsState);
+
+  const handleResetOptions = () => {
+    resetOptions();
+    window.location.reload();
+  };
 
   return (
     <div className="flex font-sans text-primary-100 font-bold mt-4">
@@ -27,7 +36,7 @@ const IdentityPage = () => {
         <div className="flex justify-between items-center mb-8">
           <span className="text-3xl lg:text-4xl">필터</span>
           <Button
-            onClick={() => {}}
+            onClick={handleResetOptions}
             className="bg-primary-400 px-4 py-1 text-lg text-primary-100 hover:bg-primary-300 rounded"
             placeholder={undefined}
           >
