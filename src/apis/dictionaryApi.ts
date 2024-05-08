@@ -17,25 +17,34 @@ interface IdentityOptions {
 export const getIdentity = (options: IdentityOptions) => {
   // 옵션들을 쿼리 문자열로 변환
   const query = Object.entries(options)
+    .filter(
+      ([_, value]) =>
+        value !== undefined &&
+        value !== null &&
+        value !== "" &&
+        value.length !== 0
+    )
     .map(([key, value]) => {
-      if (!value) return "";
+      // 배열인 경우
       if (Array.isArray(value)) {
-        if (key == "etcKeyword") {
+        // etcKeyword 처리
+        if (key === "etcKeyword") {
           const encodedValues = value
             .map((val) => encodeURIComponent(val))
             .join(",");
           return `keyword=${encodedValues}`;
-          // etcKeyword는 keyword로 변환, 쿼리에 중복으로 들어가도 작동됨
         } else {
+          // 다른 배열 처리
           const encodedValues = value
             .map((val) => encodeURIComponent(val))
             .join(",");
           return `${key}=${encodedValues}`;
         }
       }
-      return `${key}=${encodeURIComponent(value)}`;
+
+      // 배열이 아닌 경우: 속도랑 가중치 현재 API 에러로 제외하고 호출
+      // return `${key}=${encodeURIComponent(value)}`;
     })
-    .filter(Boolean)
     .join("&");
 
   const uri = query ? `/dictionary/identity?${query}` : "";

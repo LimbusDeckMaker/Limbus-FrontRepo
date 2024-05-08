@@ -2,10 +2,26 @@ import Filter from "@components/Filter/Filter";
 import IdentityThumbnailCard from "@components/IdentityThumbnailCard";
 import { Button, Dialog, Input } from "@material-tailwind/react";
 import { optionsState } from "@recoils/atoms";
+import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
-import { useResetRecoilState } from "recoil";
+import { useRecoilValue, useResetRecoilState } from "recoil";
+import { getIdentity } from "@apis/dictionaryApi";
+
+interface IdentityOptions {
+  sinner?: number[];
+  season?: number[];
+  grade?: number[];
+  affiliation?: string[];
+  keyword?: string[];
+  resources?: string[];
+  types?: string[];
+  minSpeed?: number;
+  maxSpeed?: number;
+  minWeight?: number;
+  maxWeight?: number;
+}
 
 const IdentityPage = () => {
   const [isSync, setIsSync] = useState(false);
@@ -28,6 +44,13 @@ const IdentityPage = () => {
     resetOptions();
     window.location.reload();
   };
+
+  const options: IdentityOptions = useRecoilValue(optionsState);
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["identity", options],
+    queryFn: () => getIdentity(options),
+  });
 
   return (
     <div className="flex font-sans text-primary-100 font-bold mt-4">
@@ -106,7 +129,20 @@ const IdentityPage = () => {
         </div>
         {/* 썸네일 리스트 */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 my-8">
-          <IdentityThumbnailCard
+          {data &&
+            data.map((item: any, index: number) => (
+              <IdentityThumbnailCard
+                key={index}
+                id={item.id}
+                grade={item.grade}
+                name={item.name}
+                character={item.character}
+                imageBefore={item.beforeImage}
+                imageAfter={item.afterImage}
+                isSync={isSync}
+              />
+            ))}
+          {/* <IdentityThumbnailCard
             id={4}
             grade={1}
             name="N사 중간 망치"
@@ -141,7 +177,7 @@ const IdentityPage = () => {
             imageBefore="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_normal.png"
             imageAfter="https://image-link-bucket.s3.amazonaws.com/돈키호테/Identity/N사 중간 망치/10304_gacksung.png"
             isSync={isSync}
-          />
+          /> */}
         </div>
       </div>
     </div>
