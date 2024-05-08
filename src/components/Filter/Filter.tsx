@@ -30,7 +30,7 @@ const Filter = () => {
     handleSelectChange: handleSelectChangeAffiliation,
   } = useSelectOptions();
   return (
-    <div className="bg-primary-500 w-full mt-8 rounded p-4 flex flex-col gap-2">
+    <div className="bg-primary-500 w-full rounded p-4 flex flex-col gap-2">
       <FilterButtonGroup
         title="수감자"
         content={sinners}
