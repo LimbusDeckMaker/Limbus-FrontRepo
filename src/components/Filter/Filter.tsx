@@ -35,9 +35,12 @@ const Filter = () => {
   } = useSelectOptions();
 
   const updateOptions = (key: string, selectedOptions: any) => {
+    const newSelectedOptions = selectedOptions.map(
+      (option: any) => option.value
+    );
     setOptions((prev) => ({
       ...prev,
-      [key]: selectedOptions,
+      [key]: newSelectedOptions,
     }));
   };
 
