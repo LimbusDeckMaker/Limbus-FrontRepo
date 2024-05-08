@@ -6,6 +6,7 @@ interface Options {
   grade: number[];
   affiliation: string[];
   keyword: string[];
+  etcKeyword: string[];
   resources: string[];
   types: string[];
   minSpeed: number;
@@ -23,6 +24,7 @@ export const optionsState = atom<Options>({
     grade: [],
     affiliation: [],
     keyword: [],
+    etcKeyword: [],
     resources: [],
     types: [],
     minSpeed: 1,

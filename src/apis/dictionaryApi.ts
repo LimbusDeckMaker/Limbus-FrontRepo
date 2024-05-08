@@ -20,10 +20,18 @@ export const getIdentity = (options: IdentityOptions) => {
     .map(([key, value]) => {
       if (!value) return "";
       if (Array.isArray(value)) {
-        const encodedValues = value
-          .map((val) => encodeURIComponent(val))
-          .join(","); // 한글 직접 들어가는거 처리
-        return `${key}=${encodedValues}`;
+        if (key == "etcKeyword") {
+          const encodedValues = value
+            .map((val) => encodeURIComponent(val))
+            .join(",");
+          return `keyword=${encodedValues}`;
+          // etcKeyword는 keyword로 변환, 쿼리에 중복으로 들어가도 작동됨
+        } else {
+          const encodedValues = value
+            .map((val) => encodeURIComponent(val))
+            .join(",");
+          return `${key}=${encodedValues}`;
+        }
       }
       return `${key}=${encodeURIComponent(value)}`;
     })

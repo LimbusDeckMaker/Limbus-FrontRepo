@@ -1,5 +1,8 @@
 import useToggleButtons from "@hooks/useToggleButtons";
 import FilterEtcButton from "./FilterEtcButton";
+import { optionsState } from "@recoils/atoms";
+import { useRecoilState } from "recoil";
+import { useEffect } from "react";
 
 interface Content {
   name: string;
@@ -14,9 +17,24 @@ const FilterEtcButtonGroup = ({
   title,
   content,
 }: FilterEtcButtonGroupProps) => {
+  const [options, setOptions] = useRecoilState(optionsState);
+
   const [buttons, toggleButton] = useToggleButtons(
     content.map((item) => item.name)
   );
+
+  const savePropertyToOptions = (selectedButtons: string[]) => {
+    setOptions((prevOptions) => ({
+      ...prevOptions,
+      etcKeyword: selectedButtons,
+    }));
+  };
+
+  useEffect(() => {
+    savePropertyToOptions(
+      buttons.filter((button) => button.isSelected).map((button) => button.name)
+    );
+  }, [buttons]);
 
   return (
     <div>
