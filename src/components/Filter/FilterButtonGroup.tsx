@@ -1,8 +1,9 @@
 import useToggleButtons from "@hooks/useToggleButtons";
 import FilterButton from "./FilterButton";
-import { optionsState } from "@recoils/atoms";
-import { useRecoilState } from "recoil";
+import { egoOptionsState, optionsState } from "@recoils/atoms";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 interface Content {
   name: string;
@@ -14,6 +15,7 @@ interface FilterButtonGroupProps {
   src: string;
   buttonType?: string;
   propertyToSaveTo: string;
+  isIdentityPage?: boolean;
 }
 
 const FilterButtonGroup = ({
@@ -22,18 +24,27 @@ const FilterButtonGroup = ({
   src,
   buttonType,
   propertyToSaveTo,
+  isIdentityPage = true,
 }: FilterButtonGroupProps) => {
-  const [options, setOptions] = useRecoilState(optionsState);
-
   const [buttons, toggleButton] = useToggleButtons(
     content.map((item) => item.name)
   );
 
+  const setOptions = useSetRecoilState(optionsState);
+  const setEgoOptions = useSetRecoilState(egoOptionsState);
+
   const savePropertyToOptions = (selectedButtons: string[]) => {
-    setOptions((prevOptions) => ({
-      ...prevOptions,
-      [propertyToSaveTo]: selectedButtons,
-    }));
+    if (isIdentityPage) {
+      setOptions((prevOptions) => ({
+        ...prevOptions,
+        [propertyToSaveTo]: selectedButtons,
+      }));
+    } else {
+      setEgoOptions((prevOptions) => ({
+        ...prevOptions,
+        [propertyToSaveTo]: selectedButtons,
+      }));
+    }
   };
 
   useEffect(() => {

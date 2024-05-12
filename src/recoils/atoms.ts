@@ -33,3 +33,31 @@ export const optionsState = atom<Options>({
     maxWeight: 9,
   },
 });
+
+interface EgoOptions {
+  sinner: number[];
+  season: number[];
+  grade: string[];
+  keyword: string[];
+  etcKeyword: string[];
+  resources: string[];
+  types: string[];
+  minWeight: number;
+  maxWeight: number;
+}
+
+// Filtering option state
+export const egoOptionsState = atom<EgoOptions>({
+  key: "egoOptionsState",
+  default: {
+    sinner: [],
+    season: [],
+    grade: [],
+    keyword: [],
+    etcKeyword: [],
+    resources: [],
+    types: [],
+    minWeight: 1,
+    maxWeight: 6,
+  },
+});
