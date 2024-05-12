@@ -30,7 +30,11 @@ const IdentityThumbnailCard = ({
       <div className=" bg-primary-500 rounded-lg p-[10px] hover:scale-105">
         <div className="flex justify-between items-center">
           <div className="w-10 mx-auto">
-            <img src={`/assets/common/${grade}.png`} className="h-4" />
+            <img
+              src={`/assets/common/${grade}.png`}
+              className="h-4"
+              alt="grade"
+            />
           </div>
           <div
             className={`flex flex-col gap-0 justify-center text-center items-center w-full h-6 sm:h-10 ${calculateTextSize(
