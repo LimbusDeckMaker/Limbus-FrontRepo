@@ -1,5 +1,8 @@
 import useToggleButtons from "@hooks/useToggleButtons";
 import FilterButton from "./FilterButton";
+import { optionsState } from "@recoils/atoms";
+import { useRecoilState } from "recoil";
+import { useEffect } from "react";
 
 interface Content {
   name: string;
@@ -10,6 +13,7 @@ interface FilterButtonGroupProps {
   content: Content[];
   src: string;
   buttonType?: string;
+  propertyToSaveTo: string;
 }
 
 const FilterButtonGroup = ({
@@ -17,10 +21,28 @@ const FilterButtonGroup = ({
   content,
   src,
   buttonType,
+  propertyToSaveTo,
 }: FilterButtonGroupProps) => {
+  const [options, setOptions] = useRecoilState(optionsState);
+
   const [buttons, toggleButton] = useToggleButtons(
     content.map((item) => item.name)
   );
+
+  const savePropertyToOptions = (selectedButtons: string[]) => {
+    setOptions((prevOptions) => ({
+      ...prevOptions,
+      [propertyToSaveTo]: selectedButtons,
+    }));
+  };
+
+  useEffect(() => {
+    savePropertyToOptions(
+      buttons.filter((button) => button.isSelected).map((button) => button.name)
+    );
+
+    // console.log("Updated options:", options);
+  }, [buttons]);
 
   return (
     <div>

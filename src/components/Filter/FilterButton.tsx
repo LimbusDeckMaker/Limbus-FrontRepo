@@ -31,6 +31,7 @@ const FilterButton = ({
         placeholder={undefined}
         onClick={onClick}
         ripple={false}
+        value={name}
       >
         {type === "text" ? (
           <span className="text-xl text-white">{name}</span>
