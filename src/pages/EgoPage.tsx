@@ -8,6 +8,7 @@ import { useRecoilValue, useResetRecoilState } from "recoil";
 import { getEgo } from "@apis/dictionaryApi";
 import ErrorMessage from "@components/ui/ErrorMessage";
 import EgoFilter from "@components/Filter/EgoFilter";
+import EgoThumbnailCard from "@components/EgoThumbnailCard";
 
 interface EgoOptions {
   sinner?: number[];
@@ -142,19 +143,18 @@ const EgoPage = () => {
           </div>
         ) : (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 my-8">
-            {/* {data &&
+            {data &&
               data.map((item: any, index: number) => (
-                <IdentityThumbnailCard
+                <EgoThumbnailCard
                   key={index}
                   id={item.id}
                   grade={item.grade}
                   name={item.name}
                   character={item.character}
-                  imageBefore={item.beforeImage}
-                  imageAfter={item.afterImage}
-                  isSync={isSync}
+                  imageZoomIn={item.zoomImage}
+                  imageZoomOut={item.image}
                 />
-              ))} */}
+              ))}
             {data && data.length === 0 && (
               <div className="text-primary-200 text-center w-full">
                 검색 결과가 없습니다.
