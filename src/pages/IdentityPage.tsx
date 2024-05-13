@@ -41,6 +41,13 @@ const IdentityPage = () => {
 
   const resetOptions = useResetRecoilState(optionsState);
 
+  // 페이지 이동 시 필터 초기화
+  useEffect(() => {
+    return () => {
+      resetOptions();
+    };
+  }, [resetOptions]);
+
   const handleResetOptions = () => {
     resetOptions();
     window.location.reload();

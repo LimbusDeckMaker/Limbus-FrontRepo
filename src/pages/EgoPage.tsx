@@ -1,8 +1,7 @@
 import { Button, Dialog, Input, Spinner } from "@material-tailwind/react";
-import { egoOptionsState, optionsState } from "@recoils/atoms";
+import { egoOptionsState } from "@recoils/atoms";
 import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
-import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import { getEgo } from "@apis/dictionaryApi";
@@ -23,7 +22,6 @@ interface EgoOptions {
 }
 
 const EgoPage = () => {
-  const [isSync, setIsSync] = useState(false);
   const [openFilter, setOpenFilter] = useState(false);
 
   const handleWindowResize = () =>
@@ -39,6 +37,13 @@ const EgoPage = () => {
 
   const resetOptions = useResetRecoilState(egoOptionsState);
 
+  // 페이지 이동 시 필터 초기화
+  useEffect(() => {
+    return () => {
+      resetOptions();
+    };
+  }, [resetOptions]);
+
   const handleResetOptions = () => {
     resetOptions();
     window.location.reload();
@@ -52,6 +57,7 @@ const EgoPage = () => {
   });
 
   console.log(data);
+  console.log(options);
 
   if (isError) {
     return (

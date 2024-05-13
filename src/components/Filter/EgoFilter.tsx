@@ -1,7 +1,6 @@
 import FilterButtonGroup from "./FilterButtonGroup";
 import sinners from "@constants/sinners.json";
 import resource from "@constants/resource.json";
-import attackType from "@constants/attackType.json";
 import FilterSelectGroup from "./FilterSelectGroup";
 import keyword from "@constants/keyword.json";
 import useSelectOptions from "@hooks/useSelectOptions";
@@ -106,8 +105,13 @@ const EgoFilter = () => {
         title="등급"
         content={egoGrade}
         propertyToSaveTo="grade"
+        isIdentityPage={false}
       />
-      <FilterEtcButtonGroup title="기타" content={egoEtcKeyword} />
+      <FilterEtcButtonGroup
+        title="기타"
+        content={egoEtcKeyword}
+        isIdentityPage={false}
+      />
     </div>
   );
 };
