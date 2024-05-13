@@ -64,7 +64,7 @@ const IdentityPage = () => {
   return (
     <div className="flex font-sans text-primary-100 font-bold mt-4">
       {/* 필터 */}
-      <div className="w-[300px] min-w-[300px] hidden lg:block">
+      <div className="w-[300px] min-w-[300px] hidden lg:block mt-2">
         <div className="flex justify-between items-center mb-8">
           <span className="text-3xl lg:text-4xl">필터</span>
           <Button
@@ -103,11 +103,11 @@ const IdentityPage = () => {
             </Button>
             <div className="flex gap-2">
               <Button
-                className="min-w-[140px] flex gap-2 items-center bg-primary-400 px-2 md:px-4 py-0 md:py-1 font-sansLight text-sm md:text-base text-white hover:bg-primary-300 rounded"
+                className="min-w-[80px] flex gap-2 items-center bg-primary-400 px-2 md:px-4 py-0 md:py-1 font-sansLight text-sm md:text-base text-white hover:bg-primary-300 rounded"
                 placeholder={undefined}
                 onClick={() => setIsSync((prev) => !prev)}
               >
-                <span className="pt-1 whitespace-nowrap">동기화 일러스트</span>
+                <span className="pt-1 whitespace-nowrap">동기화</span>
 
                 {isSync ? (
                   <FaCheckCircle className="text-primary-200" />

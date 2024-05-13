@@ -64,7 +64,7 @@ const EgoPage = () => {
   return (
     <div className="flex font-sans text-primary-100 font-bold mt-4">
       {/* 필터 */}
-      <div className="w-[300px] min-w-[300px] hidden lg:block">
+      <div className="w-[300px] min-w-[300px] hidden lg:block mt-2">
         <div className="flex justify-between items-center mb-8">
           <span className="text-3xl lg:text-4xl">필터</span>
           <Button
