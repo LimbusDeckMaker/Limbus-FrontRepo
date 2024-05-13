@@ -8,18 +8,7 @@ import { getEgo } from "@apis/dictionaryApi";
 import ErrorMessage from "@components/ui/ErrorMessage";
 import EgoFilter from "@components/Filter/EgoFilter";
 import EgoThumbnailCard from "@components/EgoThumbnailCard";
-
-interface EgoOptions {
-  sinner?: number[];
-  season?: number[];
-  grade?: string[];
-  keyword?: string[];
-  etcKeyword?: string[];
-  resources?: string[];
-  types?: string[];
-  minWeight?: number;
-  maxWeight?: number;
-}
+import { EgoOptions } from "@interfaces/ego";
 
 const EgoPage = () => {
   const [openFilter, setOpenFilter] = useState(false);
@@ -42,7 +31,7 @@ const EgoPage = () => {
     return () => {
       resetOptions();
     };
-  }, [resetOptions]);
+  }, []);
 
   const handleResetOptions = () => {
     resetOptions();

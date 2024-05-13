@@ -1,22 +1,9 @@
+import { EgoOptions } from "@interfaces/ego";
+import { IdentityOptions } from "@interfaces/identity";
 import { atom } from "recoil";
 
-interface Options {
-  sinner: number[];
-  season: number[];
-  grade: number[];
-  affiliation: string[];
-  keyword: string[];
-  etcKeyword: string[];
-  resources: string[];
-  types: string[];
-  minSpeed: number;
-  maxSpeed: number;
-  minWeight: number;
-  maxWeight: number;
-}
-
 // Filtering option state
-export const optionsState = atom<Options>({
+export const optionsState = atom<IdentityOptions>({
   key: "optionsState",
   default: {
     sinner: [],
@@ -33,18 +20,6 @@ export const optionsState = atom<Options>({
     maxWeight: 9,
   },
 });
-
-interface EgoOptions {
-  sinner: number[];
-  season: number[];
-  grade: string[];
-  keyword: string[];
-  etcKeyword: string[];
-  resources: string[];
-  types: string[];
-  minWeight: number;
-  maxWeight: number;
-}
 
 // Filtering option state
 export const egoOptionsState = atom<EgoOptions>({

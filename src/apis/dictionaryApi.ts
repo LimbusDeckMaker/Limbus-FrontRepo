@@ -1,19 +1,6 @@
+import { IdentityOptions } from "@interfaces/identity";
 import { instance } from "./axios";
-
-interface IdentityOptions {
-  sinner?: number[];
-  season?: number[];
-  grade?: number[];
-  affiliation?: string[];
-  keyword?: string[];
-  etcKeyword?: string[];
-  resources?: string[];
-  types?: string[];
-  minSpeed?: number;
-  maxSpeed?: number;
-  minWeight?: number;
-  maxWeight?: number;
-}
+import { EgoOptions } from "@interfaces/ego";
 
 export const getIdentity = (options: IdentityOptions) => {
   // 옵션들을 쿼리 문자열로 변환
@@ -52,18 +39,6 @@ export const getIdentity = (options: IdentityOptions) => {
 
   return instance.get(uri).then((res) => res.data);
 };
-
-interface EgoOptions {
-  sinner?: number[];
-  season?: number[];
-  grade?: string[];
-  keyword?: string[];
-  etcKeyword?: string[];
-  resources?: string[];
-  types?: string[];
-  minWeight?: number;
-  maxWeight?: number;
-}
 
 export const getEgo = (options: EgoOptions) => {
   // 옵션들을 쿼리 문자열로 변환

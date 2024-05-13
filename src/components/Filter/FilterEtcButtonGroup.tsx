@@ -22,7 +22,8 @@ const FilterEtcButtonGroup = ({
   propertyToSaveTo = "etcKeyword",
 }: FilterEtcButtonGroupProps) => {
   const [buttons, toggleButton] = useToggleButtons(
-    content.map((item) => item.name)
+    content.map((item) => item.name),
+    propertyToSaveTo
   );
 
   const setOptions = useSetRecoilState(optionsState);

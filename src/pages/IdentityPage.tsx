@@ -9,20 +9,7 @@ import { LuSearch } from "react-icons/lu";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import { getIdentity } from "@apis/dictionaryApi";
 import ErrorMessage from "@components/ui/ErrorMessage";
-
-interface IdentityOptions {
-  sinner?: number[];
-  season?: number[];
-  grade?: number[];
-  affiliation?: string[];
-  keyword?: string[];
-  resources?: string[];
-  types?: string[];
-  minSpeed?: number;
-  maxSpeed?: number;
-  minWeight?: number;
-  maxWeight?: number;
-}
+import { IdentityOptions } from "@interfaces/identity";
 
 const IdentityPage = () => {
   const [isSync, setIsSync] = useState(false);
