@@ -37,7 +37,7 @@ const EgoPage = () => {
     };
   }, []);
 
-  const resetOptions = useResetRecoilState(optionsState);
+  const resetOptions = useResetRecoilState(egoOptionsState);
 
   const handleResetOptions = () => {
     resetOptions();
@@ -102,19 +102,6 @@ const EgoPage = () => {
               <span className="whitespace-nowrap">필터</span>
             </Button>
             <div className="flex gap-2">
-              <Button
-                className="min-w-[140px] flex gap-2 items-center bg-primary-400 px-2 md:px-4 py-0 md:py-1 font-sansLight text-sm md:text-base text-white hover:bg-primary-300 rounded"
-                placeholder={undefined}
-                onClick={() => setIsSync((prev) => !prev)}
-              >
-                <span className="pt-1 whitespace-nowrap">동기화 일러스트</span>
-
-                {isSync ? (
-                  <FaCheckCircle className="text-primary-200" />
-                ) : (
-                  <FaRegCircle className="text-primary-200" />
-                )}
-              </Button>
               <div className="relative flex w-full gap-2 md:w-max">
                 <Input
                   type="search"
