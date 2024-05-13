@@ -6,7 +6,7 @@ import FilterSelectGroup from "./FilterSelectGroup";
 import keyword from "@constants/keyword.json";
 import useSelectOptions from "@hooks/useSelectOptions";
 import FilterSliderGroup from "./FilterSliderGroup";
-import etcKeyword from "@constants/etcKeyword.json";
+import egoEtcKeyword from "@constants/egoEtcKeyword.json";
 import egoGrade from "@constants/egoGrade.json";
 import FilterEtcButtonGroup from "./FilterEtcButtonGroup";
 import { useRecoilState } from "recoil";
@@ -107,7 +107,7 @@ const EgoFilter = () => {
         content={egoGrade}
         propertyToSaveTo="grade"
       />
-      <FilterEtcButtonGroup title="기타" content={etcKeyword} />
+      <FilterEtcButtonGroup title="기타" content={egoEtcKeyword} />
     </div>
   );
 };

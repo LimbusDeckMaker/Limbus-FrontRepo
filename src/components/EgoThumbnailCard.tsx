@@ -27,11 +27,11 @@ const EgoThumbnailCard = ({
     <Link to={`${id}`}>
       <div className=" bg-primary-500 rounded-lg p-[10px] hover:scale-105 relative h-fit">
         <div className="flex justify-between items-center">
-          <div className="w-10 mx-auto">
+          <div className="w-14 md:w-20 lg:w-16 xl:w-20 mx-auto">
             <img
               src={`/assets/common/${grade}.png`}
-              className="h-4"
-              alt="grade"
+              className="h-4 md:h-6 lg:h-4 xl:h-6 w-auto"
+              alt="ego grade"
             />
           </div>
           <div
