@@ -92,6 +92,7 @@ const EgoFilter = () => {
         name="Weight"
         minValue={1}
         maxValue={6}
+        isIdentityPage={false}
       />
       <FilterButtonGroup
         title="시즌"
