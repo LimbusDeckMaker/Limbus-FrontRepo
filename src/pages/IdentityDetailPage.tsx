@@ -1,15 +1,9 @@
 import React from "react";
 import InfoBox from "@components/InfoBox";
 import identity_data from "@constants/identity_detail.json";
-import {
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-  Typography,
-} from "@material-tailwind/react";
+import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react";
 import IdentitySkills from "@components/IdentitySkills";
+import IdentityPassive from "@components/IdentityPassive";
 import IdentityImage from "@components/IdentityImage";
 
 const IdentityDetailPage = () => {
@@ -58,11 +52,7 @@ const IdentityDetailPage = () => {
           }}
         >
           {menu.map((value) => (
-            <TabPanel
-              key={value}
-              value={value}
-              className=" text-white font-bold md:pl-10"
-            >
+            <TabPanel key={value} value={value} className=" text-white font-bold md:pl-10">
               <span className="text-4xl text-primary-100">{value}</span>
               <div className="py-1 ">
                 {value === "스킬" && (
@@ -75,11 +65,9 @@ const IdentityDetailPage = () => {
                     }}
                   />
                 )}
+                {value === "패시브" && <IdentityPassive identityPassives={identity_data.identityPassives} />}
                 {value === "이미지" && (
-                  <IdentityImage
-                    beforeImage={identity_data.beforeImage}
-                    afterImage={identity_data.afterImage}
-                  />
+                  <IdentityImage beforeImage={identity_data.beforeImage} afterImage={identity_data.afterImage} />
                 )}
               </div>
             </TabPanel>

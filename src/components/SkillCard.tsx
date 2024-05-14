@@ -31,14 +31,10 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
   const currentSkill = skill[synchronization];
 
   return (
-    <div className="p-3 bg-primary-500 mb-2 ">
+    <div className="p-3 bg-primary-500 mb-2">
       <div className="xl:flex xl:gap-3 items-center pb-6 ">
         {/* 스킬 이름 */}
-        <div
-          className={`text-xl font-bold pr-4 lg:p-0 pb-4 border-b-4 ${
-            resourceColorMap[currentSkill.resource]
-          }`}
-        >
+        <div className={`text-xl font-bold pr-4 lg:p-0 pb-4 border-b-4 ${resourceColorMap[currentSkill.resource]}`}>
           {currentSkill.resource !== "없음" && (
             <img
               src={`/assets/resource/${currentSkill.resource}.png`}
@@ -98,12 +94,10 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
             </span>
 
             <span className="pr-1 w-24">
-              스킬 위력{" "}
-              <span className="text-white">{currentSkill.skillPower}</span>
+              스킬 위력 <span className="text-white">{currentSkill.skillPower}</span>
             </span>
             <span className=" w-24">
-              코인 위력{" "}
-              <span className="text-white">{currentSkill.coinPower}</span>
+              코인 위력 <span className="text-white">{currentSkill.coinPower}</span>
             </span>
           </div>
         </div>
