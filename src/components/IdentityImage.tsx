@@ -8,26 +8,15 @@ interface Props {
 
 const IdentityImage = ({ beforeImage, afterImage }: Props) => {
   return (
-    <Card className="w-[680px] bg-primary-450" placeholder="Card">
-      <CardBody
-        className="bg-primary-500 mb-5 rounded-md"
-        placeholder="CardBody"
-      >
-        <Typography
-          className="text-xl font-bold mb-7"
-          color="white"
-          placeholder="beforeImage"
-        >
+    <Card className=" bg-primary-450" placeholder="Card">
+      <CardBody className="bg-primary-500 mb-5 rounded-md" placeholder="CardBody">
+        <Typography className="text-xl font-bold mb-5" color="white" placeholder="beforeImage">
           동기화 전
         </Typography>
         <img src={beforeImage} alt="beforeImage" />
       </CardBody>
       <CardBody className="bg-primary-500 rounded-md" placeholder="CardBody">
-        <Typography
-          className="text-xl font-bold mb-7"
-          color="white"
-          placeholder="afterImage"
-        >
+        <Typography className="text-xl font-bold mb-5" color="white" placeholder="afterImage">
           동기화 후
         </Typography>
         <img src={afterImage} alt="afterImage" />

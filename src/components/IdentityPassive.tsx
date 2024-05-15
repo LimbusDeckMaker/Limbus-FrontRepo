@@ -15,24 +15,12 @@ interface Passives {
 }
 
 const IdentityPassive = ({ identityPassives }: Props) => {
-  console.log(identityPassives[1]);
+  console.log(identityPassives);
 
   return (
     <div>
-      헬로
-      {identityPassives.map((passive, index) => (
-        <div key={index}>
-          <PassiveCard
-            name={passive.name}
-            isMain={passive.isMain}
-            resource={passive.resource}
-            resQuantity={passive.resQuantity}
-            activeCond={passive.activeCond}
-            effect={passive.effect}
-            level={passive.level}
-          />
-        </div>
-      ))}
+      <PassiveCard type="Passive" synchronization={0} passive={identityPassives[0]} />
+      <PassiveCard type="Support Passive" synchronization={0} passive={identityPassives[1]} />
     </div>
   );
 };

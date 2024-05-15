@@ -1,4 +1,3 @@
-import { Typography } from "@material-tailwind/react";
 import React from "react";
 import KeywordHighlighted from "./KeywordHighlighted";
 
@@ -48,8 +47,7 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
               className="inline-block"
             />
           )}
-          <span className="pr-4">{type}</span>
-
+          <span className="pr-4">{type}</span> {/* 1 Skill, 2 Skill, 3 Skill, DEFENSE */}
           <span>{currentSkill.name}</span>
           <img
             src={`/assets/attackType/${currentSkill.type}.png`}

@@ -4,6 +4,7 @@ import identity_data from "@constants/identity_detail.json";
 import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react";
 import IdentitySkills from "@components/IdentitySkills";
 import IdentityPassive from "@components/IdentityPassive";
+import IdentityKeyword from "@components/IdentityKeyword";
 import IdentityImage from "@components/IdentityImage";
 
 const IdentityDetailPage = () => {
@@ -66,6 +67,7 @@ const IdentityDetailPage = () => {
                   />
                 )}
                 {value === "패시브" && <IdentityPassive identityPassives={identity_data.identityPassives} />}
+                {value === "키워드" && <IdentityKeyword keywords={identity_data.keyword} />}
                 {value === "이미지" && (
                   <IdentityImage beforeImage={identity_data.beforeImage} afterImage={identity_data.afterImage} />
                 )}

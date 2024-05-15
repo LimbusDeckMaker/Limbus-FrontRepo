@@ -1,6 +1,13 @@
 import React from "react";
+import KeywordHighlighted from "./KeywordHighlighted";
 
-interface passive {
+interface PassiveCardProps {
+  type: string; // 패시브, 서포트 패시브
+  synchronization: number; // 3동기화 기준 0, 4동기화 기준 1
+  passive: Passive;
+}
+
+interface Passive {
   name: string;
   isMain: boolean;
   resource: string;
@@ -10,31 +17,30 @@ interface passive {
   level: number; // 동기화 레벨
 }
 
-const PassiveCard = ({ name, isMain, resource, resQuantity, activeCond, effect, level }: passive) => {
+const PassiveCard = ({ type, synchronization, passive }: PassiveCardProps) => {
   return (
     <div className="p-3 bg-primary-500 mb-2">
       <div className="xl:flex xl:gap-3 items-center pb-6 ">
-        <div className={`text-xl font-bold pr-4 lg:p-0 pb-4 border-b-4 ${resourceColorMap[resource]}`}>
-          <img
-            src={`/assets/resource/${resource}.png`}
-            alt="resourceImg"
-            style={{
-              width: "auto",
-              height: "1.1em",
-              marginRight: "4px",
-              marginBottom: "2px",
-            }}
-            className="inline-block"
-          />
-          {name}
+        <div className={`text-xl font-bold pr-4 lg:p-0 pb-4 border-b-4 ${resourceColorMap[passive.resource]}`}>
+          <span className="pr-4">{type}</span>
+          <span>{passive.name}</span>
         </div>
-        {isMain ? <span>주</span> : <span>부</span>}
-        {resource}
-        {resQuantity}
-        {activeCond}
-        {effect}
-        {level}
+        <img
+          src={`/assets/resource/${passive.resource}.png`}
+          alt="resourceImg"
+          style={{
+            width: "auto",
+            height: "1.1em",
+            marginRight: "4px",
+            marginBottom: "2px",
+          }}
+          className="inline-block"
+        />
+        <span className="pr-2">X</span>
+        <span className="pr-2">{passive.resQuantity}</span>
+        <span className="pr-4">{passive.activeCond}</span>
       </div>
+      <KeywordHighlighted text={passive.effect} />
     </div>
   );
 };
