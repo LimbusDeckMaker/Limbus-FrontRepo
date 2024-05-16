@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import InfoBox from "@components/InfoBox";
 import identity_data from "@constants/identity_detail.json";
 import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react";
@@ -6,8 +6,14 @@ import IdentitySkills from "@components/IdentitySkills";
 import IdentityPassive from "@components/IdentityPassive";
 import IdentityKeyword from "@components/IdentityKeyword";
 import IdentityImage from "@components/IdentityImage";
+import { synchronizationState } from "@recoils/atoms";
+import { useRecoilState } from "recoil";
+import { Button } from "@material-tailwind/react";
+import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 
 const IdentityDetailPage = () => {
+  const [synchronization, setSynchronization] = useRecoilState(synchronizationState);
+
   return (
     <div className="">
       <Tabs value="스킬" orientation="horizontal" className="md:flex ">
@@ -47,14 +53,33 @@ const IdentityDetailPage = () => {
         <TabsBody
           placeholder={"TabsBody"}
           animate={{
-            initial: { y: 250 },
-            mount: { y: 0 },
-            unmount: { y: 250 },
+            initial: { y: 0, x: 0 },
+            mount: { y: 0, x: 0 },
+            unmount: { y: 50, x: 0 },
           }}
         >
           {menu.map((value) => (
             <TabPanel key={value} value={value} className=" text-white font-bold md:pl-10">
-              <span className="text-4xl text-primary-100">{value}</span>
+              <div className="flex">
+                <span className="text-4xl text-primary-100">{value}</span>
+
+                {(value === "스킬" || value === "패시브") && (
+                  <Button
+                    className="min-w-[140px] flex gap-2 items-center bg-primary-400 px-2 md:px-4 py-0 md:py-1 font-sansLight text-sm md:text-base text-white hover:bg-primary-300 rounded"
+                    placeholder={undefined}
+                    onClick={() => setSynchronization({ synchronization: (synchronization.synchronization + 1) % 2 })}
+                  >
+                    <span className="pt-1 whitespace-nowrap">4동기화</span>
+
+                    {synchronization.synchronization ? (
+                      <FaCheckCircle className="text-primary-200" />
+                    ) : (
+                      <FaRegCircle className="text-primary-200" />
+                    )}
+                  </Button>
+                )}
+              </div>
+
               <div className="py-1 ">
                 {value === "스킬" && (
                   <IdentitySkills

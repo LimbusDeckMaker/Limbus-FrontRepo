@@ -14,7 +14,6 @@ interface Passive {
   resQuantity: number;
   activeCond: string;
   effect: string;
-  level: number; // 동기화 레벨
 }
 
 const PassiveCard = ({ type, synchronization, passive }: PassiveCardProps) => {
@@ -30,15 +29,15 @@ const PassiveCard = ({ type, synchronization, passive }: PassiveCardProps) => {
           alt="resourceImg"
           style={{
             width: "auto",
-            height: "1.1em",
+            height: "1.3em",
             marginRight: "4px",
             marginBottom: "2px",
           }}
           className="inline-block"
         />
-        <span className="pr-2">X</span>
-        <span className="pr-2">{passive.resQuantity}</span>
-        <span className="pr-4">{passive.activeCond}</span>
+        <span className="xl:pr-0 pr-2">X</span>
+        <span className="xl:pr-0 pr-2">{passive.resQuantity}</span>
+        <span className="">{passive.activeCond}</span>
       </div>
       <KeywordHighlighted text={passive.effect} />
     </div>

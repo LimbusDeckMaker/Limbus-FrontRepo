@@ -13,15 +13,7 @@
   "releaseDate": "2023-05-04",
   "obtainingMethod": "추출 / 파편 150 교환(시즌 1 / 시즌 3 이후)",
   "resistance": ["내성", "보통", "취약"],
-  "keyword": [
-    "못",
-    "진동",
-    "진동 폭발",
-    "진동 횟수",
-    "공격 위력 감소",
-    "마비",
-    "광신"
-  ],
+  "keyword": ["못", "진동", "진동 폭발", "진동 횟수", "공격 위력 감소", "마비", "광신"],
   "status": {
     "life": "181",
     "speed": "2-5",
@@ -113,7 +105,7 @@
       "skillPower": 4,
       "coinPower": 3,
       "coinNum": 3,
-      "atkWeight": 3,
+      "atkWeight": 5,
       "level": 3,
       "normalEffect": "",
       "coin1Effect": "[적중시] 못 1 부여",
@@ -190,7 +182,7 @@
       "level": 3
     },
     {
-      "name": "두드릴지다!",
+      "name": "두드릴지다! 4동기화",
       "isMain": true,
       "resource": "색욕",
       "resQuantity": 3,
@@ -208,7 +200,7 @@
       "level": 3
     },
     {
-      "name": "맹목의 망치",
+      "name": "맹목의 망치 4동기화",
       "isMain": false,
       "resource": "색욕",
       "resQuantity": 4,

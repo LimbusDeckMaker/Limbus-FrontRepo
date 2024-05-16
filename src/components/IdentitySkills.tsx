@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SkillCard from "./SkillCard";
+import { synchronizationState } from "@recoils/atoms";
+import { useRecoilValue } from "recoil";
 
 interface Props {
   identitySkills: {
@@ -30,19 +32,17 @@ interface Skill {
 }
 
 const IdentitySkills = ({ identitySkills }: Props) => {
-  const {
-    identitySkill1s,
-    identitySkill2s,
-    identitySkill3s,
-    identityDefSkills,
-  } = identitySkills;
+  const { identitySkill1s, identitySkill2s, identitySkill3s, identityDefSkills } = identitySkills;
+  const synchroOption = useRecoilValue(synchronizationState);
+
+  const syschroNum = synchroOption.synchronization;
 
   return (
     <div>
-      <SkillCard type="1 Skill" synchronization={0} skill={identitySkill1s} />
-      <SkillCard type="2 Skill" synchronization={0} skill={identitySkill2s} />
-      <SkillCard type="3 Skill" synchronization={0} skill={identitySkill3s} />
-      <SkillCard type="DEFENSE" synchronization={0} skill={identityDefSkills} />
+      <SkillCard type="1 Skill" synchronization={syschroNum} skill={identitySkill1s} />
+      <SkillCard type="2 Skill" synchronization={syschroNum} skill={identitySkill2s} />
+      <SkillCard type="3 Skill" synchronization={syschroNum} skill={identitySkill3s} />
+      <SkillCard type="DEFENSE" synchronization={syschroNum} skill={identityDefSkills} />
     </div>
   );
 };

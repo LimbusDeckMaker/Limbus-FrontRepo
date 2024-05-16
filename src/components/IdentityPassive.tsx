@@ -1,4 +1,6 @@
 import PassiveCard from "./PassiveCard";
+import { synchronizationState } from "@recoils/atoms";
+import { useRecoilValue } from "recoil";
 
 interface Props {
   identityPassives: Passives[];
@@ -15,12 +17,16 @@ interface Passives {
 }
 
 const IdentityPassive = ({ identityPassives }: Props) => {
-  console.log(identityPassives);
+  const synchroOption = useRecoilValue(synchronizationState);
+
+  const syschroNum = synchroOption.synchronization;
+
+  const filteredPassives = identityPassives.map(({ level, ...passive }) => passive);
 
   return (
     <div>
-      <PassiveCard type="Passive" synchronization={0} passive={identityPassives[0]} />
-      <PassiveCard type="Support Passive" synchronization={0} passive={identityPassives[1]} />
+      <PassiveCard type="Passive" synchronization={syschroNum} passive={filteredPassives[syschroNum]} />
+      <PassiveCard type="Support Passive" synchronization={syschroNum} passive={filteredPassives[syschroNum + 2]} />
     </div>
   );
 };

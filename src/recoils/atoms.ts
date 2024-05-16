@@ -33,3 +33,14 @@ export const optionsState = atom<Options>({
     maxWeight: 9,
   },
 });
+
+interface synchronization {
+  synchronization: number;
+}
+
+export const synchronizationState = atom<synchronization>({
+  key: "synchronizationState",
+  default: {
+    synchronization: 0,
+  },
+});
