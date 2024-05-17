@@ -60,12 +60,12 @@ const IdentityDetailPage = () => {
         >
           {menu.map((value) => (
             <TabPanel key={value} value={value} className=" text-white font-bold md:pl-10">
-              <div className="flex">
+              <div className="flex justify-between">
                 <span className="text-4xl text-primary-100">{value}</span>
 
                 {(value === "스킬" || value === "패시브") && (
                   <Button
-                    className="min-w-[140px] flex gap-2 items-center bg-primary-400 px-2 md:px-4 py-0 md:py-1 font-sansLight text-sm md:text-base text-white hover:bg-primary-300 rounded"
+                    className="flex gap-2 items-center bg-primary-400 px-2 md:px-4 py-0 md:py-1 font-sansLight text-sm md:text-base text-white hover:bg-primary-300 rounded"
                     placeholder={undefined}
                     onClick={() => setSynchronization({ synchronization: (synchronization.synchronization + 1) % 2 })}
                   >
