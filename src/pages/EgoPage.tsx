@@ -9,6 +9,7 @@ import ErrorMessage from "@components/ui/ErrorMessage";
 import EgoFilter from "@components/Filter/EgoFilter";
 import EgoThumbnailCard from "@components/EgoThumbnailCard";
 import { EgoOptions } from "@interfaces/ego";
+import axios from "axios";
 
 const EgoPage = () => {
   const [openFilter, setOpenFilter] = useState(false);
@@ -40,9 +41,10 @@ const EgoPage = () => {
 
   const options: EgoOptions = useRecoilValue(egoOptionsState);
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ["ego", options],
     queryFn: () => getEgo(options),
+    retry: 1,
   });
 
   const filteredData =
@@ -50,14 +52,6 @@ const EgoPage = () => {
     data.filter((item: any) =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
-  if (isError) {
-    return (
-      <div className="h-screen mt-[30vh]">
-        <ErrorMessage />
-      </div>
-    );
-  }
 
   return (
     <div className="flex font-sans text-primary-100 font-bold mt-4">
@@ -124,6 +118,16 @@ const EgoPage = () => {
           <div className="flex justify-center items-center h-96">
             <Spinner className="w-8 h-8 text-primary-200" />
           </div>
+        ) : isError ? (
+          axios.isAxiosError(error) && error.response?.status === 404 ? (
+            <div className="text-primary-200 text-center w-full my-8">
+              해당하는 에고가 없습니다.
+            </div>
+          ) : (
+            <div className="text-primary-200 text-center w-full my-8">
+              <ErrorMessage />
+            </div>
+          )
         ) : (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 my-8">
             {filteredData.length > 0 ? (

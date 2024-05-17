@@ -10,6 +10,7 @@ import { useRecoilValue, useResetRecoilState } from "recoil";
 import { getIdentity } from "@apis/dictionaryApi";
 import ErrorMessage from "@components/ui/ErrorMessage";
 import { IdentityOptions } from "@interfaces/identity";
+import axios from "axios";
 
 const IdentityPage = () => {
   const [isSync, setIsSync] = useState(false);
@@ -43,9 +44,10 @@ const IdentityPage = () => {
 
   const options: IdentityOptions = useRecoilValue(optionsState);
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ["identity", options],
     queryFn: () => getIdentity(options),
+    retry: 1,
   });
 
   const filteredData =
@@ -53,14 +55,6 @@ const IdentityPage = () => {
     data.filter((item: any) =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
-  if (isError) {
-    return (
-      <div className="h-screen mt-[30vh]">
-        <ErrorMessage />
-      </div>
-    );
-  }
 
   return (
     <div className="flex font-sans text-primary-100 font-bold mt-4">
@@ -144,6 +138,16 @@ const IdentityPage = () => {
           <div className="flex justify-center items-center h-96">
             <Spinner className="w-8 h-8 text-primary-200" />
           </div>
+        ) : isError ? (
+          axios.isAxiosError(error) && error.response?.status === 404 ? (
+            <div className="text-primary-200 text-center w-full my-8">
+              해당하는 인격이 없습니다.
+            </div>
+          ) : (
+            <div className="text-primary-200 text-center w-full my-8">
+              <ErrorMessage />
+            </div>
+          )
         ) : (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 my-8">
             {filteredData.length > 0 ? (
