@@ -14,6 +14,7 @@ import { IdentityOptions } from "@interfaces/identity";
 const IdentityPage = () => {
   const [isSync, setIsSync] = useState(false);
   const [openFilter, setOpenFilter] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleWindowResize = () =>
     window.innerWidth >= 640 && setOpenFilter(false);
@@ -46,6 +47,12 @@ const IdentityPage = () => {
     queryKey: ["identity", options],
     queryFn: () => getIdentity(options),
   });
+
+  const filteredData =
+    data &&
+    data.filter((item: any) =>
+      item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
   if (isError) {
     return (
@@ -113,6 +120,8 @@ const IdentityPage = () => {
                 <Input
                   type="search"
                   placeholder="이름으로 검색"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                   containerProps={{
                     className:
                       "min-w-[100px] md:min-w-[200px] !bg-primary-400 !rounded-full !pt-1 !h-8 md:!h-10",
@@ -137,8 +146,8 @@ const IdentityPage = () => {
           </div>
         ) : (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 my-8">
-            {data &&
-              data.map((item: any, index: number) => (
+            {filteredData.length > 0 ? (
+              filteredData.map((item: any, index: number) => (
                 <IdentityThumbnailCard
                   key={index}
                   id={item.id}
@@ -149,8 +158,8 @@ const IdentityPage = () => {
                   imageAfter={item.afterImage}
                   isSync={isSync}
                 />
-              ))}
-            {data && data.length === 0 && (
+              ))
+            ) : (
               <div className="text-primary-200 text-center w-full">
                 검색 결과가 없습니다.
               </div>

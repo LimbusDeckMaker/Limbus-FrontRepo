@@ -12,6 +12,7 @@ import { EgoOptions } from "@interfaces/ego";
 
 const EgoPage = () => {
   const [openFilter, setOpenFilter] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleWindowResize = () =>
     window.innerWidth >= 640 && setOpenFilter(false);
@@ -26,12 +27,11 @@ const EgoPage = () => {
 
   const resetOptions = useResetRecoilState(egoOptionsState);
 
-  // 페이지 이동 시 필터 초기화
   useEffect(() => {
     return () => {
       resetOptions();
     };
-  }, []);
+  }, [resetOptions]);
 
   const handleResetOptions = () => {
     resetOptions();
@@ -45,8 +45,11 @@ const EgoPage = () => {
     queryFn: () => getEgo(options),
   });
 
-  console.log(data);
-  console.log(options);
+  const filteredData =
+    data &&
+    data.filter((item: any) =>
+      item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
   if (isError) {
     return (
@@ -58,7 +61,6 @@ const EgoPage = () => {
 
   return (
     <div className="flex font-sans text-primary-100 font-bold mt-4">
-      {/* 필터 */}
       <div className="w-[300px] min-w-[300px] hidden lg:block mt-2">
         <div className="flex justify-between items-center mb-8">
           <span className="text-3xl lg:text-4xl">필터</span>
@@ -81,8 +83,6 @@ const EgoPage = () => {
         <EgoFilter />
       </Dialog>
       <div className="flex-auto md:pl-10">
-        {/* 상단 제목, 버튼 */}
-
         <div className="flex justify-between items-center">
           <span className="text-3xl lg:text-4xl whitespace-nowrap hidden lg:block pr-2">
             에고
@@ -101,6 +101,8 @@ const EgoPage = () => {
                 <Input
                   type="search"
                   placeholder="이름으로 검색"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                   containerProps={{
                     className:
                       "min-w-[100px] md:min-w-[200px] !bg-primary-400 !rounded-full !pt-1 !h-8 md:!h-10",
@@ -118,15 +120,14 @@ const EgoPage = () => {
             </div>
           </div>
         </div>
-        {/* 썸네일 리스트 */}
         {isLoading ? (
           <div className="flex justify-center items-center h-96">
             <Spinner className="w-8 h-8 text-primary-200" />
           </div>
         ) : (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 my-8">
-            {data &&
-              data.map((item: any, index: number) => (
+            {filteredData.length > 0 ? (
+              filteredData.map((item: any, index: number) => (
                 <EgoThumbnailCard
                   key={index}
                   id={item.id}
@@ -136,8 +137,8 @@ const EgoPage = () => {
                   imageZoomIn={item.zoomImage}
                   imageZoomOut={item.image}
                 />
-              ))}
-            {data && data.length === 0 && (
+              ))
+            ) : (
               <div className="text-primary-200 text-center w-full">
                 검색 결과가 없습니다.
               </div>
