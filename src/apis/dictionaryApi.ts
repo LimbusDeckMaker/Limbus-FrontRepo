@@ -31,7 +31,7 @@ export const getIdentity = (options: IdentityOptions) => {
       }
 
       // 배열이 아닌 경우: 속도랑 가중치 현재 API 에러로 제외하고 호출
-      // return `${key}=${encodeURIComponent(value)}`;
+      return `${key}=${encodeURIComponent(value)}`;
     })
     .join("&");
 
@@ -69,7 +69,7 @@ export const getEgo = (options: EgoOptions) => {
       }
 
       // 배열이 아닌 경우: 속도랑 가중치 현재 API 에러로 제외하고 호출
-      // return `${key}=${encodeURIComponent(value)}`;
+      return `${key}=${encodeURIComponent(value)}`;
     })
     .join("&");
 

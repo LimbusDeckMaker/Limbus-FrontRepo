@@ -1,7 +1,4 @@
-import { optionsState, egoOptionsState } from "@recoils/atoms";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useState } from "react";
 
 interface ToggleButton {
   name: string;
@@ -9,34 +6,11 @@ interface ToggleButton {
 }
 
 const useToggleButtons = (
-  initialButtons: string[],
-  propertyToSaveTo: string
+  initialButtons: string[]
 ): [ToggleButton[], (name: string) => void] => {
-  const options = useRecoilValue(optionsState);
-  const egoOptions = useRecoilValue(egoOptionsState);
-  const [buttons, setButtons] = useState<ToggleButton[]>([]);
-
-  const isIdentityPage = useLocation().pathname.includes("identity");
-
-  useEffect(() => {
-    const initialSelectedButtons: string[] | number | undefined = isIdentityPage
-      ? options[propertyToSaveTo]
-      : egoOptions[propertyToSaveTo];
-
-    if (initialSelectedButtons && Array.isArray(initialSelectedButtons)) {
-      const initializedButtons = initialButtons.map((name) => ({
-        name,
-        isSelected: initialSelectedButtons.includes(name),
-      }));
-      setButtons(initializedButtons);
-    } else {
-      const initializedButtons = initialButtons.map((name) => ({
-        name,
-        isSelected: false,
-      }));
-      setButtons(initializedButtons);
-    }
-  }, [options, egoOptions]);
+  const [buttons, setButtons] = useState<ToggleButton[]>(
+    initialButtons.map((name) => ({ name, isSelected: false }))
+  );
 
   const toggleButton = (name: string) => {
     setButtons((prevButtons) =>

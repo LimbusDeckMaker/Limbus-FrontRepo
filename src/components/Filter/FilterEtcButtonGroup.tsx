@@ -1,7 +1,7 @@
 import useToggleButtons from "@hooks/useToggleButtons";
 import FilterEtcButton from "./FilterEtcButton";
 import { egoOptionsState, optionsState } from "@recoils/atoms";
-import { SetterOrUpdater, useRecoilState, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { useEffect } from "react";
 
 interface Content {
@@ -22,8 +22,7 @@ const FilterEtcButtonGroup = ({
   propertyToSaveTo = "etcKeyword",
 }: FilterEtcButtonGroupProps) => {
   const [buttons, toggleButton] = useToggleButtons(
-    content.map((item) => item.name),
-    propertyToSaveTo
+    content.map((item) => item.name)
   );
 
   const setOptions = useSetRecoilState(optionsState);
@@ -47,6 +46,7 @@ const FilterEtcButtonGroup = ({
     savePropertyToOptions(
       buttons.filter((button) => button.isSelected).map((button) => button.name)
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [buttons]);
 
   return (

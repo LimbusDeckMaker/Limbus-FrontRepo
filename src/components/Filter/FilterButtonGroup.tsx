@@ -26,8 +26,7 @@ const FilterButtonGroup = ({
   isIdentityPage = true,
 }: FilterButtonGroupProps) => {
   const [buttons, toggleButton] = useToggleButtons(
-    content.map((item) => item.name),
-    propertyToSaveTo
+    content.map((item) => item.name)
   );
 
   const [options, setOptions] = useRecoilState(optionsState);
@@ -60,6 +59,7 @@ const FilterButtonGroup = ({
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -68,6 +68,7 @@ const FilterButtonGroup = ({
     );
 
     // console.log("Updated options:", options);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [buttons]);
 
   return (
