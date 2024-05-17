@@ -54,7 +54,7 @@ const EgoFilter = () => {
         isIdentityPage={false}
       />
       <FilterButtonGroup
-        title="자원"
+        title="사용 자원"
         content={resource}
         src="/assets/resource/"
         propertyToSaveTo="resources"
