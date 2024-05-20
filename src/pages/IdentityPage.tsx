@@ -1,32 +1,25 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import { getIdentity } from "@apis/dictionaryApi";
+
+import { IdentityOptions } from "@interfaces/identity";
+
+import { useRecoilValue, useResetRecoilState } from "recoil";
+import { optionsState } from "@recoils/atoms";
+
 import Filter from "@components/Filter/Filter";
 import IdentityThumbnailCard from "@components/IdentityThumbnailCard";
-import { Button, Dialog, Input, Spinner } from "@material-tailwind/react";
-import { optionsState } from "@recoils/atoms";
-import { useQuery } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
-import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
-import { LuSearch } from "react-icons/lu";
-import { useRecoilValue, useResetRecoilState } from "recoil";
-import { getIdentity } from "@apis/dictionaryApi";
 import ErrorMessage from "@components/ui/ErrorMessage";
-import { IdentityOptions } from "@interfaces/identity";
-import axios from "axios";
+import { Button, Input, Spinner } from "@material-tailwind/react";
+
+import { LuSearch } from "react-icons/lu";
+import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 
 const IdentityPage = () => {
   const [isSync, setIsSync] = useState(false);
   const [openFilter, setOpenFilter] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-
-  const handleWindowResize = () =>
-    window.innerWidth >= 640 && setOpenFilter(false);
-
-  useEffect(() => {
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
 
   const resetOptions = useResetRecoilState(optionsState);
 
@@ -42,24 +35,36 @@ const IdentityPage = () => {
     window.location.reload();
   };
 
+  // 필터링 옵션
   const options: IdentityOptions = useRecoilValue(optionsState);
 
+  // 데이터 가져오기
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["identity", options],
     queryFn: () => getIdentity(options),
     retry: 1,
   });
 
+  // 이름 검색 필터링
   const filteredData =
     data &&
     data.filter((item: any) =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+  // 모달 배경 클릭 시 닫기
+  const handleBackgroundClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    if (e.target === e.currentTarget) {
+      setOpenFilter(false);
+    }
+  };
+
   return (
     <div className="flex font-sans text-primary-100 font-bold mt-4">
       {/* 필터 */}
-      <div className="w-[300px] min-w-[300px] hidden lg:block mt-2">
+      <div className={`w-[300px] min-w-[300px] hidden lg:block mt-2`}>
         <div className="flex justify-between items-center mb-8">
           <span className="text-3xl lg:text-4xl">필터</span>
           <Button
@@ -72,22 +77,34 @@ const IdentityPage = () => {
         </div>
         <Filter />
       </div>
-      <Dialog
-        open={openFilter}
-        handler={() => setOpenFilter(false)}
-        placeholder={undefined}
-        size={"xs"}
+      <div
+        className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ${
+          openFilter ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={handleBackgroundClick}
       >
-        <Filter />
-      </Dialog>
+        <div
+          className={`bg-primary-500 p-0 rounded-lg w-11/12 max-w-sm transition-transform duration-300 ${
+            openFilter ? "translate-y-0" : "translate-y-full"
+          }`}
+        >
+          <div className="flex justify-end items-center m-0 p-2 pb-0">
+            <button
+              onClick={() => setOpenFilter(false)}
+              className="text-primary-100 hover:text-primary-200 text-2xl"
+            >
+              &times;
+            </button>
+          </div>
+          <Filter />
+        </div>
+      </div>
       <div className="flex-auto md:pl-10">
         {/* 상단 제목, 버튼 */}
-
         <div className="flex justify-between items-center">
           <span className="text-3xl lg:text-4xl whitespace-nowrap hidden lg:block pr-2">
             인격
           </span>
-
           <div className="my-2 grid grid-cols-1 sm:flex sm:justify-between w-full lg:w-fit gap-2 h-fit md:h-10">
             <Button
               className="h-8 lg:hidden bg-primary-400 lg:h-8 py-0.5 px-4 text-lg lg:text-sm text-primary-100 hover:bg-primary-300 rounded"
@@ -103,7 +120,6 @@ const IdentityPage = () => {
                 onClick={() => setIsSync((prev) => !prev)}
               >
                 <span className="pt-1 whitespace-nowrap">동기화</span>
-
                 {isSync ? (
                   <FaCheckCircle className="text-primary-200" />
                 ) : (
