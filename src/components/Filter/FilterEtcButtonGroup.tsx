@@ -1,7 +1,7 @@
 import useToggleButtons from "@hooks/useToggleButtons";
 import FilterEtcButton from "./FilterEtcButton";
-import { optionsState } from "@recoils/atoms";
-import { useRecoilState } from "recoil";
+import { egoOptionsState, optionsState } from "@recoils/atoms";
+import { useSetRecoilState } from "recoil";
 import { useEffect } from "react";
 
 interface Content {
@@ -11,29 +11,42 @@ interface Content {
 interface FilterEtcButtonGroupProps {
   title: string;
   content: Content[];
+  isIdentityPage?: boolean;
+  propertyToSaveTo?: string;
 }
 
 const FilterEtcButtonGroup = ({
   title,
   content,
+  isIdentityPage = true,
+  propertyToSaveTo = "etcKeyword",
 }: FilterEtcButtonGroupProps) => {
-  const [options, setOptions] = useRecoilState(optionsState);
-
   const [buttons, toggleButton] = useToggleButtons(
     content.map((item) => item.name)
   );
 
+  const setOptions = useSetRecoilState(optionsState);
+  const setEgoOptions = useSetRecoilState(egoOptionsState);
+
   const savePropertyToOptions = (selectedButtons: string[]) => {
-    setOptions((prevOptions) => ({
-      ...prevOptions,
-      etcKeyword: selectedButtons,
-    }));
+    if (isIdentityPage) {
+      setOptions((prevOptions) => ({
+        ...prevOptions,
+        [propertyToSaveTo]: selectedButtons,
+      }));
+    } else {
+      setEgoOptions((prevOptions) => ({
+        ...prevOptions,
+        [propertyToSaveTo]: selectedButtons,
+      }));
+    }
   };
 
   useEffect(() => {
     savePropertyToOptions(
       buttons.filter((button) => button.isSelected).map((button) => button.name)
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [buttons]);
 
   return (

@@ -1,6 +1,6 @@
 import useToggleButtons from "@hooks/useToggleButtons";
 import FilterButton from "./FilterButton";
-import { optionsState } from "@recoils/atoms";
+import { egoOptionsState, optionsState } from "@recoils/atoms";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 
@@ -14,6 +14,7 @@ interface FilterButtonGroupProps {
   src: string;
   buttonType?: string;
   propertyToSaveTo: string;
+  isIdentityPage?: boolean;
 }
 
 const FilterButtonGroup = ({
@@ -22,19 +23,44 @@ const FilterButtonGroup = ({
   src,
   buttonType,
   propertyToSaveTo,
+  isIdentityPage = true,
 }: FilterButtonGroupProps) => {
-  const [options, setOptions] = useRecoilState(optionsState);
-
   const [buttons, toggleButton] = useToggleButtons(
     content.map((item) => item.name)
   );
 
+  const [options, setOptions] = useRecoilState(optionsState);
+  const [egoOptions, setEgoOptions] = useRecoilState(egoOptionsState);
+
   const savePropertyToOptions = (selectedButtons: string[]) => {
-    setOptions((prevOptions) => ({
-      ...prevOptions,
-      [propertyToSaveTo]: selectedButtons,
-    }));
+    if (isIdentityPage) {
+      setOptions((prevOptions) => ({
+        ...prevOptions,
+        [propertyToSaveTo]: selectedButtons,
+      }));
+    } else {
+      setEgoOptions((prevOptions) => ({
+        ...prevOptions,
+        [propertyToSaveTo]: selectedButtons,
+      }));
+    }
   };
+
+  useEffect(() => {
+    const initialSelectedButtons: string[] | number | undefined = isIdentityPage
+      ? options[propertyToSaveTo]
+      : egoOptions[propertyToSaveTo];
+
+    if (initialSelectedButtons && Array.isArray(initialSelectedButtons)) {
+      initialSelectedButtons.forEach((buttonName) => {
+        const button = buttons.find((button) => button.name === buttonName);
+        if (button) {
+          toggleButton(buttonName);
+        }
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     savePropertyToOptions(
@@ -42,6 +68,7 @@ const FilterButtonGroup = ({
     );
 
     // console.log("Updated options:", options);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [buttons]);
 
   return (
