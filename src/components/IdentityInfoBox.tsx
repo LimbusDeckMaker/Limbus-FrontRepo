@@ -2,12 +2,13 @@ import { Button, Collapse, Typography } from "@material-tailwind/react";
 import React, { useState, useEffect } from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 
-interface InfoBoxProps {
+interface IdentityInfoBoxProps {
   character: string;
   name: string;
   affiliation: string;
   afterProfileImage: string;
   grade: number;
+  season: number;
   releaseDate: string;
   obtainingMethod: string;
   resistance: string[];
@@ -23,17 +24,18 @@ const gradeImg = ["/assets/common/1.png", "/assets/common/2.png", "/assets/commo
 const statusImg = ["/assets/status/health.png", "/assets/status/speed.png", "/assets/status/deffense.png"];
 const resistanceImg = ["/assets/attackType/slash.png", "/assets/attackType/pierce.png", "/assets/attackType/blunt.png"];
 
-const InfoBox = ({
+const IdentityInfoBox = ({
   character,
   name,
   afterProfileImage,
   affiliation,
   grade,
+  season,
   releaseDate,
   obtainingMethod,
   resistance,
   status,
-}: InfoBoxProps) => {
+}: IdentityInfoBoxProps) => {
   const statusArray = [status.life, status.speed, status.defend];
 
   const [open, setOpen] = useState(false);
@@ -74,7 +76,9 @@ const InfoBox = ({
             </span>
           ))}
         </Typography>
-
+        <Typography variant="small" className="p-1 md:text-xs" placeholder={affiliation}>
+          <span className="text-primary-100">시즌</span> : {season}
+        </Typography>
         <Typography variant="small" className="p-1 md:text-xs" placeholder={affiliation}>
           <span className="text-primary-100">소속</span> : {affiliation}
         </Typography>
@@ -83,7 +87,7 @@ const InfoBox = ({
           <span className="text-primary-100">출시시기</span> : {releaseDate}
         </Typography>
 
-        <Typography variant="small" className="p-1 md:text-xs" placeholder={obtainingMethod}>
+        <Typography variant="small" className="p-1 md:text-xs text-center" placeholder={obtainingMethod}>
           {obtainingMethod}
         </Typography>
       </div>
@@ -124,4 +128,4 @@ const InfoBox = ({
   );
 };
 
-export default InfoBox;
+export default IdentityInfoBox;

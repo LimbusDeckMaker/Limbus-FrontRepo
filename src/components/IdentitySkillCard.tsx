@@ -26,7 +26,7 @@ interface Skill {
   coin5Effect: string;
 }
 
-const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
+const IdentitySkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
   const currentSkill = skill[synchronization];
 
   return (
@@ -151,4 +151,4 @@ const resourceColorMap: { [key: string]: string } = {
   질투: "border-b-res-purple",
 };
 
-export default SkillCard;
+export default IdentitySkillCard;
