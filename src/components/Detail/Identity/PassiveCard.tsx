@@ -21,14 +21,14 @@ const PassiveCard = ({ type, synchronization, passive }: PassiveCardProps) => {
     <div className="p-3 bg-primary-500 mb-2">
       <div className="xl:flex xl:gap-3 items-center pb-6 ">
         <div
-          className={`text-xl font-bold pr-4 lg:pr-0 mb-2 border-b-4 ${
+          className={`text-sm sm:text-lg xl:text-xl font-bold pr-4 lg:pr-0 pb-2 mb-2 xl:mb-0 border-b-4 ${
             resourceColorMap[passive.resource]
           }`}
         >
           <span className="pr-4">{type}</span>
           <span>{passive.name}</span>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 text-sm lg:text-base">
           <img
             src={`/assets/resource/${passive.resource}.png`}
             alt="resourceImg"
@@ -39,7 +39,9 @@ const PassiveCard = ({ type, synchronization, passive }: PassiveCardProps) => {
           <span>{passive.activeCond}</span>
         </div>
       </div>
-      <KeywordHighlighted text={passive.effect} />
+      <div className="text-sm sm:text-base">
+        <KeywordHighlighted text={passive.effect} />
+      </div>
     </div>
   );
 };
