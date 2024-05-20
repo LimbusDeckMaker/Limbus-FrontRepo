@@ -1,6 +1,12 @@
 import IdentityInfoBox from "@components/Detail/Identity/IdentityInfoBox";
 import identity_data from "@constants/identity_detail.json";
-import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react";
+import {
+  Tabs,
+  TabsHeader,
+  TabsBody,
+  Tab,
+  TabPanel,
+} from "@material-tailwind/react";
 import IdentitySkills from "@components/Detail/Identity/IdentitySkills";
 import IdentityPassive from "@components/Detail/Identity/IdentityPassive";
 import IdentityKeyword from "@components/Detail/Keyword";
@@ -11,7 +17,8 @@ import { Button } from "@material-tailwind/react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 
 const IdentityDetailPage = () => {
-  const [synchronization, setSynchronization] = useRecoilState(synchronizationState);
+  const [synchronization, setSynchronization] =
+    useRecoilState(synchronizationState);
 
   return (
     <div className="">
@@ -59,15 +66,26 @@ const IdentityDetailPage = () => {
           }}
         >
           {menu.map((value) => (
-            <TabPanel key={value} value={value} className=" text-white font-bold md:pl-10">
+            <TabPanel
+              key={value}
+              value={value}
+              className=" text-white font-bold md:pl-10"
+            >
               <div className="flex justify-between">
-                <span className="text-4xl text-primary-100">{value}</span>
+                <span className="text-xl md:text-4xl text-primary-100">
+                  {value}
+                </span>
 
                 {(value === "스킬" || value === "패시브") && (
                   <Button
                     className="flex gap-2 items-center bg-primary-400 px-2 md:px-4 py-0 md:py-1 font-sansLight text-sm md:text-base text-white hover:bg-primary-300 rounded"
                     placeholder={undefined}
-                    onClick={() => setSynchronization({ synchronization: (synchronization.synchronization + 1) % 2 })}
+                    onClick={() =>
+                      setSynchronization({
+                        synchronization:
+                          (synchronization.synchronization + 1) % 2,
+                      })
+                    }
                   >
                     <span className="pt-1 whitespace-nowrap">4동기화</span>
 
@@ -91,8 +109,14 @@ const IdentityDetailPage = () => {
                     }}
                   />
                 )}
-                {value === "패시브" && <IdentityPassive identityPassives={identity_data.identityPassives} />}
-                {value === "키워드" && <IdentityKeyword keywords={identity_data.keyword} />}
+                {value === "패시브" && (
+                  <IdentityPassive
+                    identityPassives={identity_data.identityPassives}
+                  />
+                )}
+                {value === "키워드" && (
+                  <IdentityKeyword keywords={identity_data.keyword} />
+                )}
                 {value === "이미지" && (
                   <IdentityImage
                     type="identity"

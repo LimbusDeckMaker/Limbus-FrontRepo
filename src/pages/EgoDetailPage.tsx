@@ -1,6 +1,12 @@
 import EgoInfoBox from "@components/Detail/Ego/EgoInfoBox";
 import ego_data from "@constants/ego_detail.json";
-import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react";
+import {
+  Tabs,
+  TabsHeader,
+  TabsBody,
+  Tab,
+  TabPanel,
+} from "@material-tailwind/react";
 import { synchronizationState } from "@recoils/atoms";
 import { useRecoilState } from "recoil";
 import { Button } from "@material-tailwind/react";
@@ -11,7 +17,8 @@ import Keyword from "@components/Detail/Keyword";
 import EgoImage from "@components/Detail/DetailImage";
 
 const EgoDetailPage = () => {
-  const [synchronization, setSynchronization] = useRecoilState(synchronizationState);
+  const [synchronization, setSynchronization] =
+    useRecoilState(synchronizationState);
 
   return (
     <div className="">
@@ -58,15 +65,26 @@ const EgoDetailPage = () => {
           }}
         >
           {menu.map((value) => (
-            <TabPanel key={value} value={value} className=" text-white font-bold md:pl-10">
+            <TabPanel
+              key={value}
+              value={value}
+              className=" text-white font-bold md:pl-10"
+            >
               <div className="flex justify-between">
-                <span className="text-4xl text-primary-100">{value}</span>
+                <span className="text-xl md:text-4xl text-primary-100">
+                  {value}
+                </span>
 
                 {(value === "스킬" || value === "패시브") && (
                   <Button
                     className="flex gap-2 items-center bg-primary-400 px-2 md:px-4 py-0 md:py-1 font-sansLight text-sm md:text-base text-white hover:bg-primary-300 rounded"
                     placeholder={undefined}
-                    onClick={() => setSynchronization({ synchronization: (synchronization.synchronization + 1) % 2 })}
+                    onClick={() =>
+                      setSynchronization({
+                        synchronization:
+                          (synchronization.synchronization + 1) % 2,
+                      })
+                    }
                   >
                     <span className="pt-1 whitespace-nowrap">4동기화</span>
 
@@ -88,10 +106,16 @@ const EgoDetailPage = () => {
                     }}
                   />
                 )}
-                {value === "패시브" && <EgoPassive Egodata={ego_data.passive} />}
+                {value === "패시브" && (
+                  <EgoPassive Egodata={ego_data.passive} />
+                )}
                 {value === "키워드" && <Keyword keywords={ego_data.keyword} />}
                 {value === "이미지" && (
-                  <EgoImage type="ego" beforeImage={ego_data.image} afterImage={ego_data.zoomImage} />
+                  <EgoImage
+                    type="ego"
+                    beforeImage={ego_data.image}
+                    afterImage={ego_data.zoomImage}
+                  />
                 )}
               </div>
             </TabPanel>
