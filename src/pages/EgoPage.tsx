@@ -1,19 +1,17 @@
-import Filter from "@components/Filter/Filter";
-import IdentityThumbnailCard from "@components/IdentityThumbnailCard";
 import { Button, Dialog, Input, Spinner } from "@material-tailwind/react";
-import { optionsState } from "@recoils/atoms";
+import { egoOptionsState } from "@recoils/atoms";
 import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
-import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
 import { useRecoilValue, useResetRecoilState } from "recoil";
-import { getIdentity } from "@apis/dictionaryApi";
+import { getEgo } from "@apis/dictionaryApi";
 import ErrorMessage from "@components/ui/ErrorMessage";
-import { IdentityOptions } from "@interfaces/identity";
+import EgoFilter from "@components/Filter/EgoFilter";
+import EgoThumbnailCard from "@components/EgoThumbnailCard";
+import { EgoOptions } from "@interfaces/ego";
 import axios from "axios";
 
-const IdentityPage = () => {
-  const [isSync, setIsSync] = useState(false);
+const EgoPage = () => {
   const [openFilter, setOpenFilter] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -28,9 +26,8 @@ const IdentityPage = () => {
     };
   }, []);
 
-  const resetOptions = useResetRecoilState(optionsState);
+  const resetOptions = useResetRecoilState(egoOptionsState);
 
-  // 페이지 이동 시 필터 초기화
   useEffect(() => {
     return () => {
       resetOptions();
@@ -42,11 +39,11 @@ const IdentityPage = () => {
     window.location.reload();
   };
 
-  const options: IdentityOptions = useRecoilValue(optionsState);
+  const options: EgoOptions = useRecoilValue(egoOptionsState);
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["identity", options],
-    queryFn: () => getIdentity(options),
+    queryKey: ["ego", options],
+    queryFn: () => getEgo(options),
     retry: 1,
   });
 
@@ -58,7 +55,6 @@ const IdentityPage = () => {
 
   return (
     <div className="flex font-sans text-primary-100 font-bold mt-4">
-      {/* 필터 */}
       <div className="w-[300px] min-w-[300px] hidden lg:block mt-2">
         <div className="flex justify-between items-center mb-8">
           <span className="text-3xl lg:text-4xl">필터</span>
@@ -70,7 +66,7 @@ const IdentityPage = () => {
             초기화
           </Button>
         </div>
-        <Filter />
+        <EgoFilter />
       </div>
       <Dialog
         open={openFilter}
@@ -78,14 +74,12 @@ const IdentityPage = () => {
         placeholder={undefined}
         size={"xs"}
       >
-        <Filter />
+        <EgoFilter />
       </Dialog>
       <div className="flex-auto md:pl-10">
-        {/* 상단 제목, 버튼 */}
-
         <div className="flex justify-between items-center">
           <span className="text-3xl lg:text-4xl whitespace-nowrap hidden lg:block pr-2">
-            인격
+            에고
           </span>
 
           <div className="my-2 grid grid-cols-1 sm:flex sm:justify-between w-full lg:w-fit gap-2 h-fit md:h-10">
@@ -97,19 +91,6 @@ const IdentityPage = () => {
               <span className="whitespace-nowrap">필터</span>
             </Button>
             <div className="flex gap-2">
-              <Button
-                className="min-w-[80px] flex gap-2 items-center bg-primary-400 px-2 md:px-4 py-0 md:py-1 font-sansLight text-sm md:text-base text-white hover:bg-primary-300 rounded"
-                placeholder={undefined}
-                onClick={() => setIsSync((prev) => !prev)}
-              >
-                <span className="pt-1 whitespace-nowrap">동기화</span>
-
-                {isSync ? (
-                  <FaCheckCircle className="text-primary-200" />
-                ) : (
-                  <FaRegCircle className="text-primary-200" />
-                )}
-              </Button>
               <div className="relative flex w-full gap-2 md:w-max">
                 <Input
                   type="search"
@@ -133,7 +114,6 @@ const IdentityPage = () => {
             </div>
           </div>
         </div>
-        {/* 썸네일 리스트 */}
         {isLoading ? (
           <div className="flex justify-center items-center h-96">
             <Spinner className="w-8 h-8 text-primary-200" />
@@ -141,7 +121,7 @@ const IdentityPage = () => {
         ) : isError ? (
           axios.isAxiosError(error) && error.response?.status === 404 ? (
             <div className="text-primary-200 text-center w-full my-8">
-              해당하는 인격이 없습니다.
+              해당하는 에고가 없습니다.
             </div>
           ) : (
             <div className="text-primary-200 text-center w-full my-8">
@@ -152,15 +132,14 @@ const IdentityPage = () => {
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 my-8">
             {filteredData.length > 0 ? (
               filteredData.map((item: any, index: number) => (
-                <IdentityThumbnailCard
+                <EgoThumbnailCard
                   key={index}
                   id={item.id}
                   grade={item.grade}
                   name={item.name}
                   character={item.character}
-                  imageBefore={item.beforeImage}
-                  imageAfter={item.afterImage}
-                  isSync={isSync}
+                  imageZoomIn={item.zoomImage}
+                  imageZoomOut={item.image}
                 />
               ))
             ) : (
@@ -175,4 +154,4 @@ const IdentityPage = () => {
   );
 };
 
-export default IdentityPage;
+export default EgoPage;

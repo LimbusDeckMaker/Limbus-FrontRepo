@@ -1,31 +1,42 @@
-import { optionsState } from "@recoils/atoms";
-import React from "react";
+import { egoOptionsState, optionsState } from "@recoils/atoms";
+import React, { useEffect } from "react";
 
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 interface Props {
   minValue: number;
   maxValue: number;
   name: string;
+  isIdentityPage?: boolean;
 }
 
-const Slider = ({ name, minValue, maxValue }: Props) => {
+const Slider = ({ name, minValue, maxValue, isIdentityPage = true }: Props) => {
   const [value, setValue] = React.useState([minValue, maxValue]);
 
   const handleChange = (newValue: [number, number]) => {
     setValue(newValue);
   };
 
-  const [options, setOptions] = useRecoilState(optionsState);
+  const setOptions = useSetRecoilState(optionsState);
+  const setEgoOptions = useSetRecoilState(egoOptionsState);
 
-  React.useEffect(() => {
-    setOptions((prevOptions) => ({
-      ...prevOptions,
-      ["min" + name]: value[0],
-      ["max" + name]: value[1],
-    }));
+  useEffect(() => {
+    if (isIdentityPage) {
+      setOptions((prevOptions) => ({
+        ...prevOptions,
+        ["min" + name]: value[0],
+        ["max" + name]: value[1],
+      }));
+    } else {
+      setEgoOptions((prevOptions) => ({
+        ...prevOptions,
+        ["min" + name]: value[0],
+        ["max" + name]: value[1],
+      }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   return (
