@@ -1,6 +1,5 @@
-import { Typography } from "@material-tailwind/react";
 import React from "react";
-import KeywordHighlighted from "./KeywordHighlighted";
+import KeywordHighlighted from "../KeywordHighlighted";
 
 interface SkillCardProps {
   type: string;
@@ -27,15 +26,19 @@ interface Skill {
   coin5Effect: string;
 }
 
-const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
+const IdentitySkillCard = ({
+  type,
+  synchronization,
+  skill,
+}: SkillCardProps) => {
   const currentSkill = skill[synchronization];
 
   return (
-    <div className="p-3 bg-primary-500 mb-2 ">
-      <div className="xl:flex xl:gap-3 items-center pb-6 ">
+    <div className="p-3 bg-primary-500 mb-2">
+      <div className="xl:flex xl:gap-3 items-center pb-2 lg:pb-4 ">
         {/* 스킬 이름 */}
         <div
-          className={`text-xl font-bold pr-4 lg:p-0 pb-4 border-b-4 ${
+          className={`text-sm sm:text-lg xl:text-xl font-bold pr-4 lg:p-0 pb-2 mb-2 xl:mb-0 border-b-4 ${
             resourceColorMap[currentSkill.resource]
           }`}
         >
@@ -52,8 +55,8 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
               className="inline-block"
             />
           )}
-          <span className="pr-4">{type}</span>
-
+          <span className="pr-4">{type}</span>{" "}
+          {/* 1 Skill, 2 Skill, 3 Skill, DEFENSE */}
           <span>{currentSkill.name}</span>
           <img
             src={`/assets/attackType/${currentSkill.type}.png`}
@@ -68,10 +71,10 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
           />
         </div>
         {/* 스킬 스펙 */}
-        <div className=" items-center text-primary-100">
+        <div className=" items-center text-primary-100 text-xs lg:text-base">
           {/* 윗단 */}
-          <div className="flex pb-2">
-            <span className="flex items-center justify-center pr-4">
+          <div className="flex items-center pb-2 gap-1 md:gap-3">
+            <span className="flex items-center justify-center">
               {[...Array(currentSkill.coinNum)].map((_, index) => (
                 <img
                   key={index}
@@ -81,27 +84,21 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
                 />
               ))}
             </span>
-            <span className="flex items-center pr-4">
-              가중치{" "}
+            <span className="flex items-center">
+              <span className="w-[3em]">가중치 </span>
               {[...Array(currentSkill.atkWeight)].map((_, index) => (
                 <div
                   key={index}
-                  style={{
-                    width: "12px",
-                    height: "12px",
-                    backgroundColor: "yellow",
-                    marginLeft: "3px",
-                    marginBottom: "2px",
-                  }}
+                  className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-600 ml-[3px] mb-0.5"
                 ></div>
               ))}
             </span>
 
-            <span className="pr-1 w-24">
+            <span className="">
               스킬 위력{" "}
               <span className="text-white">{currentSkill.skillPower}</span>
             </span>
-            <span className=" w-24">
+            <span className="">
               코인 위력{" "}
               <span className="text-white">{currentSkill.coinPower}</span>
             </span>
@@ -109,7 +106,7 @@ const SkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
         </div>
       </div>
 
-      <div>
+      <div className="text-sm sm:text-base">
         {/* <Typography placeholder={"power"}>{currentSkill.normalEffect}</Typography> */}
         <KeywordHighlighted text={currentSkill.normalEffect} />
         <div>
@@ -159,4 +156,4 @@ const resourceColorMap: { [key: string]: string } = {
   질투: "border-b-res-purple",
 };
 
-export default SkillCard;
+export default IdentitySkillCard;

@@ -1,5 +1,3 @@
-import React from "react";
-import { Typography } from "@material-tailwind/react";
 import keyword from "@constants/keyword.json";
 
 interface KeywordHighlightedProps {
@@ -24,9 +22,7 @@ const KeywordHighlighted = ({ text }: KeywordHighlightedProps) => {
         );
       } else {
         // Check if the word is in the keyword list
-        const keywordData = keyword.find(
-          (item) => item.name.toLowerCase() === word.toLowerCase()
-        );
+        const keywordData = keyword.find((item) => item.name.toLowerCase() === word.toLowerCase());
         if (keywordData) {
           // If it's a keyword, wrap it in a span with red color
           return (

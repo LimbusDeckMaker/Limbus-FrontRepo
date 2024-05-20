@@ -1,5 +1,5 @@
-import IdentityInfoBox from "@components/Detail/Identity/IdentityInfoBox";
-import identity_data from "@constants/identity_detail.json";
+import EgoInfoBox from "@components/Detail/Ego/EgoInfoBox";
+import ego_data from "@constants/ego_detail.json";
 import {
   Tabs,
   TabsHeader,
@@ -7,16 +7,16 @@ import {
   Tab,
   TabPanel,
 } from "@material-tailwind/react";
-import IdentitySkills from "@components/Detail/Identity/IdentitySkills";
-import IdentityPassive from "@components/Detail/Identity/IdentityPassive";
-import IdentityKeyword from "@components/Detail/Keyword";
-import IdentityImage from "@components/Detail/DetailImage";
 import { synchronizationState } from "@recoils/atoms";
 import { useRecoilState } from "recoil";
 import { Button } from "@material-tailwind/react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
+import EgoSkills from "@components/Detail/Ego/EgoSkills";
+import EgoPassive from "@components/Detail/Ego/EgoPassive";
+import Keyword from "@components/Detail/Keyword";
+import EgoImage from "@components/Detail/DetailImage";
 
-const IdentityDetailPage = () => {
+const EgoDetailPage = () => {
   const [synchronization, setSynchronization] =
     useRecoilState(synchronizationState);
 
@@ -24,17 +24,16 @@ const IdentityDetailPage = () => {
     <div className="">
       <Tabs value="스킬" orientation="horizontal" className="md:flex ">
         <div className=" flex flex-col md:items-start items-center gap-3 mt-4">
-          <IdentityInfoBox
-            character={identity_data.character}
-            name={identity_data.name}
-            afterProfileImage={identity_data.afterProfileImage}
-            affiliation={identity_data.affiliation}
-            grade={identity_data.grade}
-            season={identity_data.season}
-            releaseDate={identity_data.releaseDate}
-            obtainingMethod={identity_data.obtainingMethod}
-            resistance={identity_data.resistance}
-            status={identity_data.status}
+          <EgoInfoBox
+            character={ego_data.character}
+            name={ego_data.name}
+            zoomImage={ego_data.zoomImage}
+            grade={ego_data.grade}
+            season={ego_data.season}
+            resistance={ego_data.resistance}
+            releaseDate={ego_data.releaseDate}
+            obtainingMethod={ego_data.obtainingMethod}
+            cost={ego_data.cost}
           />
 
           <TabsHeader
@@ -100,28 +99,22 @@ const IdentityDetailPage = () => {
 
               <div className="py-1 ">
                 {value === "스킬" && (
-                  <IdentitySkills
-                    identitySkills={{
-                      identitySkill1s: identity_data.identitySkill1s,
-                      identitySkill2s: identity_data.identitySkill2s,
-                      identitySkill3s: identity_data.identitySkill3s,
-                      identityDefSkills: identity_data.identityDefSkills,
+                  <EgoSkills
+                    EgoSkills={{
+                      EgoSkill1s: ego_data.egoskills,
+                      EgoSkill2s: ego_data.egoCorSkills,
                     }}
                   />
                 )}
                 {value === "패시브" && (
-                  <IdentityPassive
-                    identityPassives={identity_data.identityPassives}
-                  />
+                  <EgoPassive Egodata={ego_data.passive} />
                 )}
-                {value === "키워드" && (
-                  <IdentityKeyword keywords={identity_data.keyword} />
-                )}
+                {value === "키워드" && <Keyword keywords={ego_data.keyword} />}
                 {value === "이미지" && (
-                  <IdentityImage
-                    type="identity"
-                    beforeImage={identity_data.beforeImage}
-                    afterImage={identity_data.afterImage}
+                  <EgoImage
+                    type="ego"
+                    beforeImage={ego_data.image}
+                    afterImage={ego_data.zoomImage}
                   />
                 )}
               </div>
@@ -135,4 +128,4 @@ const IdentityDetailPage = () => {
 
 const menu = ["스킬", "패시브", "키워드", "이미지"];
 
-export default IdentityDetailPage;
+export default EgoDetailPage;

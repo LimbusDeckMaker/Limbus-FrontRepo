@@ -21,6 +21,17 @@ export const optionsState = atom<IdentityOptions>({
   },
 });
 
+interface synchronization {
+  synchronization: number;
+}
+
+export const synchronizationState = atom<synchronization>({
+  key: "synchronizationState",
+  default: {
+    synchronization: 0,
+  },
+});
+
 // Filtering option state
 export const egoOptionsState = atom<EgoOptions>({
   key: "egoOptionsState",
