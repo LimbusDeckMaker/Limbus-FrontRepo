@@ -85,17 +85,11 @@ const IdentitySkillCard = ({
               ))}
             </span>
             <span className="flex items-center pr-2 lg:pr-4">
-              가중치{" "}
+              <span className="w-[3em]">가중치 </span>
               {[...Array(currentSkill.atkWeight)].map((_, index) => (
                 <div
                   key={index}
-                  style={{
-                    width: "12px",
-                    height: "12px",
-                    backgroundColor: "yellow",
-                    marginLeft: "3px",
-                    marginBottom: "2px",
-                  }}
+                  className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-600 ml-[3px] mb-0.5"
                 ></div>
               ))}
             </span>
