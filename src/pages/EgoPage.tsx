@@ -1,30 +1,23 @@
-import { Button, Dialog, Input, Spinner } from "@material-tailwind/react";
-import { egoOptionsState } from "@recoils/atoms";
-import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
-import { LuSearch } from "react-icons/lu";
-import { useRecoilValue, useResetRecoilState } from "recoil";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 import { getEgo } from "@apis/dictionaryApi";
-import ErrorMessage from "@components/ui/ErrorMessage";
+
+import { EgoOptions } from "@interfaces/ego";
+
+import { useRecoilValue, useResetRecoilState } from "recoil";
+import { egoOptionsState } from "@recoils/atoms";
+
 import EgoFilter from "@components/Filter/EgoFilter";
 import EgoThumbnailCard from "@components/EgoThumbnailCard";
-import { EgoOptions } from "@interfaces/ego";
-import axios from "axios";
+import ErrorMessage from "@components/ui/ErrorMessage";
+import { Button, Input, Spinner } from "@material-tailwind/react";
+
+import { LuSearch } from "react-icons/lu";
 
 const EgoPage = () => {
   const [openFilter, setOpenFilter] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-
-  const handleWindowResize = () =>
-    window.innerWidth >= 640 && setOpenFilter(false);
-
-  useEffect(() => {
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
 
   const resetOptions = useResetRecoilState(egoOptionsState);
 
@@ -53,8 +46,17 @@ const EgoPage = () => {
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+  const handleBackgroundClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    if (e.target === e.currentTarget) {
+      setOpenFilter(false);
+    }
+  };
+
   return (
     <div className="flex font-sans text-primary-100 font-bold mt-4">
+      {/* 필터 */}
       <div className="w-[300px] min-w-[300px] hidden lg:block mt-2">
         <div className="flex justify-between items-center mb-8">
           <span className="text-3xl lg:text-4xl">필터</span>
@@ -68,20 +70,34 @@ const EgoPage = () => {
         </div>
         <EgoFilter />
       </div>
-      <Dialog
-        open={openFilter}
-        handler={() => setOpenFilter(false)}
-        placeholder={undefined}
-        size={"xs"}
+      <div
+        className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ${
+          openFilter ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={handleBackgroundClick}
       >
-        <EgoFilter />
-      </Dialog>
+        <div
+          className={`bg-primary-500 p-0 rounded-lg w-11/12 max-w-sm transition-transform duration-300 ${
+            openFilter ? "translate-y-0" : "translate-y-full"
+          }`}
+        >
+          <div className="flex justify-end items-center m-0 p-2 pb-0">
+            <button
+              onClick={() => setOpenFilter(false)}
+              className="text-primary-100 hover:text-primary-200 text-2xl"
+            >
+              &times;
+            </button>
+          </div>
+          <EgoFilter />
+        </div>
+      </div>
       <div className="flex-auto md:pl-10">
+        {/* 상단 제목, 버튼 */}
         <div className="flex justify-between items-center">
           <span className="text-3xl lg:text-4xl whitespace-nowrap hidden lg:block pr-2">
             에고
           </span>
-
           <div className="my-2 grid grid-cols-1 sm:flex sm:justify-between w-full lg:w-fit gap-2 h-fit md:h-10">
             <Button
               className="h-8 lg:hidden bg-primary-400 lg:h-8 py-0.5 px-4 text-lg lg:text-sm text-primary-100 hover:bg-primary-300 rounded"
@@ -114,6 +130,7 @@ const EgoPage = () => {
             </div>
           </div>
         </div>
+        {/* 썸네일 리스트 */}
         {isLoading ? (
           <div className="flex justify-center items-center h-96">
             <Spinner className="w-8 h-8 text-primary-200" />
