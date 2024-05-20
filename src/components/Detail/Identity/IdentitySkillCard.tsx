@@ -73,8 +73,8 @@ const IdentitySkillCard = ({
         {/* 스킬 스펙 */}
         <div className=" items-center text-primary-100 text-xs lg:text-base">
           {/* 윗단 */}
-          <div className="flex pb-2">
-            <span className="flex items-center justify-center pr-2 lg:pr-4">
+          <div className="flex items-center pb-2 gap-1 md:gap-3">
+            <span className="flex items-center justify-center">
               {[...Array(currentSkill.coinNum)].map((_, index) => (
                 <img
                   key={index}
@@ -84,7 +84,7 @@ const IdentitySkillCard = ({
                 />
               ))}
             </span>
-            <span className="flex items-center pr-2 lg:pr-4">
+            <span className="flex items-center">
               <span className="w-[3em]">가중치 </span>
               {[...Array(currentSkill.atkWeight)].map((_, index) => (
                 <div
@@ -94,7 +94,7 @@ const IdentitySkillCard = ({
               ))}
             </span>
 
-            <span className="pr-2 lg:pr-4">
+            <span className="">
               스킬 위력{" "}
               <span className="text-white">{currentSkill.skillPower}</span>
             </span>

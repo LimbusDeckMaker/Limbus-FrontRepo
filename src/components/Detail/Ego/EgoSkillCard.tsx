@@ -31,10 +31,10 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
 
   return (
     <div className="p-3 bg-primary-500 mb-2">
-      <div className="xl:flex xl:gap-3 items-center pb-6 ">
+      <div className="xl:flex xl:gap-3 items-center pb-2 lg:pb-4 ">
         {/* 스킬 이름 */}
         <div
-          className={`text-lg xl:text-xl font-bold pr-4 lg:p-0 pb-4 border-b-4 ${
+          className={`text-sm sm:text-lg xl:text-xl font-bold pr-4 lg:p-0 pb-2 mb-2 xl:mb-0 border-b-4 ${
             resourceColorMap[currentSkill.resource]
           }`}
         >
@@ -51,7 +51,8 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
               className="inline-block"
             />
           )}
-          <span className="pr-4">{type}</span> {/* 1 Skill, 2 Skill, 3 Skill, DEFENSE */}
+          <span className="pr-4">{type}</span>{" "}
+          {/* 1 Skill, 2 Skill, 3 Skill, DEFENSE */}
           <span>{currentSkill.name}</span>
           <img
             src={`/assets/attackType/${currentSkill.atkType}.png`}
@@ -66,49 +67,48 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
           />
         </div>
         {/* 스킬 스펙 */}
-        <div className=" items-center text-primary-100">
+        <div className=" items-center text-primary-100 text-xs lg:text-base">
           {/* 윗단 */}
-          <div className="flex pb-2">
-            <span className="pr-1">정신력 소모량</span>
-            <img
-              src={`/assets/정신 소모량.png`}
-              alt="attackTypeImg"
-              style={{
-                width: "auto",
-                height: "1.6em",
-                marginLeft: "1px",
-                marginBottom: "2px",
-              }}
-              className="inline-block pr-1"
-            />
-            <span className="pr-4 text-white">{currentSkill.mentalConsume}</span>
-            <span className="flex items-center pr-4">
-              가중치{" "}
+          <div className="sm:flex pb-2 items-center gap-1 md:gap-3">
+            <span className="flex items-center">
+              <span className="pr-1">정신력 소모량</span>
+              <div className="flex items-center gap-1">
+                <img
+                  src={`/assets/정신 소모량.png`}
+                  alt="attackTypeImg"
+                  style={{
+                    width: "auto",
+                    height: "1.6em",
+                    marginLeft: "1px",
+                    marginBottom: "2px",
+                  }}
+                  className="inline-block"
+                />
+                <span className="text-white">{currentSkill.mentalConsume}</span>
+              </div>
+            </span>
+            <span className="flex items-center">
+              <span className="w-[3em]">가중치 </span>
               {[...Array(currentSkill.atkWeight)].map((_, index) => (
                 <div
                   key={index}
-                  style={{
-                    width: "12px",
-                    height: "12px",
-                    backgroundColor: "yellow",
-                    marginLeft: "3px",
-                    marginBottom: "2px",
-                  }}
+                  className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-600 ml-[3px] mb-0.5"
                 ></div>
               ))}
             </span>
-
-            <span className="pr-1 w-24">
-              스킬 위력 <span className="text-white">{currentSkill.skillPower}</span>
+            <span className="mr-2 sm:mr-0">
+              스킬 위력{" "}
+              <span className="text-white">{currentSkill.skillPower}</span>
             </span>
-            <span className=" w-24">
-              코인 위력 <span className="text-white">{currentSkill.coinPower}</span>
+            <span className="">
+              코인 위력{" "}
+              <span className="text-white">{currentSkill.coinPower}</span>
             </span>
           </div>
         </div>
       </div>
 
-      <div>
+      <div className="text-sm sm:text-base">
         {/* <Typography placeholder={"power"}>{currentSkill.normalEffect}</Typography> */}
         <KeywordHighlighted text={currentSkill.normalEffect} />
         <div>
