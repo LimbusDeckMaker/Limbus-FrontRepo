@@ -1,5 +1,5 @@
 import React from "react";
-import KeywordHighlighted from "./KeywordHighlighted";
+import KeywordHighlighted from "../KeywordHighlighted";
 
 interface SkillCardProps {
   type: string;
@@ -33,7 +33,11 @@ const IdentitySkillCard = ({ type, synchronization, skill }: SkillCardProps) => 
     <div className="p-3 bg-primary-500 mb-2">
       <div className="xl:flex xl:gap-3 items-center pb-6 ">
         {/* 스킬 이름 */}
-        <div className={`text-xl font-bold pr-4 lg:p-0 pb-4 border-b-4 ${resourceColorMap[currentSkill.resource]}`}>
+        <div
+          className={`text-lg xl:text-xl font-bold pr-4 lg:p-0 pb-4 border-b-4 ${
+            resourceColorMap[currentSkill.resource]
+          }`}
+        >
           {currentSkill.resource !== "없음" && (
             <img
               src={`/assets/resource/${currentSkill.resource}.png`}

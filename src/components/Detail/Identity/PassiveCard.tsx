@@ -1,5 +1,5 @@
 import React from "react";
-import KeywordHighlighted from "./KeywordHighlighted";
+import KeywordHighlighted from "../KeywordHighlighted";
 
 interface PassiveCardProps {
   type: string; // 패시브, 서포트 패시브

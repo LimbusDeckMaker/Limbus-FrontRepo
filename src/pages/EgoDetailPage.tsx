@@ -1,14 +1,14 @@
-import EgoInfoBox from "@components/EgoInfoBox";
+import EgoInfoBox from "@components/Detail/Ego/EgoInfoBox";
 import ego_data from "@constants/ego_detail.json";
 import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react";
 import { synchronizationState } from "@recoils/atoms";
 import { useRecoilState } from "recoil";
 import { Button } from "@material-tailwind/react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
-import EgoSkills from "@components/EgoSkills";
-import EgoPassive from "@components/EgoPassive";
-import Keyword from "@components/Keyword";
-import EgoImage from "@components/DetailImage";
+import EgoSkills from "@components/Detail/Ego/EgoSkills";
+import EgoPassive from "@components/Detail/Ego/EgoPassive";
+import Keyword from "@components/Detail/Keyword";
+import EgoImage from "@components/Detail/DetailImage";
 
 const EgoDetailPage = () => {
   const [synchronization, setSynchronization] = useRecoilState(synchronizationState);

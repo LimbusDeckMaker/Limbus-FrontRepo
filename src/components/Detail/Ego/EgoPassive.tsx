@@ -1,6 +1,6 @@
 import { synchronizationState } from "@recoils/atoms";
 import { useRecoilValue } from "recoil";
-import KeywordHighlighted from "@components/KeywordHighlighted";
+import KeywordHighlighted from "@components/Detail/KeywordHighlighted";
 
 interface Props {
   Egodata: Passives;

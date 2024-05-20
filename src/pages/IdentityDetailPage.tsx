@@ -1,10 +1,10 @@
-import IdentityInfoBox from "@components/IdentityInfoBox";
+import IdentityInfoBox from "@components/Detail/Identity/IdentityInfoBox";
 import identity_data from "@constants/identity_detail.json";
 import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react";
-import IdentitySkills from "@components/IdentitySkills";
-import IdentityPassive from "@components/IdentityPassive";
-import IdentityKeyword from "@components/Keyword";
-import IdentityImage from "@components/DetailImage";
+import IdentitySkills from "@components/Detail/Identity/IdentitySkills";
+import IdentityPassive from "@components/Detail/Identity/IdentityPassive";
+import IdentityKeyword from "@components/Detail/Keyword";
+import IdentityImage from "@components/Detail/DetailImage";
 import { synchronizationState } from "@recoils/atoms";
 import { useRecoilState } from "recoil";
 import { Button } from "@material-tailwind/react";
