@@ -26,11 +26,7 @@ interface Skill {
   coin5Effect: string;
 }
 
-const IdentitySkillCard = ({
-  type,
-  synchronization,
-  skill,
-}: SkillCardProps) => {
+const IdentitySkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
   const currentSkill = skill[synchronization];
 
   return (
@@ -43,31 +39,20 @@ const IdentitySkillCard = ({
           }`}
         >
           {currentSkill.resource !== "없음" && (
+            //  자원 이미지
             <img
               src={`/assets/resource/${currentSkill.resource}.png`}
               alt="resourceImg"
-              style={{
-                width: "auto",
-                height: "1.1em",
-                marginRight: "4px",
-                marginBottom: "2px",
-              }}
-              className="inline-block"
+              className="inline-block w-auto h-6 mr-1 mb-1"
             />
           )}
-          <span className="pr-4">{type}</span>{" "}
-          {/* 1 Skill, 2 Skill, 3 Skill, DEFENSE */}
+          <span className="pr-4">{type}</span> {/* 1 Skill, 2 Skill, 3 Skill, DEFENSE */}
           <span>{currentSkill.name}</span>
+          {/* 공격 타입 이미지 */}
           <img
             src={`/assets/attackType/${currentSkill.type}.png`}
             alt="attackTypeImg"
-            style={{
-              width: "auto",
-              height: "1.6em",
-              marginLeft: "1px",
-              marginBottom: "2px",
-            }}
-            className="inline-block"
+            className="inline-block w-auto h-8 ml-[1px] mb-1"
           />
         </div>
         {/* 스킬 스펙 */}
@@ -75,56 +60,45 @@ const IdentitySkillCard = ({
           {/* 윗단 */}
           <div className="flex items-center pb-2 gap-1 md:gap-3">
             <span className="flex items-center justify-center">
+              {/* 코인 이미지 */}
               {[...Array(currentSkill.coinNum)].map((_, index) => (
                 <img
                   key={index}
                   src={`/assets/coin/normal_coin.png`}
                   alt="coinImg"
-                  style={{ width: "auto", height: "1em", marginRight: "2px" }}
+                  className="w-auto h-[1em] mr-[2px]"
                 />
               ))}
             </span>
             <span className="flex items-center">
               <span className="w-[3em]">가중치 </span>
               {[...Array(currentSkill.atkWeight)].map((_, index) => (
-                <div
-                  key={index}
-                  className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-600 ml-[3px] mb-0.5"
-                ></div>
+                <div key={index} className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-600 ml-[3px] mb-0.5"></div>
               ))}
             </span>
 
             <span className="">
-              스킬 위력{" "}
-              <span className="text-white">{currentSkill.skillPower}</span>
+              스킬 위력 <span className="text-white">{currentSkill.skillPower}</span>
             </span>
             <span className="">
-              코인 위력{" "}
-              <span className="text-white">{currentSkill.coinPower}</span>
+              코인 위력 <span className="text-white">{currentSkill.coinPower}</span>
             </span>
           </div>
         </div>
       </div>
 
       <div className="text-sm sm:text-base">
-        {/* <Typography placeholder={"power"}>{currentSkill.normalEffect}</Typography> */}
         <KeywordHighlighted text={currentSkill.normalEffect} />
         <div>
           {[...Array(currentSkill.coinNum)].map((_, index) => {
             const effectKey = `coin${index + 1}Effect`;
             const effect = (currentSkill as any)[effectKey];
             if (effect.trim() !== "") {
-              // Splitting the effect string based on newline characters
               const effectParts = effect.split("\n");
 
               return (
                 <div className="flex items-start" key={index}>
-                  <img
-                    src={`/assets/coin/coin${index + 1}.png`}
-                    alt="coinImg"
-                    className="mr-1 mt-0.5"
-                    style={{ width: "auto", height: "16px" }}
-                  />
+                  <img src={`/assets/coin/coin${index + 1}.png`} alt="coinImg" className="mr-1 mt-0.5 w-auto h-4" />
                   <div>
                     {effectParts.map((part: any, partIndex: any) => (
                       <React.Fragment key={partIndex}>

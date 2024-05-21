@@ -10,30 +10,16 @@ interface Props {
 const IdentityImage = ({ beforeImage, afterImage, type }: Props) => {
   return (
     <Card className="bg-primary-450" placeholder="Card">
-      <CardBody
-        className="bg-primary-500 mb-5 rounded-md p-3 md:p-6"
-        placeholder="CardBody"
-      >
-        <Typography
-          className="text-base md:text-xl font-bold mb-2 md:mb-5"
-          color="white"
-          placeholder="beforeImage"
-        >
+      <CardBody className="bg-primary-500 mb-5 rounded-md p-3 md:p-6" placeholder="CardBody">
+        <p className="text-base md:text-xl font-bold mb-2 md:mb-5 text-white">
           {type === "identity" ? "동기화 전" : "각성"}
-        </Typography>
+        </p>
         <img src={beforeImage} alt="beforeImage" />
       </CardBody>
-      <CardBody
-        className="bg-primary-500 rounded-md p-3 md:p-6"
-        placeholder="CardBody"
-      >
-        <Typography
-          className="text-base md:text-xl font-bold mb-2 md:mb-5"
-          color="white"
-          placeholder="afterImage"
-        >
+      <CardBody className="bg-primary-500 rounded-md p-3 md:p-6" placeholder="CardBody">
+        <p className="text-base md:text-xl font-bold mb-2 md:mb-5 text-white">
           {type === "identity" ? "동기화 후" : "침식"}
-        </Typography>
+        </p>
         <img src={afterImage} alt="afterImage" />
       </CardBody>
     </Card>

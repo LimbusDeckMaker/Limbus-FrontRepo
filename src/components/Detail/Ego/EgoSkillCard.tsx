@@ -42,28 +42,15 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
             <img
               src={`/assets/resource/${currentSkill.resource}.png`}
               alt="resourceImg"
-              style={{
-                width: "auto",
-                height: "1.1em",
-                marginRight: "4px",
-                marginBottom: "2px",
-              }}
-              className="inline-block"
+              className="inline-block w-auto h-6 mr-1 mb-1"
             />
           )}
-          <span className="pr-4">{type}</span>{" "}
-          {/* 1 Skill, 2 Skill, 3 Skill, DEFENSE */}
+          <span className="pr-4">{type}</span> {/* 1 Skill, 2 Skill, 3 Skill, DEFENSE */}
           <span>{currentSkill.name}</span>
           <img
             src={`/assets/attackType/${currentSkill.atkType}.png`}
             alt="attackTypeImg"
-            style={{
-              width: "auto",
-              height: "1.6em",
-              marginLeft: "1px",
-              marginBottom: "2px",
-            }}
-            className="inline-block"
+            className="inline-block w-auto h-8 ml-[1px] mb-1"
           />
         </div>
         {/* 스킬 스펙 */}
@@ -76,13 +63,7 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
                 <img
                   src={`/assets/정신 소모량.png`}
                   alt="attackTypeImg"
-                  style={{
-                    width: "auto",
-                    height: "1.6em",
-                    marginLeft: "1px",
-                    marginBottom: "2px",
-                  }}
-                  className="inline-block"
+                  className="inline-block w-auto h-5 ml-[1px] mb-1"
                 />
                 <span className="text-white">{currentSkill.mentalConsume}</span>
               </div>
@@ -90,19 +71,14 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
             <span className="flex items-center">
               <span className="w-[3em]">가중치 </span>
               {[...Array(currentSkill.atkWeight)].map((_, index) => (
-                <div
-                  key={index}
-                  className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-600 ml-[3px] mb-0.5"
-                ></div>
+                <div key={index} className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-600 ml-[3px] mb-0.5"></div>
               ))}
             </span>
             <span className="mr-2 sm:mr-0">
-              스킬 위력{" "}
-              <span className="text-white">{currentSkill.skillPower}</span>
+              스킬 위력 <span className="text-white">{currentSkill.skillPower}</span>
             </span>
             <span className="">
-              코인 위력{" "}
-              <span className="text-white">{currentSkill.coinPower}</span>
+              코인 위력 <span className="text-white">{currentSkill.coinPower}</span>
             </span>
           </div>
         </div>

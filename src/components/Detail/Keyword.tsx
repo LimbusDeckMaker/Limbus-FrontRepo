@@ -18,13 +18,7 @@ const IdentityKeyword = ({ keywords }: IdentityKeywordProps) => {
               <img
                 src={`/assets/keyword/${keyword}.png`}
                 alt="resourceImg"
-                style={{
-                  width: "auto",
-                  height: "1.1em",
-                  marginRight: "4px",
-                  marginBottom: "2px",
-                }}
-                className="inline-block"
+                className="inline-block h-[1.1em] mr-1 mb-[2px]"
               />
               <span>{keyword}</span>
               <KeywordHighlighted text={content} />
