@@ -54,20 +54,27 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
           />
         </div>
         {/* 스킬 스펙 */}
-        <div className=" items-center text-primary-100 text-xs lg:text-base">
+        <div className=" items-center text-primary-100 text-xs lg:text-sm">
           {/* 윗단 */}
-          <div className="sm:flex pb-2 items-center gap-1 md:gap-3">
+          <div className="md:flex pb-2 items-center gap-1 md:gap-3">
             <span className="flex items-center">
               <span className="pr-1">정신력 소모량</span>
-              <div className="flex items-center gap-1">
+              <span className="flex items-center gap-1">
                 <img
                   src={`/assets/정신 소모량.png`}
                   alt="attackTypeImg"
                   className="inline-block w-auto h-5 ml-[1px] mb-1"
                 />
                 <span className="text-white">{currentSkill.mentalConsume}</span>
-              </div>
+              </span>
             </span>
+
+            <span className="">
+              공격 레벨{" "}
+              <img src={`/assets/공격 레벨.png`} alt="attackTypeImg" className="inline-block w-auto h-5 pr-1 mb-1" />
+              <span className="text-white">{currentSkill.power}</span>
+            </span>
+
             <span className="flex items-center">
               <span className="w-[3em]">가중치 </span>
               {[...Array(currentSkill.atkWeight)].map((_, index) => (

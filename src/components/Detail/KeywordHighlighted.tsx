@@ -12,11 +12,11 @@ const KeywordHighlighted = ({ text }: KeywordHighlightedProps) => {
 
     // Iterate through each word
     return words.map((word, index) => {
-      const isInsideBrackets = /^\[.*\]$/.test(word);
+      const isInsideBrackets = /\[|\]/.test(word);
       if (isInsideBrackets) {
         // If it's inside brackets, wrap it in a span with orange color
         return (
-          <span key={index} style={{ color: "orange" }}>
+          <span key={index} className="text-orange-300">
             {word}
           </span>
         );
@@ -26,7 +26,7 @@ const KeywordHighlighted = ({ text }: KeywordHighlightedProps) => {
         if (keywordData) {
           // If it's a keyword, wrap it in a span with red color
           return (
-            <span key={index} style={{ color: "red" }}>
+            <span key={index} className="text-red-500">
               {word}
             </span>
           );

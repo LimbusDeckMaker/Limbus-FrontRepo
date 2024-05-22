@@ -14,6 +14,7 @@ interface Passives {
 const EgoPassive = ({ Egodata }: Props) => {
   const synchroOption = useRecoilValue(synchronizationState);
 
+  // 패시브는 4동기화 변화가 없음
   const syschroNum = synchroOption.synchronization;
 
   return (

@@ -1,12 +1,6 @@
 import EgoInfoBox from "@components/Detail/Ego/EgoInfoBox";
 import ego_data from "@constants/ego_detail.json";
-import {
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-} from "@material-tailwind/react";
+import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react";
 import { synchronizationState } from "@recoils/atoms";
 import { useRecoilState } from "recoil";
 import { Button } from "@material-tailwind/react";
@@ -17,13 +11,12 @@ import Keyword from "@components/Detail/Keyword";
 import EgoImage from "@components/Detail/DetailImage";
 
 const EgoDetailPage = () => {
-  const [synchronization, setSynchronization] =
-    useRecoilState(synchronizationState);
+  const [synchronization, setSynchronization] = useRecoilState(synchronizationState);
 
   return (
-    <div className="">
-      <Tabs value="스킬" orientation="horizontal" className="md:flex ">
-        <div className=" flex flex-col md:items-start items-center gap-3 mt-4">
+    <div className="w-full">
+      <Tabs value="스킬" orientation="horizontal" className="lg:flex ">
+        <div className=" flex flex-col lg:items-start items-center gap-3 mt-4">
           <EgoInfoBox
             character={ego_data.character}
             name={ego_data.name}
@@ -65,15 +58,9 @@ const EgoDetailPage = () => {
           }}
         >
           {menu.map((value) => (
-            <TabPanel
-              key={value}
-              value={value}
-              className=" text-white font-bold md:pl-10"
-            >
+            <TabPanel key={value} value={value} className=" text-white font-bold lg:pl-10 w-full">
               <div className="flex justify-between">
-                <span className="text-xl md:text-4xl text-primary-100">
-                  {value}
-                </span>
+                <span className="text-xl md:text-4xl text-primary-100">{value}</span>
 
                 {(value === "스킬" || value === "패시브") && (
                   <Button
@@ -81,8 +68,7 @@ const EgoDetailPage = () => {
                     placeholder={undefined}
                     onClick={() =>
                       setSynchronization({
-                        synchronization:
-                          (synchronization.synchronization + 1) % 2,
+                        synchronization: (synchronization.synchronization + 1) % 2,
                       })
                     }
                   >
@@ -106,16 +92,10 @@ const EgoDetailPage = () => {
                     }}
                   />
                 )}
-                {value === "패시브" && (
-                  <EgoPassive Egodata={ego_data.passive} />
-                )}
+                {value === "패시브" && <EgoPassive Egodata={ego_data.passive} />}
                 {value === "키워드" && <Keyword keywords={ego_data.keyword} />}
                 {value === "이미지" && (
-                  <EgoImage
-                    type="ego"
-                    beforeImage={ego_data.image}
-                    afterImage={ego_data.zoomImage}
-                  />
+                  <EgoImage type="ego" beforeImage={ego_data.image} afterImage={ego_data.zoomImage} />
                 )}
               </div>
             </TabPanel>

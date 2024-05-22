@@ -43,7 +43,7 @@ const EgoInfoBox = ({
 
   useEffect(() => {
     const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 768);
+      setIsLargeScreen(window.innerWidth >= 1024);
     };
     window.addEventListener("resize", handleResize);
     return () => {
@@ -104,7 +104,7 @@ const EgoInfoBox = ({
         <p className="text-xl font-bold font-sans text-primary-100 -mt-2">{character}</p>
 
         {/* Button to trigger collapse on smaller screens */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <Button
             onClick={toggleOpen}
             className="text-white flex items-center bg-transparent border-none shadow-none outline-none focus:outline-none"

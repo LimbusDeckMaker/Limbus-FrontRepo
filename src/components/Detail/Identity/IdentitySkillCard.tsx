@@ -78,6 +78,12 @@ const IdentitySkillCard = ({ type, synchronization, skill }: SkillCardProps) => 
             </span>
 
             <span className="">
+              공격 레벨{" "}
+              <img src={`/assets/공격 레벨.png`} alt="attackTypeImg" className="inline-block w-auto h-5 pr-1 mb-1" />
+              <span className="text-white">{currentSkill.power}</span>
+            </span>
+
+            <span className="">
               스킬 위력 <span className="text-white">{currentSkill.skillPower}</span>
             </span>
             <span className="">
