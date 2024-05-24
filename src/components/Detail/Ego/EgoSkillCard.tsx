@@ -29,6 +29,11 @@ interface Skill {
 const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
   const currentSkill = skill[synchronization];
 
+  if (!skill || skill.length === 0) {
+    return null;
+  }
+
+  console.log(type);
   return (
     <div className="p-3 bg-primary-500 mb-2">
       <div className="xl:flex xl:gap-3 items-center pb-2 lg:pb-4 ">
@@ -45,7 +50,8 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
               className="inline-block w-auto h-6 mr-1 mb-1"
             />
           )}
-          <span className="pr-4">{type}</span> {/* 1 Skill, 2 Skill, 3 Skill, DEFENSE */}
+          {/* 각성, 침식 */}
+          {/* <span className="pr-4 text-base">{type}</span>  */}
           <span>{currentSkill.name}</span>
           <img
             src={`/assets/attackType/${currentSkill.atkType}.png`}
@@ -92,7 +98,6 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
       </div>
 
       <div className="text-sm sm:text-base">
-        {/* <Typography placeholder={"power"}>{currentSkill.normalEffect}</Typography> */}
         <KeywordHighlighted text={currentSkill.normalEffect} />
         <div>
           {[...Array(currentSkill.coinNum)].map((_, index) => {
@@ -117,7 +122,6 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
                       </React.Fragment>
                     ))}
                   </div>
-                  {/* <Typography placeholder={"power"}>{effect}</Typography> */}
                 </div>
               );
             } else {

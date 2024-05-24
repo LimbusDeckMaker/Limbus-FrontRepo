@@ -1,3 +1,4 @@
+import React from "react";
 import keyword from "@constants/keyword.json";
 
 interface KeywordHighlightedProps {
@@ -5,17 +6,24 @@ interface KeywordHighlightedProps {
 }
 
 const KeywordHighlighted = ({ text }: KeywordHighlightedProps) => {
-  // Function to highlight keywords in the text
+  // Function to highlight keywords and bracketed text in the text
   const highlightKeywords = (text: string) => {
     // Regular expression pattern to split the text while preserving spaces
     const words = text.split(/(\s+)/);
+    let insideBrackets = false; // State to track whether we are inside brackets
 
     // Iterate through each word
     return words.map((word, index) => {
-      const isInsideBrackets = /\[|\]/.test(word);
-      if (isInsideBrackets) {
-        // If it's inside brackets, wrap it in a span with orange color
-        return (
+      // Check if the word contains a starting bracket
+      if (word.includes("[")) {
+        insideBrackets = true;
+      }
+
+      let element;
+
+      if (insideBrackets) {
+        // If inside brackets, wrap the word in a span with orange color
+        element = (
           <span key={index} className="text-orange-300">
             {word}
           </span>
@@ -25,22 +33,29 @@ const KeywordHighlighted = ({ text }: KeywordHighlightedProps) => {
         const keywordData = keyword.find((item) => item.name.toLowerCase() === word.toLowerCase());
         if (keywordData) {
           // If it's a keyword, wrap it in a span with red color
-          return (
+          element = (
             <span key={index} className="text-red-500">
               {word}
             </span>
           );
         } else {
           // If it's not a keyword or inside brackets, return it as it is
-          return word;
+          element = <span key={index}>{word}</span>;
         }
       }
+
+      // Check if the word contains an ending bracket
+      if (word.includes("]")) {
+        insideBrackets = false;
+      }
+
+      return element;
     });
   };
 
   return (
     <p className="font-sansLight">
-      {/* Rendering the text with highlighted keywords */}
+      {/* Rendering the text with highlighted keywords and bracketed text */}
       {highlightKeywords(text)}
     </p>
   );

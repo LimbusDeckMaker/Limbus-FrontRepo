@@ -3,29 +3,53 @@ import ego_data from "@constants/ego_detail.json";
 import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react";
 import { synchronizationState } from "@recoils/atoms";
 import { useRecoilState } from "recoil";
-import { Button } from "@material-tailwind/react";
+import { Button, Spinner } from "@material-tailwind/react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 import EgoSkills from "@components/Detail/Ego/EgoSkills";
 import EgoPassive from "@components/Detail/Ego/EgoPassive";
 import Keyword from "@components/Detail/Keyword";
 import EgoImage from "@components/Detail/DetailImage";
+import { useParams } from "react-router-dom";
+import { getEgoDetail } from "@apis/detailAPI";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const EgoDetailPage = () => {
+  const id = useParams().id;
   const [synchronization, setSynchronization] = useRecoilState(synchronizationState);
+
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["identity", id],
+    queryFn: () => getEgoDetail(Number(id)),
+    retry: 1,
+  });
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-96">
+        <Spinner className="w-8 h-8 text-primary-200" />
+      </div>
+    );
+  }
+
+  if (isError && axios.isAxiosError(error) && error.response?.status === 404) {
+    return <div className="text-primary-200 text-center w-full my-8">에고 정보를 불러오지 못했습니다.</div>;
+  }
 
   return (
     <div className="w-full">
       <Tabs value="스킬" orientation="horizontal" className="lg:flex ">
         <div className=" flex flex-col lg:items-start items-center gap-3 mt-4">
           <EgoInfoBox
-            character={ego_data.character}
-            name={ego_data.name}
-            zoomImage={ego_data.zoomImage}
-            grade={ego_data.grade}
-            season={ego_data.season}
-            resistance={ego_data.resistance}
-            releaseDate={ego_data.releaseDate}
-            obtainingMethod={ego_data.obtainingMethod}
+            character={data.character}
+            name={data.name}
+            zoomImage={data.zoomImage}
+            grade={data.grade}
+            season={data.season}
+            resistance={data.resistance}
+            releaseDate={data.releaseDate}
+            obtainingMethod={data.obtainingMethod}
+            // TODO : cost 아직 반영 안됨
             cost={ego_data.cost}
           />
 
@@ -87,16 +111,14 @@ const EgoDetailPage = () => {
                 {value === "스킬" && (
                   <EgoSkills
                     EgoSkills={{
-                      EgoSkill1s: ego_data.egoskills,
-                      EgoSkill2s: ego_data.egoCorSkills,
+                      EgoSkill1s: data.egoskills,
+                      EgoSkill2s: data.egoCorSkills,
                     }}
                   />
                 )}
-                {value === "패시브" && <EgoPassive Egodata={ego_data.passive} />}
-                {value === "키워드" && <Keyword keywords={ego_data.keyword} />}
-                {value === "이미지" && (
-                  <EgoImage type="ego" beforeImage={ego_data.image} afterImage={ego_data.zoomImage} />
-                )}
+                {value === "패시브" && <EgoPassive Egodata={data.passive} />}
+                {value === "키워드" && <Keyword keywords={data.keyword} />}
+                {value === "이미지" && <EgoImage type="ego" beforeImage={data.image} afterImage={data.zoomImage} />}
               </div>
             </TabPanel>
           ))}
