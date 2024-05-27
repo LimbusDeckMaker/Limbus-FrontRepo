@@ -8,7 +8,7 @@ interface IdentityKeywordProps {
 
 const IdentityKeyword = ({ keywords }: IdentityKeywordProps) => {
   return (
-    <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 ">
+    <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
       {keywords.map((keyword, index) => {
         const keywordInfo = keyword_data.find((item) => item.name === keyword);
         if (keywordInfo) {
@@ -25,6 +25,7 @@ const IdentityKeyword = ({ keywords }: IdentityKeywordProps) => {
             </div>
           );
         }
+        return null;
       })}
     </div>
   );

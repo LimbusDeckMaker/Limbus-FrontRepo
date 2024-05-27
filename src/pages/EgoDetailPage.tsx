@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import { getEgoDetail } from "@apis/detailAPI";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import keyword_data from "@constants/keyword.json";
 
 const EgoDetailPage = () => {
   const id = useParams().id;
@@ -22,7 +23,7 @@ const EgoDetailPage = () => {
     queryFn: () => getEgoDetail(Number(id)),
     retry: 1,
   });
-
+  const keywordInfo = keyword_data.find((item) => item.name === data.keyword);
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-96">
@@ -115,7 +116,12 @@ const EgoDetailPage = () => {
                   />
                 )}
                 {value === "패시브" && <EgoPassive Egodata={data.passive} />}
-                {value === "키워드" && <Keyword keywords={data.keyword} />}
+                {value === "키워드" &&
+                  (keywordInfo ? (
+                    <Keyword keywords={data.keyword} />
+                  ) : (
+                    <div className="text-primary-200 text-center w-full my-8">키워드가 없습니다.</div>
+                  ))}
                 {value === "이미지" && <EgoImage type="ego" beforeImage={data.image} afterImage={data.zoomImage} />}
               </div>
             </TabPanel>

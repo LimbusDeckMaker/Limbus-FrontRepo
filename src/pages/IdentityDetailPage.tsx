@@ -4,8 +4,8 @@ import IdentitySkills from "@components/Detail/Identity/IdentitySkills";
 import IdentityPassive from "@components/Detail/Identity/IdentityPassive";
 import IdentityKeyword from "@components/Detail/Keyword";
 import IdentityImage from "@components/Detail/DetailImage";
-import { synchronizationState, identityDetailOptionsState } from "@recoils/atoms";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { synchronizationState } from "@recoils/atoms";
+import { useRecoilState } from "recoil";
 import { Button, Spinner } from "@material-tailwind/react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 import { useParams } from "react-router-dom";
@@ -16,8 +16,6 @@ import axios from "axios";
 const IdentityDetailPage = () => {
   const id = useParams().id;
   const [synchronization, setSynchronization] = useRecoilState(synchronizationState);
-
-  const option = useRecoilValue(identityDetailOptionsState);
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["identity", id],

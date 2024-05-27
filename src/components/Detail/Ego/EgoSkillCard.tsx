@@ -33,7 +33,6 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
     return null;
   }
 
-  console.log(currentSkill.coinNum);
   return (
     <div className="p-3 bg-primary-500 mb-2">
       <div className="xl:flex xl:gap-3 items-center pb-2 lg:pb-4 ">
