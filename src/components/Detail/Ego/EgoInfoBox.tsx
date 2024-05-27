@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-import { Button, Collapse, Typography } from "@material-tailwind/react";
+import { Button, Collapse } from "@material-tailwind/react";
 
 interface EgoInfoBoxProps {
   character: string;
@@ -37,13 +37,13 @@ const EgoInfoBox = ({
   cost,
 }: EgoInfoBoxProps) => {
   const [open, setOpen] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 960);
 
   const toggleOpen = () => setOpen((prevOpen) => !prevOpen);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024);
+      setIsLargeScreen(window.innerWidth >= 960);
     };
     window.addEventListener("resize", handleResize);
     return () => {
@@ -60,7 +60,13 @@ const EgoInfoBox = ({
             <span
               key={index}
               className={`flex items-center mr-2 mb-2 ${
-                type === "내성" ? "text-gray-400" : type === "취약" ? "text-red-500" : ""
+                type === "내성"
+                  ? "text-gray-500"
+                  : type === "취약"
+                  ? "text-red-500"
+                  : type === "견딤"
+                  ? "text-gray-600"
+                  : ""
               }`}
             >
               <img src={resourseImg[index]} alt="beforeImage" className="w-[14px] h-[14px]" />
@@ -71,7 +77,7 @@ const EgoInfoBox = ({
         <p className="text-primary-100">코스트</p>
         <p className="p-1 text-xs md:text-sm flex">
           {cost.map((type, index) => (
-            <span key={index} className={`flex mr-2 ${type === 0 ? "text-gray-400" : ""}`}>
+            <span key={index} className={`flex mr-2 ${type === 0 ? "text-gray-600" : ""}`}>
               <img src={resourseImg[index]} alt="beforeImage" style={{ width: "14px", height: "14px" }} />
               {type}{" "}
             </span>

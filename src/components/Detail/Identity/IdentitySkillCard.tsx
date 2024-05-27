@@ -76,10 +76,15 @@ const IdentitySkillCard = ({ type, synchronization, skill }: SkillCardProps) => 
                 <div key={index} className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-600 ml-[3px] mb-0.5"></div>
               ))}
             </span>
+            {/* 만약 type 이 DEFENSE면 /assets/방어코인.png를 사용 */}
 
             <span className="">
-              공격 레벨{" "}
-              <img src={`/assets/공격 레벨.png`} alt="attackTypeImg" className="inline-block w-auto h-5 pr-1 mb-1" />
+              {type === "DEFENSE" ? "방어 레벨" : "공격 레벨"}{" "}
+              <img
+                src={type === "DEFENSE" ? "/assets/방어코인.png" : "/assets/공격 레벨.png"}
+                alt={type === "DEFENSE" ? "defenseTypeImg" : "attackTypeImg"}
+                className="inline-block w-auto h-5 pr-1 mb-1"
+              />
               <span className="text-white">{currentSkill.power}</span>
             </span>
 

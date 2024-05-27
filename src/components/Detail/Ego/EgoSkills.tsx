@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import EgoSkillCard from "./EgoSkillCard";
 import { synchronizationState } from "@recoils/atoms";
 import { useRecoilValue } from "recoil";

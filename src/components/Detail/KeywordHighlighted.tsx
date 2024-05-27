@@ -14,12 +14,12 @@ const KeywordHighlighted = ({ text }: KeywordHighlightedProps) => {
 
     // Iterate through each word
     return words.map((word, index) => {
+      let element;
+
       // Check if the word contains a starting bracket
       if (word.includes("[")) {
         insideBrackets = true;
       }
-
-      let element;
 
       if (insideBrackets) {
         // If inside brackets, wrap the word in a span with orange color
@@ -47,6 +47,15 @@ const KeywordHighlighted = ({ text }: KeywordHighlightedProps) => {
       // Check if the word contains an ending bracket
       if (word.includes("]")) {
         insideBrackets = false;
+      }
+
+      if (word === "정신력") {
+        console.log("정신력");
+        element = (
+          <span key={index} className="text-light-blue-200">
+            {word}
+          </span>
+        );
       }
 
       return element;

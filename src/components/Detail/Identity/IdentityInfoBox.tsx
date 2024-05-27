@@ -1,4 +1,4 @@
-import { Button, Collapse, Typography } from "@material-tailwind/react";
+import { Button, Collapse } from "@material-tailwind/react";
 import React, { useState, useEffect } from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 
@@ -39,13 +39,13 @@ const IdentityInfoBox = ({
   const statusArray = [status.life, status.speed, status.defend];
 
   const [open, setOpen] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 960);
 
   const toggleOpen = () => setOpen((prevOpen) => !prevOpen);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024);
+      setIsLargeScreen(window.innerWidth >= 960);
     };
     window.addEventListener("resize", handleResize);
     return () => {

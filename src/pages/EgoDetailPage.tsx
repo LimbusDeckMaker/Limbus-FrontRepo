@@ -1,5 +1,4 @@
 import EgoInfoBox from "@components/Detail/Ego/EgoInfoBox";
-import ego_data from "@constants/ego_detail.json";
 import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react";
 import { synchronizationState } from "@recoils/atoms";
 import { useRecoilState } from "recoil";
@@ -49,8 +48,7 @@ const EgoDetailPage = () => {
             resistance={data.resistance}
             releaseDate={data.releaseDate}
             obtainingMethod={data.obtainingMethod}
-            // TODO : cost 아직 반영 안됨
-            cost={ego_data.cost}
+            cost={data.cost}
           />
 
           <TabsHeader

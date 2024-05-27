@@ -26,10 +26,10 @@
       "coinPower": 4,
       "atkWeight": 2,
       "construeLevel": 3,
-      "coinNum": 1,
+      "coinNum": 2,
       "normalEffect": "[공격 시작 전] 보유한 색욕 E.G.O 자원에 비례하여 피해량이 증가함 (최대 50%)",
-      "coin1Effect": "[적중시] 화상 횟수 3 증가",
-      "coin2Effect": "",
+      "coin1Effect": "",
+      "coin2Effect": "[적중시] 화상 횟수 3 증가",
       "coin3Effect": "",
       "coin4Effect": "",
       "coin5Effect": ""
