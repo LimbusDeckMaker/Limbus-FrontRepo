@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import { getIdentityDetail } from "@apis/detailAPI";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import keyword_data from "@constants/keyword.json";
 
 const IdentityDetailPage = () => {
   const id = useParams().id;
@@ -34,6 +35,7 @@ const IdentityDetailPage = () => {
   if (isError && axios.isAxiosError(error) && error.response?.status === 404) {
     return <div className="text-primary-200 text-center w-full my-8">인격 정보를 불러오지 못했습니다.</div>;
   }
+  const keywordInfo = keyword_data.find((item) => item.name === data.keyword);
 
   return (
     <div className="">
@@ -113,7 +115,12 @@ const IdentityDetailPage = () => {
                   />
                 )}
                 {value === "패시브" && <IdentityPassive identityPassives={data.identityPassives} />}
-                {value === "키워드" && <IdentityKeyword keywords={data.keyword} />}
+                {value === "키워드" &&
+                  (keywordInfo ? (
+                    <IdentityKeyword keywords={data.keyword} />
+                  ) : (
+                    <div className="text-primary-200 text-center w-full my-8">키워드가 없습니다.</div>
+                  ))}
                 {value === "이미지" && (
                   <IdentityImage type="identity" beforeImage={data.beforeImage} afterImage={data.afterImage} />
                 )}
