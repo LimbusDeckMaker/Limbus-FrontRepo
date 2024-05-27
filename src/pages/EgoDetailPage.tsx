@@ -35,7 +35,8 @@ const EgoDetailPage = () => {
   if (isError && axios.isAxiosError(error) && error.response?.status === 404) {
     return <div className="text-primary-200 text-center w-full my-8">에고 정보를 불러오지 못했습니다.</div>;
   }
-  const keywordInfo = keyword_data.find((item) => item.name === data.keyword);
+  const keywordInfo = data?.keyword.some((kw: string) => keyword_data.some((item) => item.name === kw));
+
   return (
     <div className="w-full">
       <Tabs value="스킬" orientation="horizontal" className="lg:flex ">
