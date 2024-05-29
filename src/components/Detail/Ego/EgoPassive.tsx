@@ -1,5 +1,3 @@
-import { synchronizationState } from "@recoils/atoms";
-import { useRecoilValue } from "recoil";
 import KeywordHighlighted from "@components/Detail/KeywordHighlighted";
 
 interface Props {
@@ -12,9 +10,8 @@ interface Passives {
 }
 
 const EgoPassive = ({ Egodata }: Props) => {
-  const synchroOption = useRecoilValue(synchronizationState);
-
-  const syschroNum = synchroOption.synchronization;
+  // 패시브는 4동기화 변화가 없음
+  // const syschroNum = synchroOption.synchronization;
 
   return (
     <div className="p-3 bg-primary-500 mb-2">

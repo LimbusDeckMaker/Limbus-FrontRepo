@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-import { Button, Collapse, Typography } from "@material-tailwind/react";
+import { Button, Collapse } from "@material-tailwind/react";
 
 interface EgoInfoBoxProps {
   character: string;
@@ -37,13 +37,13 @@ const EgoInfoBox = ({
   cost,
 }: EgoInfoBoxProps) => {
   const [open, setOpen] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 960);
 
   const toggleOpen = () => setOpen((prevOpen) => !prevOpen);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 768);
+      setIsLargeScreen(window.innerWidth >= 960);
     };
     window.addEventListener("resize", handleResize);
     return () => {
@@ -54,48 +54,44 @@ const EgoInfoBox = ({
   const renderCollapseContent = () => {
     return (
       <div className="flex flex-col items-center pb-4">
-        <Typography className="text-primary-100" placeholder={cost}>
-          내성
-        </Typography>
-        <Typography
-          variant="small"
-          className="p-1 text-xs md:text-sm flex flex-wrap justify-center items-center text-center"
-          placeholder={resistance.join(", ")}
-        >
+        <p className="text-primary-100">내성</p>
+        <p className="p-1 text-xs md:text-sm flex flex-wrap justify-center items-center text-center">
           {resistance.map((type, index) => (
             <span
               key={index}
               className={`flex items-center mr-2 mb-2 ${
-                type === "내성" ? "text-gray-400" : type === "취약" ? "text-red-500" : ""
+                type === "내성"
+                  ? "text-gray-500"
+                  : type === "취약"
+                  ? "text-red-500"
+                  : type === "견딤"
+                  ? "text-gray-600"
+                  : ""
               }`}
             >
-              <img src={resourseImg[index]} alt="beforeImage" style={{ width: "14px", height: "14px" }} />
+              <img src={resourseImg[index]} alt="beforeImage" className="w-[14px] h-[14px]" />
               {type}{" "}
             </span>
           ))}
-        </Typography>
-        <Typography className="text-primary-100" placeholder={cost}>
-          코스트
-        </Typography>
-        <Typography variant="small" className="p-1 text-xs md:text-sm flex" placeholder={resistance.join(", ")}>
+        </p>
+        <p className="text-primary-100">코스트</p>
+        <p className="p-1 text-xs md:text-sm flex">
           {cost.map((type, index) => (
-            <span key={index} className={`flex mr-2 ${type === 0 ? "text-gray-400" : ""}`}>
+            <span key={index} className={`flex mr-2 ${type === 0 ? "text-gray-600" : ""}`}>
               <img src={resourseImg[index]} alt="beforeImage" style={{ width: "14px", height: "14px" }} />
               {type}{" "}
             </span>
           ))}
-        </Typography>
-        <Typography variant="small" className="p-1 md:text-xs" placeholder={season}>
+        </p>
+        <p className="p-1 text-xs md:text-xs">
           <span className="text-primary-100">시즌</span> : {season}
-        </Typography>
+        </p>
 
-        <Typography variant="small" className="p-1 md:text-xs" placeholder={releaseDate}>
+        <p className="p-1 text-xs md:text-xs">
           <span className="text-primary-100">출시시기</span> : {releaseDate}
-        </Typography>
+        </p>
 
-        <Typography variant="small" className="p-1 md:text-xs text-center" placeholder={obtainingMethod}>
-          {obtainingMethod}
-        </Typography>
+        <p className="p-1 text-xs md:text-xs text-center">{obtainingMethod}</p>
       </div>
     );
   };
@@ -103,25 +99,21 @@ const EgoInfoBox = ({
   return (
     <div className="bg-primary-500 text-white w-64 rounded-md">
       <div className="w-64 h-auto py-4 gap-2 flex flex-col items-center relative">
-        <img src={zoomImage} alt="profile" style={{ width: "40%", height: "auto" }} />
+        {/* tailwind에 퍼센티지는 없어서 일단 유지 */}
+        <img src={zoomImage} alt="profile" className="h-auto" style={{ width: "40%" }} />
 
         {/* TODO : 머지후 이미지로 넣기 */}
-        <p className="text-xl font-bold font-sans text-primary-100">{grade}</p>
+
+        <img src={`/assets/common/${grade}.png`} alt="grade" className=" h-auto" style={{ width: "40%" }} />
 
         <p className="text-xl font-bold font-sans text-primary-100">{name}</p>
         <p className="text-xl font-bold font-sans text-primary-100 -mt-2">{character}</p>
 
         {/* Button to trigger collapse on smaller screens */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <Button
             onClick={toggleOpen}
-            className="text-white flex items-center"
-            style={{
-              backgroundColor: "transparent",
-              border: "none",
-              boxShadow: "none",
-              outline: "none",
-            }}
+            className="text-white flex items-center bg-transparent border-none shadow-none outline-none focus:outline-none"
             placeholder={"button"}
           >
             상세정보
@@ -130,7 +122,6 @@ const EgoInfoBox = ({
         </div>
       </div>
 
-      {/* Collapse content */}
       {!isLargeScreen ? <Collapse open={open}>{renderCollapseContent()}</Collapse> : renderCollapseContent()}
     </div>
   );

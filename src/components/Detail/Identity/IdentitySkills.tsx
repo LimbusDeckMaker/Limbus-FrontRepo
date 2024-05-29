@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import IdentitySkillCard from "./IdentitySkillCard";
 import { synchronizationState } from "@recoils/atoms";
 import { useRecoilValue } from "recoil";

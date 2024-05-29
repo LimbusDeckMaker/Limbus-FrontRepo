@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import EgoSkillCard from "./EgoSkillCard";
 import { synchronizationState } from "@recoils/atoms";
 import { useRecoilValue } from "recoil";
@@ -37,8 +36,16 @@ const EgoSkills = ({ EgoSkills }: Props) => {
 
   return (
     <div>
-      <EgoSkillCard type="1 Skill" synchronization={syschroNum} skill={EgoSkill1s} />
-      <EgoSkillCard type="2 Skill" synchronization={syschroNum} skill={EgoSkill2s} />
+      <EgoSkillCard
+        type="Awakening"
+        synchronization={syschroNum}
+        skill={EgoSkill1s}
+      />
+      <EgoSkillCard
+        type="Corrosion"
+        synchronization={syschroNum}
+        skill={EgoSkill2s}
+      />
     </div>
   );
 };

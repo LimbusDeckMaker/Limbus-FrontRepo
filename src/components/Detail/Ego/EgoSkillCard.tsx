@@ -29,9 +29,17 @@ interface Skill {
 const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
   const currentSkill = skill[synchronization];
 
+  if (!skill || skill.length === 0) {
+    return null;
+  }
+
   return (
-    <div className="p-3 bg-primary-500 mb-2">
-      <div className="xl:flex xl:gap-3 items-center pb-2 lg:pb-4 ">
+    <div
+      className={`p-3 mb-2 bg-primary-500 ${
+        type === "Corrosion" && "shadow-inner-black"
+      }`}
+    >
+      <div className="xl:flex xl:gap-3 items-center pb-2 lg:pb-4">
         {/* 스킬 이름 */}
         <div
           className={`text-sm sm:text-lg xl:text-xl font-bold pr-4 lg:p-0 pb-2 mb-2 xl:mb-0 border-b-4 ${
@@ -42,51 +50,47 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
             <img
               src={`/assets/resource/${currentSkill.resource}.png`}
               alt="resourceImg"
-              style={{
-                width: "auto",
-                height: "1.1em",
-                marginRight: "4px",
-                marginBottom: "2px",
-              }}
-              className="inline-block"
+              className="inline-block w-auto h-6 mr-1 mb-1"
             />
           )}
-          <span className="pr-4">{type}</span>{" "}
-          {/* 1 Skill, 2 Skill, 3 Skill, DEFENSE */}
-          <span>{currentSkill.name}</span>
+          {/* 각성, 침식 */}
+          <span
+            className={type === "Corrosion" ? "text-gray-600" : "text-white"}
+          >
+            {currentSkill.name}
+          </span>
           <img
             src={`/assets/attackType/${currentSkill.atkType}.png`}
             alt="attackTypeImg"
-            style={{
-              width: "auto",
-              height: "1.6em",
-              marginLeft: "1px",
-              marginBottom: "2px",
-            }}
-            className="inline-block"
+            className="inline-block w-auto h-8 ml-[1px] mb-1"
           />
         </div>
         {/* 스킬 스펙 */}
-        <div className=" items-center text-primary-100 text-xs lg:text-base">
+        <div className=" items-center text-primary-100 text-xs lg:text-sm">
           {/* 윗단 */}
-          <div className="sm:flex pb-2 items-center gap-1 md:gap-3">
+          <div className="md:flex pb-2 items-center gap-1 md:gap-3">
             <span className="flex items-center">
               <span className="pr-1">정신력 소모량</span>
-              <div className="flex items-center gap-1">
+              <span className="flex items-center gap-1">
                 <img
                   src={`/assets/정신 소모량.png`}
                   alt="attackTypeImg"
-                  style={{
-                    width: "auto",
-                    height: "1.6em",
-                    marginLeft: "1px",
-                    marginBottom: "2px",
-                  }}
-                  className="inline-block"
+                  className="inline-block w-auto h-5 ml-[1px] mb-1"
                 />
                 <span className="text-white">{currentSkill.mentalConsume}</span>
-              </div>
+              </span>
             </span>
+
+            <span className="">
+              공격 레벨{" "}
+              <img
+                src={`/assets/공격 레벨.png`}
+                alt="attackTypeImg"
+                className="inline-block w-auto h-5 pr-1 mb-1"
+              />
+              <span className="text-white">{currentSkill.power}</span>
+            </span>
+
             <span className="flex items-center">
               <span className="w-[3em]">가중치 </span>
               {[...Array(currentSkill.atkWeight)].map((_, index) => (
@@ -109,7 +113,6 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
       </div>
 
       <div className="text-sm sm:text-base">
-        {/* <Typography placeholder={"power"}>{currentSkill.normalEffect}</Typography> */}
         <KeywordHighlighted text={currentSkill.normalEffect} />
         <div>
           {[...Array(currentSkill.coinNum)].map((_, index) => {
@@ -134,7 +137,6 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
                       </React.Fragment>
                     ))}
                   </div>
-                  {/* <Typography placeholder={"power"}>{effect}</Typography> */}
                 </div>
               );
             } else {

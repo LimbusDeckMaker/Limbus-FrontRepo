@@ -1,39 +1,56 @@
 import EgoInfoBox from "@components/Detail/Ego/EgoInfoBox";
-import ego_data from "@constants/ego_detail.json";
-import {
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-} from "@material-tailwind/react";
+import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react";
 import { synchronizationState } from "@recoils/atoms";
 import { useRecoilState } from "recoil";
-import { Button } from "@material-tailwind/react";
+import { Button, Spinner } from "@material-tailwind/react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 import EgoSkills from "@components/Detail/Ego/EgoSkills";
 import EgoPassive from "@components/Detail/Ego/EgoPassive";
 import Keyword from "@components/Detail/Keyword";
 import EgoImage from "@components/Detail/DetailImage";
+import { useParams } from "react-router-dom";
+import { getEgoDetail } from "@apis/detailAPI";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import keyword_data from "@constants/keyword.json";
 
 const EgoDetailPage = () => {
-  const [synchronization, setSynchronization] =
-    useRecoilState(synchronizationState);
+  const id = useParams().id;
+  const [synchronization, setSynchronization] = useRecoilState(synchronizationState);
+
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["identity", id],
+    queryFn: () => getEgoDetail(Number(id)),
+    retry: 1,
+  });
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-96">
+        <Spinner className="w-8 h-8 text-primary-200" />
+      </div>
+    );
+  }
+
+  if (isError && axios.isAxiosError(error) && error.response?.status === 404) {
+    return <div className="text-primary-200 text-center w-full my-8">에고 정보를 불러오지 못했습니다.</div>;
+  }
+  const keywordInfo = data?.keyword.some((kw: string) => keyword_data.some((item) => item.name === kw));
 
   return (
-    <div className="">
-      <Tabs value="스킬" orientation="horizontal" className="md:flex ">
-        <div className=" flex flex-col md:items-start items-center gap-3 mt-4">
+    <div className="w-full">
+      <Tabs value="스킬" orientation="horizontal" className="lg:flex ">
+        <div className=" flex flex-col lg:items-start items-center gap-3 mt-4">
           <EgoInfoBox
-            character={ego_data.character}
-            name={ego_data.name}
-            zoomImage={ego_data.zoomImage}
-            grade={ego_data.grade}
-            season={ego_data.season}
-            resistance={ego_data.resistance}
-            releaseDate={ego_data.releaseDate}
-            obtainingMethod={ego_data.obtainingMethod}
-            cost={ego_data.cost}
+            character={data.character}
+            name={data.name}
+            zoomImage={data.zoomImage}
+            grade={data.grade}
+            season={data.season}
+            resistance={data.resistance}
+            releaseDate={data.releaseDate}
+            obtainingMethod={data.obtainingMethod}
+            cost={data.cost}
           />
 
           <TabsHeader
@@ -65,15 +82,9 @@ const EgoDetailPage = () => {
           }}
         >
           {menu.map((value) => (
-            <TabPanel
-              key={value}
-              value={value}
-              className=" text-white font-bold md:pl-10"
-            >
+            <TabPanel key={value} value={value} className=" text-white font-bold lg:pl-10 w-full">
               <div className="flex justify-between">
-                <span className="text-xl md:text-4xl text-primary-100">
-                  {value}
-                </span>
+                <span className="text-xl md:text-4xl text-primary-100">{value}</span>
 
                 {(value === "스킬" || value === "패시브") && (
                   <Button
@@ -81,8 +92,7 @@ const EgoDetailPage = () => {
                     placeholder={undefined}
                     onClick={() =>
                       setSynchronization({
-                        synchronization:
-                          (synchronization.synchronization + 1) % 2,
+                        synchronization: (synchronization.synchronization + 1) % 2,
                       })
                     }
                   >
@@ -101,22 +111,19 @@ const EgoDetailPage = () => {
                 {value === "스킬" && (
                   <EgoSkills
                     EgoSkills={{
-                      EgoSkill1s: ego_data.egoskills,
-                      EgoSkill2s: ego_data.egoCorSkills,
+                      EgoSkill1s: data.egoskills,
+                      EgoSkill2s: data.egoCorSkills,
                     }}
                   />
                 )}
-                {value === "패시브" && (
-                  <EgoPassive Egodata={ego_data.passive} />
-                )}
-                {value === "키워드" && <Keyword keywords={ego_data.keyword} />}
-                {value === "이미지" && (
-                  <EgoImage
-                    type="ego"
-                    beforeImage={ego_data.image}
-                    afterImage={ego_data.zoomImage}
-                  />
-                )}
+                {value === "패시브" && <EgoPassive Egodata={data.passive} />}
+                {value === "키워드" &&
+                  (keywordInfo ? (
+                    <Keyword keywords={data.keyword} />
+                  ) : (
+                    <div className="text-primary-200 text-center w-full my-8">키워드가 없습니다.</div>
+                  ))}
+                {value === "이미지" && <EgoImage type="ego" beforeImage={data.image} afterImage={data.zoomImage} />}
               </div>
             </TabPanel>
           ))}

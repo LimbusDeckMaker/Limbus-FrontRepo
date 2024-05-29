@@ -1,48 +1,57 @@
-import keyword from "@constants/keyword.json";
+import React from "react";
+import keywords from "@constants/keyword.json";
 
 interface KeywordHighlightedProps {
   text: string;
 }
 
 const KeywordHighlighted = ({ text }: KeywordHighlightedProps) => {
-  // Function to highlight keywords in the text
-  const highlightKeywords = (text: string) => {
-    // Regular expression pattern to split the text while preserving spaces
-    const words = text.split(/(\s+)/);
+  if (text === "") return <span></span>;
 
-    // Iterate through each word
-    return words.map((word, index) => {
-      const isInsideBrackets = /^\[.*\]$/.test(word);
-      if (isInsideBrackets) {
-        // If it's inside brackets, wrap it in a span with orange color
-        return (
-          <span key={index} style={{ color: "orange" }}>
-            {word}
-          </span>
-        );
-      } else {
-        // Check if the word is in the keyword list
-        const keywordData = keyword.find((item) => item.name.toLowerCase() === word.toLowerCase());
-        if (keywordData) {
-          // If it's a keyword, wrap it in a span with red color
-          return (
-            <span key={index} style={{ color: "red" }}>
-              {word}
-            </span>
-          );
-        } else {
-          // If it's not a keyword or inside brackets, return it as it is
-          return word;
-        }
-      }
-    });
-  };
+  const keywordNames = keywords.map((keyword) => keyword.name);
+  const regex = new RegExp(
+    `(${keywordNames.join("|")}|\\[.*?\\]|정신력)`,
+    "gi"
+  );
+
+  // \n을 기준으로 텍스트를 분할
+  const lines = text.split("\n");
 
   return (
-    <p className="font-sansLight">
-      {/* Rendering the text with highlighted keywords */}
-      {highlightKeywords(text)}
-    </p>
+    <span className="font-sansLight">
+      {lines.map((line, lineIndex) => (
+        <span key={lineIndex}>
+          {line.split(regex).map((part, index) => {
+            if (
+              keywordNames.some(
+                (keyword) => keyword.toLowerCase() === part.toLowerCase()
+              )
+            ) {
+              return (
+                <span key={index} className="text-yellow-500">
+                  {part}
+                </span>
+              );
+            } else if (part.match(/^\[.*?\]$/)) {
+              return (
+                <span key={index} className="text-orange-300">
+                  {part}
+                </span>
+              );
+            } else if (part.toLowerCase() === "정신력") {
+              return (
+                <span key={index} className="text-light-blue-200">
+                  {part}
+                </span>
+              );
+            } else {
+              return <span key={index}>{part}</span>;
+            }
+          })}
+          {lineIndex <= lines.length - 1 && <br />} {/* 줄바꿈 처리 */}
+        </span>
+      ))}
+    </span>
   );
 };
 
