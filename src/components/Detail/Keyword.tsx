@@ -21,6 +21,7 @@ const IdentityKeyword = ({ keywords }: IdentityKeywordProps) => {
                 className="inline-block h-[1.1em] mr-1 mb-[2px]"
               />
               <span>{keyword}</span>
+              <br />
               <KeywordHighlighted text={content} />
             </div>
           );
