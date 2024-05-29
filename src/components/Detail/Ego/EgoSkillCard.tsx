@@ -34,8 +34,12 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
   }
 
   return (
-    <div className="p-3 bg-primary-500 mb-2">
-      <div className="xl:flex xl:gap-3 items-center pb-2 lg:pb-4 ">
+    <div
+      className={`p-3 mb-2 bg-primary-500 ${
+        type === "Corrosion" && "shadow-inner-black"
+      }`}
+    >
+      <div className="xl:flex xl:gap-3 items-center pb-2 lg:pb-4">
         {/* 스킬 이름 */}
         <div
           className={`text-sm sm:text-lg xl:text-xl font-bold pr-4 lg:p-0 pb-2 mb-2 xl:mb-0 border-b-4 ${
@@ -50,8 +54,11 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
             />
           )}
           {/* 각성, 침식 */}
-          <span className="pr-4 text-base">{type}</span>
-          <span>{currentSkill.name}</span>
+          <span
+            className={type === "Corrosion" ? "text-gray-600" : "text-white"}
+          >
+            {currentSkill.name}
+          </span>
           <img
             src={`/assets/attackType/${currentSkill.atkType}.png`}
             alt="attackTypeImg"
@@ -76,21 +83,30 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
 
             <span className="">
               공격 레벨{" "}
-              <img src={`/assets/공격 레벨.png`} alt="attackTypeImg" className="inline-block w-auto h-5 pr-1 mb-1" />
+              <img
+                src={`/assets/공격 레벨.png`}
+                alt="attackTypeImg"
+                className="inline-block w-auto h-5 pr-1 mb-1"
+              />
               <span className="text-white">{currentSkill.power}</span>
             </span>
 
             <span className="flex items-center">
               <span className="w-[3em]">가중치 </span>
               {[...Array(currentSkill.atkWeight)].map((_, index) => (
-                <div key={index} className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-600 ml-[3px] mb-0.5"></div>
+                <div
+                  key={index}
+                  className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-600 ml-[3px] mb-0.5"
+                ></div>
               ))}
             </span>
             <span className="mr-2 sm:mr-0">
-              스킬 위력 <span className="text-white">{currentSkill.skillPower}</span>
+              스킬 위력{" "}
+              <span className="text-white">{currentSkill.skillPower}</span>
             </span>
             <span className="">
-              코인 위력 <span className="text-white">{currentSkill.coinPower}</span>
+              코인 위력{" "}
+              <span className="text-white">{currentSkill.coinPower}</span>
             </span>
           </div>
         </div>

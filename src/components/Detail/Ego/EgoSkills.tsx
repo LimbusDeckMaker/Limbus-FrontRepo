@@ -36,8 +36,16 @@ const EgoSkills = ({ EgoSkills }: Props) => {
 
   return (
     <div>
-      <EgoSkillCard type="Awakening" synchronization={syschroNum} skill={EgoSkill1s} />
-      <EgoSkillCard type="Corrosion" synchronization={syschroNum} skill={EgoSkill2s} />
+      <EgoSkillCard
+        type="Awakening"
+        synchronization={syschroNum}
+        skill={EgoSkill1s}
+      />
+      <EgoSkillCard
+        type="Corrosion"
+        synchronization={syschroNum}
+        skill={EgoSkill2s}
+      />
     </div>
   );
 };

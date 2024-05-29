@@ -7,6 +7,9 @@ module.exports = withMT({
   content: ["./src/**/*.{html,ts,js,jsx,tsx}"],
   theme: {
     extend: {
+      boxShadow: {
+        "inner-black": "inset 0 0 20px rgb(188 28 28)",
+      },
       colors: {
         "primary-100": "#FFD7AC",
         "primary-200": "#996633",
