@@ -207,6 +207,24 @@
       "activeCond": "보유",
       "effect": "광신이 있는 아군 중 가장 정신력이 낮은 아군의 피해량 +10%",
       "level": 4
+    },
+    {
+      "name": "3번째 패시브",
+      "isMain": false,
+      "resource": "색욕",
+      "resQuantity": 4,
+      "activeCond": "보유",
+      "effect": "광신이 있는 아군 중 가장 정신력이 낮은 아군의 피해량 +10%",
+      "level": 3
+    },
+    {
+      "name": "3번째 패시브 4동기화",
+      "isMain": false,
+      "resource": "색욕",
+      "resQuantity": 4,
+      "activeCond": "보유",
+      "effect": "광신이 있는 아군 중 가장 정신력이 낮은 아군의 피해량 +10%",
+      "level": 4
     }
   ]
 }

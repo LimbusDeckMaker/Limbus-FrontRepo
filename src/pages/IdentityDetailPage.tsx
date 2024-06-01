@@ -13,6 +13,7 @@ import { getIdentityDetail } from "@apis/detailAPI";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import keyword_data from "@constants/keyword.json";
+import identity_detail from "@constants/identity_detail.json";
 
 const IdentityDetailPage = () => {
   const id = useParams().id;
@@ -32,9 +33,14 @@ const IdentityDetailPage = () => {
     );
   }
 
+  if (isError) {
+    console.log(error);
+  }
+
   if (isError && axios.isAxiosError(error) && error.response?.status === 404) {
     return <div className="text-primary-200 text-center w-full my-8">인격 정보를 불러오지 못했습니다.</div>;
   }
+
   const keywordInfo = data?.keyword.some((kw: string) => keyword_data.some((item) => item.name === kw));
 
   return (
