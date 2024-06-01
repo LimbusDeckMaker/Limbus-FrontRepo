@@ -26,10 +26,6 @@ const keywordOptionList: Option[] = keyword.map((item) => ({
 const Filter = () => {
   const [options, setOptions] = useRecoilState(optionsState);
 
-  useEffect(() => {
-    console.log("Updated options:", options);
-  }, [options]);
-
   const {
     selectedOptions: keywordOptions,
     handleSelectChange: handleSelectChangeKeyword,

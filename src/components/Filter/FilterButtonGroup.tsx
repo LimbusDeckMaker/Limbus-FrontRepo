@@ -66,8 +66,6 @@ const FilterButtonGroup = ({
     savePropertyToOptions(
       buttons.filter((button) => button.isSelected).map((button) => button.name)
     );
-
-    // console.log("Updated options:", options);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [buttons]);
 
