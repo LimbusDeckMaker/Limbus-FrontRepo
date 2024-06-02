@@ -20,9 +20,13 @@ const IdentityThumbnailCard = ({
   isSync,
 }: IdentityThumbnailCardProps) => {
   const calculateTextSize = (text: string): string => {
-    return text.length > 10
-      ? "text-[0.46rem] sm:text-[0.65rem] leading-[1.05] sm:leading-[1.1]"
-      : "text-[0.5rem] sm:text-[0.8rem]";
+    if (text.length > 14) {
+      return "text-[0.46rem] sm:text-[0.65rem] leading-[1.05] sm:leading-[1.1]";
+    } else if (text.length > 7) {
+      return "text-[0.48rem] sm:text-[0.72rem] leading-[1.09] sm:leading-[1.16]";
+    } else {
+      return "";
+    }
   };
 
   return (
@@ -36,13 +40,9 @@ const IdentityThumbnailCard = ({
               alt="grade"
             />
           </div>
-          <div
-            className={`flex flex-col gap-0 justify-center text-center items-center w-full h-6 sm:h-10 ${calculateTextSize(
-              name
-            )}`}
-          >
-            <span>{name}</span>
-            <span>{character}</span>
+          <div className="flex flex-col gap-0 justify-center text-center items-center w-full h-6 sm:h-10 text-[0.5rem] sm:text-[0.8rem] leading-[1.1] sm:leading-[1.2]">
+            <span className={`${calculateTextSize(name)}`}>{name}</span>
+            <span className="">{character}</span>
           </div>
         </div>
         {!isSync ? (
