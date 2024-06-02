@@ -16,6 +16,9 @@ import { Button, Input, Spinner } from "@material-tailwind/react";
 import { LuSearch } from "react-icons/lu";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 
+// JSON 파일 import
+import nicknamesData from "@constants/nicknames.json";
+
 const IdentityPage = () => {
   const [isSync, setIsSync] = useState(false);
   const [openFilter, setOpenFilter] = useState(false);
@@ -45,12 +48,31 @@ const IdentityPage = () => {
     retry: 1,
   });
 
-  // 이름 검색 필터링
+  // 별명 데이터를 상태로 저장
+  const [nicknames, setNicknames] = useState<{ [key: string]: string[] }>({});
+
+  useEffect(() => {
+    // JSON 파일의 데이터를 상태로 설정
+    const nicknamesMap: { [key: string]: string[] } = {};
+    nicknamesData.forEach((item: any) => {
+      nicknamesMap[item.id] = item.nicknames;
+    });
+    setNicknames(nicknamesMap);
+  }, []);
+
+  // 이름 및 별명 검색 필터링
   const filteredData =
     data &&
-    data.filter((item: any) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    data.filter((item: any) => {
+      const nameMatch = item.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+      const nicknameMatch =
+        nicknames[item.id]?.some((nickname) =>
+          nickname.toLowerCase().includes(searchTerm.toLowerCase())
+        ) || false;
+      return nameMatch || nicknameMatch;
+    });
 
   // 모달 배경 클릭 시 닫기
   const handleBackgroundClick = (

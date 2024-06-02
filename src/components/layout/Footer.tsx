@@ -13,8 +13,9 @@ const Footer = () => {
         <div className="text-center md:text-left mt-2 text-primary-100">
           <p className="font-title text-md">단테의 빵과 수프</p>
           <p className="text-xs py-2 font-light">
-            팀 단테의 빵과 수프입니다. 문의사항이나 버그 제보는 아래로
-            연락해주세요.
+            팀 단테의 빵과 수프입니다.
+            <br />
+            문의사항이나 버그 제보는 아래로 연락해주세요.
             <br />
             bas.limbus@gmail.com
           </p>
