@@ -56,32 +56,34 @@ const EgoInfoBox = ({
       <div className="flex flex-col items-center pb-4">
         <p className="text-primary-100">내성</p>
         <p className="p-1 text-xs md:text-sm flex flex-wrap justify-center items-center text-center">
-          {resistance.map((type, index) => (
-            <span
-              key={index}
-              className={`flex items-center mr-2 mb-2 ${
-                type === "내성"
-                  ? "text-gray-500"
-                  : type === "취약"
-                  ? "text-red-500"
-                  : type === "견딤"
-                  ? "text-gray-600"
-                  : ""
-              }`}
-            >
-              <img src={resourseImg[index]} alt="beforeImage" className="w-[14px] h-[14px]" />
-              {type}{" "}
-            </span>
-          ))}
+          {Array.isArray(resistance) &&
+            resistance.map((type, index) => (
+              <span
+                key={index}
+                className={`flex items-center mr-2 mb-2 ${
+                  type === "내성"
+                    ? "text-gray-500"
+                    : type === "취약"
+                    ? "text-red-500"
+                    : type === "견딤"
+                    ? "text-gray-600"
+                    : ""
+                }`}
+              >
+                <img src={resourseImg[index]} alt="beforeImage" className="w-[14px] h-[14px]" />
+                {type}{" "}
+              </span>
+            ))}
         </p>
         <p className="text-primary-100">코스트</p>
         <p className="p-1 text-xs md:text-sm flex">
-          {cost.map((type, index) => (
-            <span key={index} className={`flex mr-2 ${type === 0 ? "text-gray-600" : ""}`}>
-              <img src={resourseImg[index]} alt="beforeImage" style={{ width: "14px", height: "14px" }} />
-              {type}{" "}
-            </span>
-          ))}
+          {Array.isArray(cost) &&
+            cost.map((type, index) => (
+              <span key={index} className={`flex mr-2 ${type === 0 ? "text-gray-600" : ""}`}>
+                <img src={resourseImg[index]} alt="beforeImage" style={{ width: "14px", height: "14px" }} />
+                {type}{" "}
+              </span>
+            ))}
         </p>
         <p className="p-1 text-xs md:text-xs">
           <span className="text-primary-100">시즌</span> : {season}

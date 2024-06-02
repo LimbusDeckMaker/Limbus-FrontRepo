@@ -210,7 +210,7 @@
     },
     {
       "name": "3번째 패시브",
-      "isMain": false,
+      "isMain": true,
       "resource": "색욕",
       "resQuantity": 4,
       "activeCond": "보유",

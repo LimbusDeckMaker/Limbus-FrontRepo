@@ -20,23 +20,27 @@ const IdentityPassive = ({ identityPassives }: Props) => {
   const synchroOption = useRecoilValue(synchronizationState);
   const syschroNum = synchroOption.synchronization;
 
-  // Remove the level property from the passives
   const filteredPassives = identityPassives.map(({ level, ...passive }) => passive);
+  console.log(filteredPassives);
 
-  // Render PassiveCard components conditionally based on the length of filteredPassives
-  return (
-    <div>
-      {filteredPassives.length > syschroNum && (
-        <PassiveCard type="Passive" synchronization={syschroNum} passive={filteredPassives[syschroNum]} />
-      )}
-      {filteredPassives.length > syschroNum + 2 && (
-        <PassiveCard type="Support Passive" synchronization={syschroNum} passive={filteredPassives[syschroNum + 2]} />
-      )}
-      {filteredPassives.length > syschroNum + 4 && (
-        <PassiveCard type="Support Passive" synchronization={syschroNum} passive={filteredPassives[syschroNum + 4]} />
-      )}
-    </div>
-  );
+  const passivesToRender = [0, 2, 4]
+    .map((offset) => {
+      const index = syschroNum + offset;
+      if (filteredPassives.length > index) {
+        return (
+          <PassiveCard
+            key={index}
+            type={filteredPassives[index].isMain ? "Passive" : "Support Passive"}
+            synchronization={syschroNum}
+            passive={filteredPassives[index]}
+          />
+        );
+      }
+      return null;
+    })
+    .filter(Boolean);
+
+  return <div>{passivesToRender}</div>;
 };
 
 export default IdentityPassive;

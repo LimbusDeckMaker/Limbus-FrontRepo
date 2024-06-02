@@ -58,24 +58,26 @@ const IdentityInfoBox = ({
       <div className="flex flex-col items-center pb-4">
         {/* 체력 속도 방어력 */}
         <p className="p-1 text-xs md:text-xs flex">
-          {statusArray.map((item, index) => (
-            <span key={index} className="flex mr-2">
-              <img src={statusImg[index]} alt="beforeImage" className="w-[14px] h-[14px]" />
-              {item}
-            </span>
-          ))}
+          {Array.isArray(statusArray) &&
+            statusArray.map((item, index) => (
+              <span key={index} className="flex mr-2">
+                <img src={statusImg[index]} alt="beforeImage" className="w-[14px] h-[14px]" />
+                {item}
+              </span>
+            ))}
         </p>
         {/* 내성 */}
         <p className="p-1 text-xs md:text-xs flex">
-          {resistance.map((type, index) => (
-            <span
-              key={index}
-              className={`flex mr-2 ${type === "내성" ? "text-gray-400" : type === "취약" ? "text-red-500" : ""}`}
-            >
-              <img src={resistanceImg[index]} alt="beforeImage" className="w-[14px] h-[14px]" />
-              {type}{" "}
-            </span>
-          ))}
+          {Array.isArray(resistance) &&
+            resistance.map((type, index) => (
+              <span
+                key={index}
+                className={`flex mr-2 ${type === "내성" ? "text-gray-400" : type === "취약" ? "text-red-500" : ""}`}
+              >
+                <img src={resistanceImg[index]} alt="beforeImage" className="w-[14px] h-[14px]" />
+                {type}{" "}
+              </span>
+            ))}
         </p>
         {/* 시즌 */}
         <p className="p-1 text-xs md:text-xs">
