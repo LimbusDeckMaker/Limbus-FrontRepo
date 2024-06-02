@@ -11,7 +11,7 @@ import { optionsState } from "@recoils/atoms";
 import Filter from "@components/Filter/Filter";
 import IdentityThumbnailCard from "@components/IdentityThumbnailCard";
 import ErrorMessage from "@components/ui/ErrorMessage";
-import { Button, Input, Spinner } from "@material-tailwind/react";
+import { Button, Input, Spinner, Tooltip } from "@material-tailwind/react";
 
 import { LuSearch } from "react-icons/lu";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
@@ -136,18 +136,25 @@ const IdentityPage = () => {
               <span className="whitespace-nowrap">필터</span>
             </Button>
             <div className="flex gap-2">
-              <Button
-                className="min-w-[80px] flex gap-2 items-center bg-primary-400 px-2 md:px-4 py-0 md:py-1 font-sansLight text-sm md:text-base text-white hover:bg-primary-300 rounded"
-                placeholder={undefined}
-                onClick={() => setIsSync((prev) => !prev)}
+              <Tooltip
+                className="bg-primary-500 text-primary-100 text-xs"
+                content={
+                  <span>체크 시 3 동기화 후 이미지를 확인할 수 있습니다.</span>
+                }
               >
-                <span className="pt-1 whitespace-nowrap">동기화</span>
-                {isSync ? (
-                  <FaCheckCircle className="text-primary-200" />
-                ) : (
-                  <FaRegCircle className="text-primary-200" />
-                )}
-              </Button>
+                <Button
+                  className="min-w-[80px] flex gap-2 items-center bg-primary-400 px-2 md:px-4 py-0 md:py-1 font-sansLight text-sm md:text-base text-white hover:bg-primary-300 rounded"
+                  placeholder={undefined}
+                  onClick={() => setIsSync((prev) => !prev)}
+                >
+                  <span className="pt-1 whitespace-nowrap">동기화</span>
+                  {isSync ? (
+                    <FaCheckCircle className="text-primary-200" />
+                  ) : (
+                    <FaRegCircle className="text-primary-200" />
+                  )}
+                </Button>
+              </Tooltip>
               <div className="relative flex w-full gap-2 md:w-max">
                 <Input
                   type="search"
