@@ -7,6 +7,7 @@ import IdentityDetailPage from "@pages/IdentityDetailPage";
 import IdentityPage from "@pages/IdentityPage";
 import EgoDetailPage from "@pages/EgoDetailPage";
 import EgoPage from "@pages/EgoPage";
+import Preparing from "@components/Preparing";
 
 const Router = () => {
   return (
@@ -18,8 +19,8 @@ const Router = () => {
           <Route path="/identity/:id" element={<IdentityDetailPage />} />
           <Route path="/ego" element={<EgoPage />} />
           <Route path="/ego/:id" element={<EgoDetailPage />} />
-          <Route path="/building" element={<div>덱 빌딩</div>} />
-          <Route path="/tier" element={<div>티어리스트</div>} />
+          <Route path="/building" element={<Preparing />} />
+          <Route path="/tier" element={<Preparing />} />
         </Route>
       </Routes>
     </BrowserRouter>
