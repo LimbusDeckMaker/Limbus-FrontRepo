@@ -70,7 +70,11 @@ const EgoInfoBox = ({
                     : ""
                 }`}
               >
-                <img src={resourseImg[index]} alt="beforeImage" className="w-[14px] h-[14px]" />
+                <img
+                  src={resourseImg[index]}
+                  alt="beforeImage"
+                  className="w-[14px] h-[14px]"
+                />
                 {type}{" "}
               </span>
             ))}
@@ -79,8 +83,15 @@ const EgoInfoBox = ({
         <p className="p-1 text-xs md:text-sm flex">
           {Array.isArray(cost) &&
             cost.map((type, index) => (
-              <span key={index} className={`flex mr-2 ${type === 0 ? "text-gray-600" : ""}`}>
-                <img src={resourseImg[index]} alt="beforeImage" style={{ width: "14px", height: "14px" }} />
+              <span
+                key={index}
+                className={`flex mr-2 ${type === 0 ? "text-gray-600" : ""}`}
+              >
+                <img
+                  src={resourseImg[index]}
+                  alt="beforeImage"
+                  style={{ width: "14px", height: "14px" }}
+                />
                 {type}{" "}
               </span>
             ))}
@@ -102,14 +113,19 @@ const EgoInfoBox = ({
     <div className="bg-primary-500 text-white w-64 rounded-md">
       <div className="w-64 h-auto py-4 gap-2 flex flex-col items-center relative">
         {/* tailwind에 퍼센티지는 없어서 일단 유지 */}
-        <img src={zoomImage} alt="profile" className="h-auto" style={{ width: "40%" }} />
+        <img src={zoomImage} alt="profile" className="h-auto w-2/5" />
 
-        {/* TODO : 머지후 이미지로 넣기 */}
-
-        <img src={`/assets/common/${grade}.png`} alt="grade" className=" h-auto" style={{ width: "40%" }} />
+        <img
+          src={`/assets/common/${grade}.png`}
+          alt="grade"
+          className=" h-auto"
+          style={{ width: "40%" }}
+        />
 
         <p className="text-xl font-bold font-sans text-primary-100">{name}</p>
-        <p className="text-xl font-bold font-sans text-primary-100 -mt-2">{character}</p>
+        <p className="text-xl font-bold font-sans text-primary-100 -mt-2">
+          {character}
+        </p>
 
         {/* Button to trigger collapse on smaller screens */}
         <div className="lg:hidden">
@@ -124,7 +140,11 @@ const EgoInfoBox = ({
         </div>
       </div>
 
-      {!isLargeScreen ? <Collapse open={open}>{renderCollapseContent()}</Collapse> : renderCollapseContent()}
+      {!isLargeScreen ? (
+        <Collapse open={open}>{renderCollapseContent()}</Collapse>
+      ) : (
+        renderCollapseContent()
+      )}
     </div>
   );
 };

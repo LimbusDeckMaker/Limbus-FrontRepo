@@ -1,5 +1,11 @@
 import EgoInfoBox from "@components/Detail/Ego/EgoInfoBox";
-import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react";
+import {
+  Tabs,
+  TabsHeader,
+  TabsBody,
+  Tab,
+  TabPanel,
+} from "@material-tailwind/react";
 import { synchronizationState } from "@recoils/atoms";
 import { useRecoilState } from "recoil";
 import { Button, Spinner } from "@material-tailwind/react";
@@ -16,7 +22,8 @@ import keyword_data from "@constants/keyword.json";
 
 const EgoDetailPage = () => {
   const { id } = useParams();
-  const [synchronization, setSynchronization] = useRecoilState(synchronizationState);
+  const [synchronization, setSynchronization] =
+    useRecoilState(synchronizationState);
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["identity", id],
@@ -33,11 +40,16 @@ const EgoDetailPage = () => {
   }
 
   if (isError && axios.isAxiosError(error) && error.response?.status === 404) {
-    return <div className="text-primary-200 text-center w-full my-8">에고 정보를 불러오지 못했습니다.</div>;
+    return (
+      <div className="text-primary-200 text-center w-full my-8">
+        에고 정보를 불러오지 못했습니다.
+      </div>
+    );
   }
 
-  const keywordInfo = data?.keyword && data.keyword.some((kw: string) => keyword_data.some((item) => item.name === kw));
-
+  const keywordInfo = data?.keyword.some((kw: string) =>
+    keyword_data.some((item) => item.name === kw && item.content)
+  );
   return (
     <div className="w-full">
       {data && (
@@ -84,9 +96,15 @@ const EgoDetailPage = () => {
             }}
           >
             {menu.map((value) => (
-              <TabPanel key={value} value={value} className="text-white font-bold lg:pl-10 w-full">
+              <TabPanel
+                key={value}
+                value={value}
+                className="text-white font-bold lg:pl-10 w-full"
+              >
                 <div className="flex justify-between">
-                  <span className="text-xl md:text-4xl text-primary-100">{value}</span>
+                  <span className="text-xl md:text-4xl text-primary-100">
+                    {value}
+                  </span>
 
                   {(value === "스킬" || value === "패시브") && (
                     <Button
@@ -94,7 +112,8 @@ const EgoDetailPage = () => {
                       placeholder={undefined}
                       onClick={() =>
                         setSynchronization({
-                          synchronization: (synchronization.synchronization + 1) % 2,
+                          synchronization:
+                            (synchronization.synchronization + 1) % 2,
                         })
                       }
                     >
@@ -118,15 +137,23 @@ const EgoDetailPage = () => {
                       }}
                     />
                   )}
-                  {value === "패시브" && data.passive && <EgoPassive Egodata={data.passive} />}
+                  {value === "패시브" && data.passive && (
+                    <EgoPassive Egodata={data.passive} />
+                  )}
                   {value === "키워드" &&
                     (keywordInfo ? (
                       <Keyword keywords={data.keyword} />
                     ) : (
-                      <div className="text-primary-200 text-center w-full my-8">키워드가 없습니다.</div>
+                      <div className="text-primary-200 text-center w-full my-8">
+                        키워드가 없습니다.
+                      </div>
                     ))}
                   {value === "이미지" && data.image && data.zoomImage && (
-                    <EgoImage type="ego" beforeImage={data.image} afterImage={data.corImage} />
+                    <EgoImage
+                      type="ego"
+                      beforeImage={data.image}
+                      afterImage={data.corImage}
+                    />
                   )}
                 </div>
               </TabPanel>

@@ -91,7 +91,7 @@ const EgoFilter = () => {
         title="가중치"
         name="Weight"
         minValue={1}
-        maxValue={6}
+        maxValue={7}
         isIdentityPage={false}
       />
       <FilterButtonGroup
