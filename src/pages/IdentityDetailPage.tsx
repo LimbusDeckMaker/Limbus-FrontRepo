@@ -19,6 +19,7 @@ import { getIdentityDetail } from "@apis/detailAPI";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import keyword_data from "@constants/keyword.json";
+import ErrorMessage from "@components/ui/ErrorMessage";
 
 const IdentityDetailPage = () => {
   const id = useParams().id;
@@ -49,6 +50,12 @@ const IdentityDetailPage = () => {
         인격 정보를 불러오지 못했습니다.
       </div>
     );
+  } else if (isError) {
+    return (
+      <div className="text-primary-200 text-center w-full my-8">
+        <ErrorMessage />
+      </div>
+    );
   }
 
   const keywordInfo = data?.keyword.some((kw: string) =>
@@ -56,7 +63,7 @@ const IdentityDetailPage = () => {
   );
 
   return (
-    <div className="">
+    <div className="w-full">
       <Tabs value="스킬" orientation="horizontal" className="lg:flex">
         <div className="flex flex-col lg:items-start items-center gap-3 mt-4">
           <IdentityInfoBox

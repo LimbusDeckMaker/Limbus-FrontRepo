@@ -19,6 +19,7 @@ import { getEgoDetail } from "@apis/detailAPI";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import keyword_data from "@constants/keyword.json";
+import ErrorMessage from "@components/ui/ErrorMessage";
 
 const EgoDetailPage = () => {
   const { id } = useParams();
@@ -45,13 +46,19 @@ const EgoDetailPage = () => {
         에고 정보를 불러오지 못했습니다.
       </div>
     );
+  } else if (isError) {
+    return (
+      <div className="text-primary-200 text-center w-full my-8">
+        <ErrorMessage />
+      </div>
+    );
   }
 
   const keywordInfo = data?.keyword.some((kw: string) =>
     keyword_data.some((item) => item.name === kw && item.content)
   );
   return (
-    <div className="w-full">
+    <div className="w-full h-screen">
       {data && (
         <Tabs value="스킬" orientation="horizontal" className="lg:flex ">
           <div className="flex flex-col lg:items-start items-center gap-3 mt-4">

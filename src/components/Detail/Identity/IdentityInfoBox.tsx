@@ -70,40 +70,38 @@ const IdentityInfoBox = ({
       <div className="flex flex-col items-center pb-4">
         {/* 체력 속도 방어력 */}
         <p className="p-1 text-xs md:text-xs flex">
-          {Array.isArray(statusArray) &&
-            statusArray.map((item, index) => (
-              <span key={index} className="flex mr-2">
-                <img
-                  src={statusImg[index]}
-                  alt="beforeImage"
-                  className="w-[14px] h-[14px]"
-                />
-                {item}
-              </span>
-            ))}
+          {statusArray.map((item, index) => (
+            <span key={index} className="flex mr-2">
+              <img
+                src={statusImg[index]}
+                alt="beforeImage"
+                className="w-[14px] h-[14px]"
+              />
+              {item}
+            </span>
+          ))}
         </p>
         {/* 내성 */}
         <p className="p-1 text-xs md:text-xs flex">
-          {Array.isArray(resistance) &&
-            resistance.map((type, index) => (
-              <span
-                key={index}
-                className={`flex mr-2 ${
-                  type === "내성"
-                    ? "text-gray-400"
-                    : type === "취약"
-                    ? "text-red-500"
-                    : ""
-                }`}
-              >
-                <img
-                  src={resistanceImg[index]}
-                  alt="beforeImage"
-                  className="w-[14px] h-[14px]"
-                />
-                {type}{" "}
-              </span>
-            ))}
+          {resistance.map((type, index) => (
+            <span
+              key={index}
+              className={`flex mr-2 ${
+                type === "내성"
+                  ? "text-gray-400"
+                  : type === "취약"
+                  ? "text-red-500"
+                  : ""
+              }`}
+            >
+              <img
+                src={resistanceImg[index]}
+                alt="beforeImage"
+                className="w-[14px] h-[14px]"
+              />
+              {type}{" "}
+            </span>
+          ))}
         </p>
         {/* 시즌 */}
         <p className="p-1 text-xs md:text-xs">
@@ -126,8 +124,13 @@ const IdentityInfoBox = ({
   return (
     <div className="bg-primary-500 text-white w-64 rounded-md">
       <div className="w-64 h-auto py-4 gap-2 flex flex-col items-center relative">
+        {/* tailwind에 퍼센티지는 없어서 일단 유지 */}
         <img src={afterProfileImage} alt="profile" className="w-2/5 h-auto" />
-        <img src={gradeImg[grade - 1]} alt="grade" className="w-[15%] h-auto" />
+        <img
+          src={gradeImg[grade - 1]}
+          alt="grade"
+          className="w-auto h-[35px]"
+        />
 
         <p className="text-xl font-bold font-sans text-primary-100">{name}</p>
         <p className="text-xl font-bold font-sans text-primary-100 -mt-2">
