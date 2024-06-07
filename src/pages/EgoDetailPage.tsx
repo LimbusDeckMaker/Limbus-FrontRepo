@@ -58,7 +58,7 @@ const EgoDetailPage = () => {
     keyword_data.some((item) => item.name === kw && item.content)
   );
   return (
-    <div className="w-full h-screen">
+    <div className="w-full mb-8">
       {data && (
         <Tabs value="스킬" orientation="horizontal" className="lg:flex ">
           <div className="flex flex-col lg:items-start items-center gap-3 mt-4">

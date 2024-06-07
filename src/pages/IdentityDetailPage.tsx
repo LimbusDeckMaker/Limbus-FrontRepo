@@ -63,7 +63,7 @@ const IdentityDetailPage = () => {
   );
 
   return (
-    <div className="w-full">
+    <div className="w-full mb-8">
       <Tabs value="스킬" orientation="horizontal" className="lg:flex">
         <div className="flex flex-col lg:items-start items-center gap-3 mt-4">
           <IdentityInfoBox

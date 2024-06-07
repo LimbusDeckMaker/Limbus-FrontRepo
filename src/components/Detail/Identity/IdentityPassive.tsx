@@ -20,8 +20,9 @@ const IdentityPassive = ({ identityPassives }: Props) => {
   const synchroOption = useRecoilValue(synchronizationState);
   const syschroNum = synchroOption.synchronization;
 
-  const filteredPassives = identityPassives.map(({ level, ...passive }) => passive);
-  console.log(filteredPassives);
+  const filteredPassives = identityPassives.map(
+    ({ level, ...passive }) => passive
+  );
 
   const passivesToRender = [0, 2, 4]
     .map((offset) => {
@@ -30,7 +31,9 @@ const IdentityPassive = ({ identityPassives }: Props) => {
         return (
           <PassiveCard
             key={index}
-            type={filteredPassives[index].isMain ? "Passive" : "Support Passive"}
+            type={
+              filteredPassives[index].isMain ? "Passive" : "Support Passive"
+            }
             synchronization={syschroNum}
             passive={filteredPassives[index]}
           />
