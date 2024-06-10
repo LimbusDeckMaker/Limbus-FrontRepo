@@ -18,30 +18,19 @@ interface Passives {
 
 const IdentityPassive = ({ identityPassives }: Props) => {
   const synchroOption = useRecoilValue(synchronizationState);
-  const syschroNum = synchroOption.synchronization;
+  const synchroNum = synchroOption.synchronization;
 
-  const filteredPassives = identityPassives.map(
-    ({ level, ...passive }) => passive
+  const filteredPassives: Passives[] = identityPassives.filter(
+    (passive) => passive.level === synchroNum + 3
   );
 
-  const passivesToRender = [0, 2, 4]
-    .map((offset) => {
-      const index = syschroNum + offset;
-      if (filteredPassives.length > index) {
-        return (
-          <PassiveCard
-            key={index}
-            type={
-              filteredPassives[index].isMain ? "Passive" : "Support Passive"
-            }
-            synchronization={syschroNum}
-            passive={filteredPassives[index]}
-          />
-        );
-      }
-      return null;
-    })
-    .filter(Boolean);
+  const passivesToRender = filteredPassives.map((passive, index) => (
+    <PassiveCard
+      key={index}
+      type={passive.isMain ? "Passive" : "Support Passive"}
+      passive={passive}
+    />
+  ));
 
   return <div>{passivesToRender}</div>;
 };
