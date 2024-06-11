@@ -3,12 +3,7 @@ import { synchronizationState } from "@recoils/atoms";
 import { useRecoilValue } from "recoil";
 
 interface Props {
-  identitySkills: {
-    identitySkill1s: Skill[];
-    identitySkill2s: Skill[];
-    identitySkill3s: Skill[];
-    identityDefSkills: Skill[];
-  };
+  identitySkills: Skill[][];
 }
 
 interface Skill {
@@ -31,17 +26,49 @@ interface Skill {
 }
 
 const IdentitySkills = ({ identitySkills }: Props) => {
-  const { identitySkill1s, identitySkill2s, identitySkill3s, identityDefSkills } = identitySkills;
   const synchroOption = useRecoilValue(synchronizationState);
+  const synchroNum = synchroOption.synchronization;
 
-  const syschroNum = synchroOption.synchronization;
+  // 배열을 크기가 2인 배열로 변환하는 함수
+  const splitIntoPairs = (skillsArray: Skill[][]): Skill[][] => {
+    let result: Skill[][] = [];
+    for (let skills of skillsArray) {
+      for (let i = 0; i < skills.length; i += 2) {
+        result.push(skills.slice(i, i + 2));
+      }
+    }
+    return result;
+  };
+
+  // 변환된 배열을 저장
+  const processedIdentitySkills = splitIntoPairs(identitySkills);
+
+  // skillSeq에 따라 type을 설정하는 함수
+  const getTypeBySkillSeq = (skillSeq: number) => {
+    switch (skillSeq) {
+      case 1:
+        return "1 Skill";
+      case 2:
+        return "2 Skill";
+      case 3:
+        return "3 Skill";
+      case 4:
+        return "DEFENSE";
+      default:
+        return "Unknown Skill";
+    }
+  };
 
   return (
     <div>
-      <IdentitySkillCard type="1 Skill" synchronization={syschroNum} skill={identitySkill1s} />
-      <IdentitySkillCard type="2 Skill" synchronization={syschroNum} skill={identitySkill2s} />
-      <IdentitySkillCard type="3 Skill" synchronization={syschroNum} skill={identitySkill3s} />
-      <IdentitySkillCard type="DEFENSE" synchronization={syschroNum} skill={identityDefSkills} />
+      {processedIdentitySkills.map((skills, index) => (
+        <IdentitySkillCard
+          key={index}
+          type={getTypeBySkillSeq(skills[0]?.skillSeq || 0)}
+          synchronization={synchroNum}
+          skill={skills}
+        />
+      ))}
     </div>
   );
 };

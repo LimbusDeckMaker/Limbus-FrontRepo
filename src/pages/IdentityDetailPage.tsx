@@ -62,6 +62,13 @@ const IdentityDetailPage = () => {
     keyword_data.some((item) => item.name === kw && item.content)
   );
 
+  const identitySkills = [
+    data.identitySkill1s,
+    data.identitySkill2s,
+    data.identitySkill3s,
+    data.identityDefSkills,
+  ];
+
   return (
     <div className="w-full mb-8">
       <Tabs value="스킬" orientation="horizontal" className="lg:flex">
@@ -137,14 +144,7 @@ const IdentityDetailPage = () => {
               </div>
               <div className="py-1">
                 {value === "스킬" && (
-                  <IdentitySkills
-                    identitySkills={{
-                      identitySkill1s: data.identitySkill1s,
-                      identitySkill2s: data.identitySkill2s,
-                      identitySkill3s: data.identitySkill3s,
-                      identityDefSkills: data.identityDefSkills,
-                    }}
-                  />
+                  <IdentitySkills identitySkills={identitySkills} />
                 )}
                 {value === "패시브" && (
                   <IdentityPassive identityPassives={data.identityPassives} />
