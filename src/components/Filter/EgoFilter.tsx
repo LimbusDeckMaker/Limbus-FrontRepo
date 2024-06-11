@@ -25,10 +25,6 @@ const keywordOptionList: Option[] = keyword.map((item) => ({
 const EgoFilter = () => {
   const [options, setOptions] = useRecoilState(egoOptionsState);
 
-  useEffect(() => {
-    console.log("Updated options:", options);
-  }, [options]);
-
   const {
     selectedOptions: keywordOptions,
     handleSelectChange: handleSelectChangeKeyword,

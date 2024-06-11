@@ -1,7 +1,7 @@
 import React from "react";
 
 import { IconButton, Typography } from "@material-tailwind/react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import nav from "@constants/nav.json";
 import { FaGithub, FaYoutube } from "react-icons/fa";
 
@@ -15,7 +15,9 @@ const Footer = () => {
           <p className="text-xs py-2 font-light">
             팀 단테의 빵과 수프입니다.
             <br />
-            이메일@gmail.com
+            문의사항이나 버그 제보는 아래로 연락해주세요.
+            <br />
+            bas.limbus@gmail.com
           </p>
         </div>
         <div className="hidden md:flex mb-14">
@@ -42,11 +44,15 @@ const Footer = () => {
         />
         <div className="flex">
           <IconButton variant="text" placeholder={undefined}>
-            <FaGithub size={25} className="text-primary-200" />
+            <Link to="https://github.com/LimbusDeckMaker" target="_blank">
+              <FaGithub size={25} className="text-primary-200" />
+            </Link>
           </IconButton>
-          <IconButton variant="text" placeholder={undefined}>
+          {/* <IconButton variant="text" placeholder={undefined}>
+          <Link to="https://github.com/LimbusDeckMaker" target="_blank">
             <FaYoutube size={25} className="text-primary-200" />
-          </IconButton>
+          </Link>
+          </IconButton> */}
         </div>
       </div>
     </footer>

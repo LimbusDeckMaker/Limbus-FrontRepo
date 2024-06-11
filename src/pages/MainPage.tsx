@@ -3,7 +3,7 @@ import React from "react";
 import YouTube from "react-youtube";
 import SiteLink from "@components/SiteLink";
 import ThumbnailCard from "@components/ThumbnailCard";
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 import { Main_Keys } from "@constants/queryKeys";
 import { getNews, getYoutube } from "@apis/mainApi";
 
@@ -15,19 +15,18 @@ interface News {
 }
 
 const MainPage = () => {
-
   const { data } = useQuery({
     queryKey: Main_Keys.youtube,
     queryFn: getYoutube,
   });
 
-  const { data:news } = useQuery({
+  const { data: news } = useQuery({
     queryKey: Main_Keys.news,
     queryFn: getNews,
   });
 
   return (
-    <div className="font-sansBold text-primary-100 py-4 md:py-20">
+    <div className="font-sans font-bold text-primary-100 py-4 md:py-20">
       <div className="flex flex-col md:flex-row items-center justify-center lg:w-3/4 mx-auto gap-4">
         <div className="flex flex-col gap-4 items-center justify-center w-11/12 md:w-1/2 md:mx-auto">
           <div className="bg-primary-400 w-full mx-auto p-2 md:p-4">
@@ -52,7 +51,7 @@ const MainPage = () => {
           </div>
           <div className="bg-primary-400 w-full mx-auto p-2 md:p-4">
             <div className="pb-2">
-              <span className="text- base md:text-xl">공식사이트 바로가기</span>
+              <span className="text-base md:text-xl">공식사이트 바로가기</span>
             </div>
             <SiteLink />
           </div>
