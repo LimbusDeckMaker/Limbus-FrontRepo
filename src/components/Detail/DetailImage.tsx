@@ -20,7 +20,7 @@ const IdentityImage = ({ beforeImage, afterImage, type }: Props) => {
         <CardBody className="bg-primary-500 rounded-md p-3 md:p-6" placeholder="CardBody">
           <p className="text-base md:text-xl font-bold mb-2 md:mb-5 text-white">
             {/* TODO : 침식 대신 확대로 넣어둠, 침식 이미지 삽입시 수정 */}
-            {type === "identity" ? "동기화 후" : "확대"}
+            {type === "identity" ? "동기화 후" : "침식"}
           </p>
           <img src={afterImage} alt="afterImage" />
         </CardBody>

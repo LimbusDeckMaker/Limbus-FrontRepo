@@ -20,9 +20,21 @@ interface IdentityInfoBoxProps {
 }
 
 // TODO: 이미지 경로 변경된 점 있어서 머지 후 수정 필요
-const gradeImg = ["/assets/common/1.png", "/assets/common/2.png", "/assets/common/3.png"];
-const statusImg = ["/assets/status/health.png", "/assets/status/speed.png", "/assets/status/deffense.png"];
-const resistanceImg = ["/assets/attackType/slash.png", "/assets/attackType/pierce.png", "/assets/attackType/blunt.png"];
+const gradeImg = [
+  "/assets/common/1.png",
+  "/assets/common/2.png",
+  "/assets/common/3.png",
+];
+const statusImg = [
+  "/assets/status/health.png",
+  "/assets/status/speed.png",
+  "/assets/status/deffense.png",
+];
+const resistanceImg = [
+  "/assets/attackType/slash.png",
+  "/assets/attackType/pierce.png",
+  "/assets/attackType/blunt.png",
+];
 
 const IdentityInfoBox = ({
   character,
@@ -60,7 +72,11 @@ const IdentityInfoBox = ({
         <p className="p-1 text-xs md:text-xs flex">
           {statusArray.map((item, index) => (
             <span key={index} className="flex mr-2">
-              <img src={statusImg[index]} alt="beforeImage" className="w-[14px] h-[14px]" />
+              <img
+                src={statusImg[index]}
+                alt="beforeImage"
+                className="w-[14px] h-[14px]"
+              />
               {item}
             </span>
           ))}
@@ -70,9 +86,19 @@ const IdentityInfoBox = ({
           {resistance.map((type, index) => (
             <span
               key={index}
-              className={`flex mr-2 ${type === "내성" ? "text-gray-400" : type === "취약" ? "text-red-500" : ""}`}
+              className={`flex mr-2 ${
+                type === "내성"
+                  ? "text-gray-400"
+                  : type === "취약"
+                  ? "text-red-500"
+                  : ""
+              }`}
             >
-              <img src={resistanceImg[index]} alt="beforeImage" className="w-[14px] h-[14px]" />
+              <img
+                src={resistanceImg[index]}
+                alt="beforeImage"
+                className="w-[14px] h-[14px]"
+              />
               {type}{" "}
             </span>
           ))}
@@ -99,11 +125,17 @@ const IdentityInfoBox = ({
     <div className="bg-primary-500 text-white w-64 rounded-md">
       <div className="w-64 h-auto py-4 gap-2 flex flex-col items-center relative">
         {/* tailwind에 퍼센티지는 없어서 일단 유지 */}
-        <img src={afterProfileImage} alt="profile" className="w-auto h-auto" style={{ width: "40%" }} />
-        <img src={gradeImg[grade - 1]} alt="grade" className="w-auto h-auto" style={{ width: "15%" }} />
+        <img src={afterProfileImage} alt="profile" className="w-2/5 h-auto" />
+        <img
+          src={gradeImg[grade - 1]}
+          alt="grade"
+          className="w-auto h-[35px]"
+        />
 
         <p className="text-xl font-bold font-sans text-primary-100">{name}</p>
-        <p className="text-xl font-bold font-sans text-primary-100 -mt-2">{character}</p>
+        <p className="text-xl font-bold font-sans text-primary-100 -mt-2">
+          {character}
+        </p>
 
         {/* Button to trigger collapse on smaller screens */}
         <div className="lg:hidden">
@@ -119,7 +151,11 @@ const IdentityInfoBox = ({
       </div>
 
       {/* Collapse content */}
-      {!isLargeScreen ? <Collapse open={open}>{renderCollapseContent()}</Collapse> : renderCollapseContent()}
+      {!isLargeScreen ? (
+        <Collapse open={open}>{renderCollapseContent()}</Collapse>
+      ) : (
+        renderCollapseContent()
+      )}
     </div>
   );
 };

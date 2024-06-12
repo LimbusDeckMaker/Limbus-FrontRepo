@@ -26,7 +26,11 @@ interface Skill {
   coin5Effect: string;
 }
 
-const IdentitySkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
+const IdentitySkillCard = ({
+  type,
+  synchronization,
+  skill,
+}: SkillCardProps) => {
   const currentSkill = skill[synchronization];
 
   return (
@@ -46,7 +50,8 @@ const IdentitySkillCard = ({ type, synchronization, skill }: SkillCardProps) => 
               className="inline-block w-auto h-6 mr-1 mb-1"
             />
           )}
-          <span className="pr-4">{type}</span> {/* 1 Skill, 2 Skill, 3 Skill, DEFENSE */}
+          <span className="pr-4">{type}</span>{" "}
+          {/* 1 Skill, 2 Skill, 3 Skill, DEFENSE */}
           <span>{currentSkill.name}</span>
           {/* 공격 타입 이미지 */}
           <img
@@ -73,7 +78,10 @@ const IdentitySkillCard = ({ type, synchronization, skill }: SkillCardProps) => 
             <span className="flex items-center">
               <span className="w-[3em]">가중치 </span>
               {[...Array(currentSkill.atkWeight)].map((_, index) => (
-                <div key={index} className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-600 ml-[3px] mb-0.5"></div>
+                <div
+                  key={index}
+                  className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-600 ml-[3px] mb-0.5"
+                ></div>
               ))}
             </span>
             {/* 만약 type 이 DEFENSE면 /assets/방어코인.png를 사용 */}
@@ -81,7 +89,11 @@ const IdentitySkillCard = ({ type, synchronization, skill }: SkillCardProps) => 
             <span className="">
               {type === "DEFENSE" ? "방어 레벨" : "공격 레벨"}{" "}
               <img
-                src={type === "DEFENSE" ? "/assets/방어코인.png" : "/assets/공격 레벨.png"}
+                src={
+                  type === "DEFENSE"
+                    ? "/assets/방어코인.png"
+                    : "/assets/공격 레벨.png"
+                }
                 alt={type === "DEFENSE" ? "defenseTypeImg" : "attackTypeImg"}
                 className="inline-block w-auto h-5 pr-1 mb-1"
               />
@@ -89,10 +101,12 @@ const IdentitySkillCard = ({ type, synchronization, skill }: SkillCardProps) => 
             </span>
 
             <span className="">
-              스킬 위력 <span className="text-white">{currentSkill.skillPower}</span>
+              스킬 위력{" "}
+              <span className="text-white">{currentSkill.skillPower}</span>
             </span>
             <span className="">
-              코인 위력 <span className="text-white">{currentSkill.coinPower}</span>
+              코인 위력{" "}
+              <span className="text-white">{currentSkill.coinPower}</span>
             </span>
           </div>
         </div>
@@ -109,7 +123,11 @@ const IdentitySkillCard = ({ type, synchronization, skill }: SkillCardProps) => 
 
               return (
                 <div className="flex items-start" key={index}>
-                  <img src={`/assets/coin/coin${index + 1}.png`} alt="coinImg" className="mr-1 mt-0.5 w-auto h-4" />
+                  <img
+                    src={`/assets/coin/coin${index + 1}.png`}
+                    alt="coinImg"
+                    className="mr-1 mt-0.5 w-auto h-4"
+                  />
                   <div>
                     {effectParts.map((part: any, partIndex: any) => (
                       <React.Fragment key={partIndex}>

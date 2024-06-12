@@ -1,5 +1,11 @@
 import IdentityInfoBox from "@components/Detail/Identity/IdentityInfoBox";
-import { Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react";
+import {
+  Tabs,
+  TabsHeader,
+  TabsBody,
+  Tab,
+  TabPanel,
+} from "@material-tailwind/react";
 import IdentitySkills from "@components/Detail/Identity/IdentitySkills";
 import IdentityPassive from "@components/Detail/Identity/IdentityPassive";
 import IdentityKeyword from "@components/Detail/Keyword";
@@ -13,10 +19,12 @@ import { getIdentityDetail } from "@apis/detailAPI";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import keyword_data from "@constants/keyword.json";
+import ErrorMessage from "@components/ui/ErrorMessage";
 
 const IdentityDetailPage = () => {
   const id = useParams().id;
-  const [synchronization, setSynchronization] = useRecoilState(synchronizationState);
+  const [synchronization, setSynchronization] =
+    useRecoilState(synchronizationState);
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["identity", id],
@@ -32,13 +40,37 @@ const IdentityDetailPage = () => {
     );
   }
 
-  if (isError && axios.isAxiosError(error) && error.response?.status === 404) {
-    return <div className="text-primary-200 text-center w-full my-8">인격 정보를 불러오지 못했습니다.</div>;
+  if (isError) {
+    console.log(error);
   }
-  const keywordInfo = data?.keyword.some((kw: string) => keyword_data.some((item) => item.name === kw));
+
+  if (isError && axios.isAxiosError(error) && error.response?.status === 404) {
+    return (
+      <div className="text-primary-200 text-center w-full my-8">
+        인격 정보를 불러오지 못했습니다.
+      </div>
+    );
+  } else if (isError) {
+    return (
+      <div className="text-primary-200 text-center w-full my-8">
+        <ErrorMessage />
+      </div>
+    );
+  }
+
+  const keywordInfo = data?.keyword.some((kw: string) =>
+    keyword_data.some((item) => item.name === kw && item.content)
+  );
+
+  const identitySkills = [
+    data.identitySkill1s,
+    data.identitySkill2s,
+    data.identitySkill3s,
+    data.identityDefSkills,
+  ];
 
   return (
-    <div className="">
+    <div className="w-full mb-8">
       <Tabs value="스킬" orientation="horizontal" className="lg:flex">
         <div className="flex flex-col lg:items-start items-center gap-3 mt-4">
           <IdentityInfoBox
@@ -81,16 +113,23 @@ const IdentityDetailPage = () => {
           }}
         >
           {menu.map((value) => (
-            <TabPanel key={value} value={value} className="text-white font-bold md:pl-10">
+            <TabPanel
+              key={value}
+              value={value}
+              className="text-white font-bold md:pl-10"
+            >
               <div className="flex justify-between">
-                <span className="text-xl md:text-4xl text-primary-100">{value}</span>
+                <span className="text-xl md:text-4xl text-primary-100">
+                  {value}
+                </span>
                 {(value === "스킬" || value === "패시브") && (
                   <Button
                     className="flex gap-2 items-center bg-primary-400 px-2 md:px-4 py-0 md:py-1 font-sansLight text-sm md:text-base text-white hover:bg-primary-300 rounded"
                     placeholder={undefined}
                     onClick={() =>
                       setSynchronization({
-                        synchronization: (synchronization.synchronization + 1) % 2,
+                        synchronization:
+                          (synchronization.synchronization + 1) % 2,
                       })
                     }
                   >
@@ -105,24 +144,25 @@ const IdentityDetailPage = () => {
               </div>
               <div className="py-1">
                 {value === "스킬" && (
-                  <IdentitySkills
-                    identitySkills={{
-                      identitySkill1s: data.identitySkill1s,
-                      identitySkill2s: data.identitySkill2s,
-                      identitySkill3s: data.identitySkill3s,
-                      identityDefSkills: data.identityDefSkills,
-                    }}
-                  />
+                  <IdentitySkills identitySkills={identitySkills} />
                 )}
-                {value === "패시브" && <IdentityPassive identityPassives={data.identityPassives} />}
+                {value === "패시브" && (
+                  <IdentityPassive identityPassives={data.identityPassives} />
+                )}
                 {value === "키워드" &&
                   (keywordInfo ? (
                     <IdentityKeyword keywords={data.keyword} />
                   ) : (
-                    <div className="text-primary-200 text-center w-full my-8">키워드가 없습니다.</div>
+                    <div className="text-primary-200 text-center w-full my-8">
+                      키워드가 없습니다.
+                    </div>
                   ))}
                 {value === "이미지" && (
-                  <IdentityImage type="identity" beforeImage={data.beforeImage} afterImage={data.afterImage} />
+                  <IdentityImage
+                    type="identity"
+                    beforeImage={data.beforeImage}
+                    afterImage={data.afterImage}
+                  />
                 )}
               </div>
             </TabPanel>
