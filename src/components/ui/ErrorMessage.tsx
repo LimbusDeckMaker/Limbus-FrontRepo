@@ -9,8 +9,8 @@ const ErrorMessage = ({
 }: ErrorMessageProps) => {
   return (
     <div className="text-center mx-auto">
-      <h2 className="text-primary-100 text-3xl">{title}</h2>
-      <p className="text-primary-300 text-xl">{message}</p>
+      <h2 className="text-primary-100 text-xl md:text-3xl">{title}</h2>
+      <p className="text-primary-300 text-sm md:text-xl">{message}</p>
     </div>
   );
 };
