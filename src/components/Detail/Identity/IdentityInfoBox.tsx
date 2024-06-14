@@ -71,11 +71,11 @@ const IdentityInfoBox = ({
         {/* 체력 속도 방어력 */}
         <p className="p-1 text-xs md:text-xs flex">
           {statusArray.map((item, index) => (
-            <span key={index} className="flex mr-2">
+            <span key={index} className="flex mr-2 items-center">
               <img
                 src={statusImg[index]}
                 alt="beforeImage"
-                className="w-[14px] h-[14px]"
+                className="w-[14px] h-[14px] mr-[0.1rem]"
               />
               {item}
             </span>
@@ -86,7 +86,7 @@ const IdentityInfoBox = ({
           {resistance.map((type, index) => (
             <span
               key={index}
-              className={`flex mr-2 ${
+              className={`flex mr-2 items-center ${
                 type === "내성"
                   ? "text-gray-400"
                   : type === "취약"
@@ -97,7 +97,7 @@ const IdentityInfoBox = ({
               <img
                 src={resistanceImg[index]}
                 alt="beforeImage"
-                className="w-[14px] h-[14px]"
+                className="w-[14px] h-[14px] mr-[0.1rem]"
               />
               {type}{" "}
             </span>
@@ -105,15 +105,15 @@ const IdentityInfoBox = ({
         </p>
         {/* 시즌 */}
         <p className="p-1 text-xs md:text-xs">
-          <span className="text-primary-100">시즌</span> : {season}
+          <span className="text-primary-100">시즌</span>: {season}
         </p>
         {/* 소속 */}
         <p className="p-1 text-xs md:text-xs">
-          <span className="text-primary-100">소속</span> : {affiliation}
+          <span className="text-primary-100">소속</span>: {affiliation}
         </p>
         {/* 출시시기 */}
         <p className="p-1 text-xs md:text-xs">
-          <span className="text-primary-100">출시시기</span> : {releaseDate}
+          <span className="text-primary-100">출시시기</span>: {releaseDate}
         </p>
         {/* 획득방법 */}
         <p className="p-1 text-xs md:text-xs text-center">{obtainingMethod}</p>

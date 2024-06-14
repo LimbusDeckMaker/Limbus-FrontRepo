@@ -73,7 +73,7 @@ const EgoInfoBox = ({
                 <img
                   src={resourseImg[index]}
                   alt="beforeImage"
-                  className="w-[14px] h-[14px]"
+                  className="w-[14px] h-[14px] mr-[0.1rem]"
                 />
                 {type}{" "}
               </span>
@@ -85,23 +85,25 @@ const EgoInfoBox = ({
             cost.map((type, index) => (
               <span
                 key={index}
-                className={`flex mr-2 ${type === 0 ? "text-gray-600" : ""}`}
+                className={`flex items-center mr-2 ${
+                  type === 0 ? "text-gray-600" : ""
+                }`}
               >
                 <img
                   src={resourseImg[index]}
                   alt="beforeImage"
-                  style={{ width: "14px", height: "14px" }}
+                  className="w-[14px] h-[14px] mr-[0.1rem]"
                 />
                 {type}{" "}
               </span>
             ))}
         </p>
         <p className="p-1 text-xs md:text-xs">
-          <span className="text-primary-100">시즌</span> : {season}
+          <span className="text-primary-100">시즌</span>: {season}
         </p>
 
         <p className="p-1 text-xs md:text-xs">
-          <span className="text-primary-100">출시시기</span> : {releaseDate}
+          <span className="text-primary-100">출시시기</span>: {releaseDate}
         </p>
 
         <p className="p-1 text-xs md:text-xs text-center">{obtainingMethod}</p>
