@@ -3,7 +3,7 @@ import React from "react";
 import { IconButton, Typography } from "@material-tailwind/react";
 import { Link, NavLink } from "react-router-dom";
 import nav from "@constants/nav.json";
-import { FaGithub, FaYoutube } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 const Footer = () => {
   return (
