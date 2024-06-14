@@ -38,7 +38,7 @@ const IdentitySkillCard = ({
       <div className="xl:flex xl:gap-3 items-center pb-2 lg:pb-4 ">
         {/* 스킬 이름 */}
         <div
-          className={`text-sm sm:text-lg xl:text-xl font-bold pr-4 lg:p-0 pb-2 mb-2 xl:mb-0 border-b-4 ${
+          className={`text-sm sm:text-lg xl:text-xl font-bold pr-4 lg:p-0 pb-2 mb-2 xl:mb-0 border-b-4 border-primary-200 ${
             resourceColorMap[currentSkill.resource]
           }`}
         >
