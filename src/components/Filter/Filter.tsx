@@ -9,9 +9,8 @@ import useSelectOptions from "@hooks/useSelectOptions";
 import FilterSliderGroup from "./FilterSliderGroup";
 import etcKeyword from "@constants/etcKeyword.json";
 import FilterEtcButtonGroup from "./FilterEtcButtonGroup";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { optionsState } from "@recoils/atoms";
-import { useEffect } from "react";
 
 interface Option {
   value: string;
@@ -24,7 +23,7 @@ const keywordOptionList: Option[] = keyword.map((item) => ({
 }));
 
 const Filter = () => {
-  const [options, setOptions] = useRecoilState(optionsState);
+  const setOptions = useSetRecoilState(optionsState);
 
   const {
     selectedOptions: keywordOptions,

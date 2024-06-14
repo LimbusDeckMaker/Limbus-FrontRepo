@@ -8,9 +8,8 @@ import FilterSliderGroup from "./FilterSliderGroup";
 import egoEtcKeyword from "@constants/egoEtcKeyword.json";
 import egoGrade from "@constants/egoGrade.json";
 import FilterEtcButtonGroup from "./FilterEtcButtonGroup";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { egoOptionsState } from "@recoils/atoms";
-import { useEffect } from "react";
 
 interface Option {
   value: string;
@@ -23,7 +22,7 @@ const keywordOptionList: Option[] = keyword.map((item) => ({
 }));
 
 const EgoFilter = () => {
-  const [options, setOptions] = useRecoilState(egoOptionsState);
+  const setOptions = useSetRecoilState(egoOptionsState);
 
   const {
     selectedOptions: keywordOptions,
