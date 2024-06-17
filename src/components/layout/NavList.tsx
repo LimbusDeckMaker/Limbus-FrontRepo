@@ -12,7 +12,7 @@ const NavList = () => {
           key={`nav:${item.title}`}
           as="li"
           variant="small"
-          className="p-1 font-bold text-xs md:text-sm text-primary-100"
+          className="p-1 font-bold text-lg md:text-sm text-primary-100"
           placeholder={item.title}
         >
           <NavLink
