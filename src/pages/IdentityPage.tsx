@@ -63,16 +63,18 @@ const IdentityPage = () => {
   // 이름 및 별명 검색 필터링
   const filteredData =
     data &&
-    data.filter((item: any) => {
-      const nameMatch = item.name
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase());
-      const nicknameMatch =
-        nicknames[item.id]?.some((nickname) =>
-          nickname.toLowerCase().includes(searchTerm.toLowerCase())
-        ) || false;
-      return nameMatch || nicknameMatch;
-    });
+    data
+      .filter((item: any) => {
+        const nameMatch = item.name
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
+        const nicknameMatch =
+          nicknames[item.id]?.some((nickname) =>
+            nickname.toLowerCase().includes(searchTerm.toLowerCase())
+          ) || false;
+        return nameMatch || nicknameMatch;
+      })
+      .reverse();
 
   // 모달 배경 클릭 시 닫기
   const handleBackgroundClick = (

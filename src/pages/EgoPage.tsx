@@ -42,9 +42,11 @@ const EgoPage = () => {
 
   const filteredData =
     data &&
-    data.filter((item: any) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    data
+      .filter((item: any) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+      .reverse();
 
   const handleBackgroundClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
