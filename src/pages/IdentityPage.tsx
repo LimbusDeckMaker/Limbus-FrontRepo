@@ -83,6 +83,17 @@ const IdentityPage = () => {
     }
   };
 
+  useEffect(() => {
+    if (openFilter) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [openFilter]);
+
   return (
     <div className="flex font-sans text-primary-100 font-bold mt-4">
       {/* 필터 */}
@@ -105,12 +116,14 @@ const IdentityPage = () => {
         }`}
         onClick={handleBackgroundClick}
       >
+        {/* h-5/6 추가 */}
+        {/* 화면 크기보다 크면 스크롤이 필요 */}
         <div
-          className={`bg-primary-500 p-0 rounded-lg w-11/12 max-w-sm transition-transform duration-300 ${
+          className={`bg-primary-500 p-0 h-5/6 rounded-lg w-11/12 max-w-sm transition-transform duration-300 max-h-screen overflow-y-auto ${
             openFilter ? "translate-y-0" : "translate-y-full"
           }`}
         >
-          <div className="flex justify-end items-center m-0 p-2 pb-0">
+          <div className="flex justify-end items-center m-0 p-2 pb-0 ">
             <button
               onClick={() => setOpenFilter(false)}
               className="text-primary-100 hover:text-primary-200 text-2xl"
@@ -180,12 +193,12 @@ const IdentityPage = () => {
         </div>
         {/* 썸네일 리스트 */}
         {isLoading ? (
-          <div className="flex justify-center items-center h-96">
+          <div className="flex justify-center items-center h-screen">
             <Spinner className="w-8 h-8 text-primary-200" />
           </div>
         ) : isError ? (
           axios.isAxiosError(error) && error.response?.status === 404 ? (
-            <div className="text-primary-200 text-center w-full my-8">
+            <div className="text-primary-200 text-center w-full my-8 h-screen">
               해당하는 인격이 없습니다.
             </div>
           ) : (

@@ -77,7 +77,7 @@ const EgoPage = () => {
         onClick={handleBackgroundClick}
       >
         <div
-          className={`bg-primary-500 p-0 rounded-lg w-11/12 max-w-sm transition-transform duration-300 ${
+          className={`bg-primary-500 p-0 h-5/6 rounded-lg w-11/12 max-w-sm transition-transform duration-300 max-h-screen overflow-y-auto ${
             openFilter ? "translate-y-0" : "translate-y-full"
           }`}
         >
@@ -132,12 +132,12 @@ const EgoPage = () => {
         </div>
         {/* 썸네일 리스트 */}
         {isLoading ? (
-          <div className="flex justify-center items-center h-96">
+          <div className="flex justify-center items-center h-screen">
             <Spinner className="w-8 h-8 text-primary-200" />
           </div>
         ) : isError ? (
           axios.isAxiosError(error) && error.response?.status === 404 ? (
-            <div className="text-primary-200 text-center w-full my-8">
+            <div className="text-primary-200 text-center w-full my-8 h-screen">
               해당하는 에고가 없습니다.
             </div>
           ) : (
