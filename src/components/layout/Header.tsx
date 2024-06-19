@@ -7,10 +7,11 @@ import {
 } from "@material-tailwind/react";
 import NavList from "./NavList";
 import { HiMenuAlt3, HiOutlineX } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [openNav, setOpenNav] = React.useState(false);
+  const location = useLocation();
 
   const handleWindowResize = () =>
     window.innerWidth >= 640 && setOpenNav(false);
@@ -22,6 +23,11 @@ const Header = () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
+
+  React.useEffect(() => {
+    // 페이지 이동 시 nav바를 닫음
+    setOpenNav(false);
+  }, [location]);
 
   return (
     <Navbar
@@ -49,7 +55,7 @@ const Header = () => {
         </div>
 
         <div className="hidden md:block">
-          <NavList />
+          <NavList setIsNavOpen={setOpenNav} />
         </div>
         <IconButton
           variant="text"
@@ -66,7 +72,7 @@ const Header = () => {
         </IconButton>
       </div>
       <Collapse open={openNav}>
-        <NavList />
+        <NavList setIsNavOpen={setOpenNav} />
       </Collapse>
     </Navbar>
   );
