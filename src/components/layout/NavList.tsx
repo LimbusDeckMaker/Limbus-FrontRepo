@@ -15,7 +15,7 @@ const NavList: React.FC<NavListProps> = ({ setIsNavOpen }) => {
           key={`nav:${item.title}`}
           as="li"
           variant="small"
-          className="p-1 font-bold text-lg md:text-sm text-primary-100"
+          className="p-1 font-bold text-base md:text-sm text-primary-100"
           placeholder={item.title}
         >
           <NavLink
