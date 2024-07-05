@@ -31,7 +31,9 @@ const MainPage = () => {
         <div className="flex flex-col gap-4 items-center justify-center w-11/12 md:w-1/2 md:mx-auto">
           <div className="bg-primary-400 w-full mx-auto p-2 md:p-4">
             <div className="pb-2">
-              <span className="text-base md:text-xl">최신 유튜브</span>
+              <span className="text-base md:text-xl">
+                최신 유튜브 배포 테스트
+              </span>
             </div>
             <YouTube
               videoId={data?.videoId || "HTRQgFYCXHY"} // data가 없는 경우 프로젝트문 대표 영상 출력
