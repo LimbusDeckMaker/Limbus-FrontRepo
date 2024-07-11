@@ -8,7 +8,6 @@ import IdentityPage from "@pages/IdentityPage";
 import EgoDetailPage from "@pages/EgoDetailPage";
 import EgoPage from "@pages/EgoPage";
 import Preparing from "@components/Preparing";
-import PrivacyPolicy from "@pages/PrivacyPolicy";
 
 const Router = () => {
   return (
@@ -22,7 +21,6 @@ const Router = () => {
           <Route path="/ego/:id" element={<EgoDetailPage />} />
           <Route path="/building" element={<Preparing />} />
           <Route path="/tier" element={<Preparing />} />
-          <Route path="/policy" element={<PrivacyPolicy />} />
         </Route>
       </Routes>
     </BrowserRouter>
