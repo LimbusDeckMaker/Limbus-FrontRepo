@@ -45,7 +45,7 @@ module.exports = withMT({
         title: ["KOTRA_BOLD", "sans-serif"],
         sansBold: ["GmarketSansBold", "sans-serif"],
         sansLight: ["GmarketSansLight", "sans-serif"],
-        number: ["ExcelsiorSans", "sans-serif"],
+        number: ["HSSaemaul-Regular", "sans-serif"],
         eng: ["BebasKai", "sans-serif"],
         content: ["SCDream5", "sans-serif"],
       },
