@@ -46,7 +46,7 @@ module.exports = withMT({
         sansBold: ["GmarketSansBold", "sans-serif"],
         sansLight: ["GmarketSansLight", "sans-serif"],
         number: ["HSSaemaul-Regular", "sans-serif"],
-        eng: ["BebasKai", "sans-serif"],
+        eng: ["SEBANG Gothic", "sans-serif"],
         content: ["SCDream5", "sans-serif"],
       },
     },

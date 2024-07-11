@@ -27,6 +27,11 @@
   src: url("./assets/fonts/HSSaemaul-Regular.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "SEBANG Gothic";
+  src: url("./assets/fonts/SEBANG Gothic.ttf") format("truetype");
+}
+
 /* @font-face {
   font-family: "ExcelsiorSans";
   src: url("./assets/fonts/ExcelsiorSans.ttf") format("truetype");
