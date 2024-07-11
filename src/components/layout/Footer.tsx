@@ -4,6 +4,7 @@ import { IconButton, Typography } from "@material-tailwind/react";
 import { Link, NavLink } from "react-router-dom";
 import nav from "@constants/nav.json";
 import { FaGithub } from "react-icons/fa";
+import PrivacyPolicy from "@pages/PrivacyPolicy";
 
 const Footer = () => {
   return (
@@ -19,9 +20,9 @@ const Footer = () => {
             <br />
             bas.limbus@gmail.com
             <br />
-            <br />
-            단테의 빵과수프는 프로젝트문 공식 서비스가 아니며, 모든 게임
-            아트워크, 정보, 애셋의 권리와 저작권은 해당 저작권자의 소유입니다.
+            <br />© 2024 baslimbus 단테의 빵과수프는 프로젝트문 공식 서비스가
+            아니며, 모든 게임 아트워크, 정보, 애셋의 권리와 저작권은 해당
+            저작권자의 소유입니다.
           </p>
         </div>
         <div className="hidden md:flex mb-14">
@@ -37,6 +38,14 @@ const Footer = () => {
                 <NavLink to={item.link}>{item.title}</NavLink>
               </Typography>
             ))}
+            <Typography
+              as="li"
+              variant="small"
+              className="p-1 font-light text-xs md:text-sm text-primary-100"
+              placeholder="Policy"
+            >
+              <PrivacyPolicy />
+            </Typography>
           </ul>
         </div>
       </div>
