@@ -22,7 +22,7 @@
   src: url("./assets/fonts/GmarketSansTTFLight.ttf") format("truetype");
 }
 
-@font-face {
+/* @font-face {
   font-family: "ExcelsiorSans";
   src: url("./assets/fonts/ExcelsiorSans.ttf") format("truetype");
 }
@@ -30,7 +30,7 @@
 @font-face {
   font-family: "BebasKai";
   src: url("./assets/fonts/BebasKai.ttf") format("truetype");
-}
+} */
 
 @font-face {
   font-family: "SCDream5";
