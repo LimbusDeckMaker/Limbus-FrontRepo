@@ -34,7 +34,7 @@ const MainPage = () => {
               <span className="text-base md:text-xl">최신 유튜브</span>
             </div>
             <YouTube
-              videoId={data?.videoId || "HTRQgFYCXHY"} // data가 없는 경우 프로젝트문 대표 영상 출력
+              videoId={data?.videoId || "CDD9KOauxM0"} // data가 없는 경우 프로젝트문 대표 영상 출력 "HTRQgFYCXHY"
               className="aspect-video"
               opts={{
                 width: "100%",
