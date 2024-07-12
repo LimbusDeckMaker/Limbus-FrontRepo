@@ -1,0 +1,9 @@
+User-agent: *
+Disallow:
+
+# 모든 페이지를 허용
+User-agent: *
+Allow: /
+
+# 사이트맵 위치 (있는 경우)
+Sitemap: https://baslimbus.info/sitemap.xml
