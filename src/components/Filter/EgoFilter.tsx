@@ -91,7 +91,7 @@ const EgoFilter = () => {
       />
       <FilterButtonGroup
         title="시즌"
-        content={[{ name: "1" }, { name: "2" }, { name: "3" }]}
+        content={[{ name: "1" }, { name: "2" }, { name: "3" }, { name: "4" }]}
         src=""
         buttonType="text"
         propertyToSaveTo="season"

@@ -22,10 +22,10 @@ const ThumbnailCard = ({ title, url, date, image }: NewsItem) => {
           />
         </div>
         <div className="flex flex-col w-1/2 gap-1">
-          <span className="text-sm lg:text-lg font-normal">
+          <span className="text-sm lg:text-lg font-normal font-number">
             {date.split("T")[0]}
           </span>
-          <span className="text-sm font-normal lg:text-base !leading-tight truncate md:text-clip md:whitespace-normal">
+          <span className="text-xs lg:text-sm font-eng font-bold !leading-tight truncate md:text-clip md:whitespace-normal">
             {title}
           </span>
         </div>
