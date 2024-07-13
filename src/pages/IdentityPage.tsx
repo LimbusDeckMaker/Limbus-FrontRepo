@@ -18,6 +18,7 @@ import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 
 // JSON 파일 import
 import nicknamesData from "@constants/nicknames.json";
+import { queryClient } from "@apis/queryClient";
 
 const IdentityPage = () => {
   const [isSync, setIsSync] = useState(false);
@@ -46,6 +47,12 @@ const IdentityPage = () => {
     queryKey: ["identity", options],
     queryFn: () => getIdentity(options),
     retry: 1,
+    placeholderData: () => {
+      const cachedData = queryClient.getQueryData(["identity", options]);
+      return cachedData || [];
+    },
+    staleTime: 1000 * 60 * 5, // 5분
+    refetchOnWindowFocus: false, // 포커스 할 때마다 다시 불러오는 기능 끔
   });
 
   // 별명 데이터를 상태로 저장
