@@ -14,6 +14,7 @@ import ErrorMessage from "@components/ui/ErrorMessage";
 import { Button, Input, Spinner } from "@material-tailwind/react";
 
 import { LuSearch } from "react-icons/lu";
+import { queryClient } from "@apis/queryClient";
 
 const EgoPage = () => {
   const [openFilter, setOpenFilter] = useState(false);
@@ -38,6 +39,12 @@ const EgoPage = () => {
     queryKey: ["ego", options],
     queryFn: () => getEgo(options),
     retry: 1,
+    placeholderData: () => {
+      const cachedData = queryClient.getQueryData(["ego", options]);
+      return cachedData || [];
+    },
+    staleTime: 1000 * 60 * 5,
+    refetchOnWindowFocus: false,
   });
 
   const filteredData =
