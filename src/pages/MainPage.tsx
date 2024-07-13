@@ -18,11 +18,19 @@ const MainPage = () => {
   const { data } = useQuery({
     queryKey: Main_Keys.youtube,
     queryFn: getYoutube,
+    staleTime: 1000 * 60 * 30,
+    refetchOnWindowFocus: false,
+    placeholderData: {
+      videoId: "HTRQgFYCXHY", // 기본값 설정
+    },
   });
 
   const { data: news } = useQuery({
     queryKey: Main_Keys.news,
     queryFn: getNews,
+    staleTime: 1000 * 60 * 30,
+    refetchOnWindowFocus: false,
+    placeholderData: [],
   });
 
   return (
