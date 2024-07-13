@@ -30,7 +30,7 @@ const EgoDetailPage = () => {
     queryKey: ["identity", id],
     queryFn: () => getEgoDetail(Number(id)),
     retry: 1,
-    staleTime: 1000 * 60 * 60,
+    staleTime: 1000 * 60 * 60 * 24,
     refetchOnWindowFocus: false,
   });
 

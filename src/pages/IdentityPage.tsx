@@ -51,7 +51,7 @@ const IdentityPage = () => {
       const cachedData = queryClient.getQueryData(["identity", options]);
       return cachedData || [];
     },
-    staleTime: 1000 * 60 * 5, // 5분
+    staleTime: 1000 * 60 * 60 * 24, // 하루
     refetchOnWindowFocus: false, // 포커스 할 때마다 다시 불러오는 기능 끔
   });
 

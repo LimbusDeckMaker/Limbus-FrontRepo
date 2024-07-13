@@ -43,7 +43,7 @@ const EgoPage = () => {
       const cachedData = queryClient.getQueryData(["ego", options]);
       return cachedData || [];
     },
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 60 * 24, // 하루
     refetchOnWindowFocus: false,
   });
 
