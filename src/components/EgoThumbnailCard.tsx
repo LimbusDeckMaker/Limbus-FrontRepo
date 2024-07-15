@@ -29,7 +29,7 @@ const EgoThumbnailCard = ({
         <div className="flex justify-between items-center">
           <div className="w-14 md:w-20 lg:w-16 xl:w-20 mx-auto">
             <img
-              src={`/assets/common/${grade}.png`}
+              src={`/assets/common/${grade}.webp`}
               className="h-4 md:h-6 lg:h-4 xl:h-6 w-auto"
               alt="ego grade"
             />

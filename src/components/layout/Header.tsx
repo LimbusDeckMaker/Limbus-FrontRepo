@@ -38,7 +38,7 @@ const Header = () => {
         <div className="flex gap-2 items-center">
           <Link to="/">
             <img
-              src="/assets/logo.png"
+              src="/assets/logo.webp"
               alt="logo"
               className="h-6 w-6 md:h-10 md:w-10"
             />

@@ -30,7 +30,7 @@ const PassiveCard = ({ type, passive }: PassiveCardProps) => {
         {passive.resource !== "없음" && (
           <div className="flex gap-2 text-sm lg:text-base">
             <img
-              src={`/assets/resource/${passive.resource}.png`}
+              src={`/assets/resource/${passive.resource}.webp`}
               alt="resourceImg"
               className="w-auto h-[1.3em] mb-0.5 inline-block"
             />

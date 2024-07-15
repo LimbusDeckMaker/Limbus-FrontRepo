@@ -35,7 +35,7 @@ const IdentityThumbnailCard = ({
         <div className="flex justify-between items-center">
           <div className="w-10 mx-auto">
             <img
-              src={`/assets/common/${grade}.png`}
+              src={`/assets/common/${grade}.webp`}
               className="h-4"
               alt="grade"
             />

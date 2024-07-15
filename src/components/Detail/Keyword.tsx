@@ -17,7 +17,7 @@ const IdentityKeyword = ({ keywords }: IdentityKeywordProps) => {
           return (
             <div key={index} className="p-4 rounded-md bg-primary-500">
               <img
-                src={`/assets/keyword/${keyword}.png`}
+                src={`/assets/keyword/${keyword}.webp`}
                 alt="resourceImg"
                 className="inline-block h-[1.1em] mr-1 mb-[2px]"
               />

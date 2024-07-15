@@ -21,19 +21,19 @@ interface IdentityInfoBoxProps {
 
 // TODO: 이미지 경로 변경된 점 있어서 머지 후 수정 필요
 const gradeImg = [
-  "/assets/common/1.png",
-  "/assets/common/2.png",
-  "/assets/common/3.png",
+  "/assets/common/1.webp",
+  "/assets/common/2.webp",
+  "/assets/common/3.webp",
 ];
 const statusImg = [
-  "/assets/status/health.png",
-  "/assets/status/speed.png",
-  "/assets/status/deffense.png",
+  "/assets/status/health.webp",
+  "/assets/status/speed.webp",
+  "/assets/status/deffense.webp",
 ];
 const resistanceImg = [
-  "/assets/attackType/slash.png",
-  "/assets/attackType/pierce.png",
-  "/assets/attackType/blunt.png",
+  "/assets/attackType/slash.webp",
+  "/assets/attackType/pierce.webp",
+  "/assets/attackType/blunt.webp",
 ];
 
 const IdentityInfoBox = ({

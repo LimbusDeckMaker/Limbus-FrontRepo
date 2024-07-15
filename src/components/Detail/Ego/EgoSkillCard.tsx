@@ -48,7 +48,7 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
         >
           {currentSkill.resource !== "없음" && (
             <img
-              src={`/assets/resource/${currentSkill.resource}.png`}
+              src={`/assets/resource/${currentSkill.resource}.webp`}
               alt="resourceImg"
               className="inline-block w-auto h-6 mr-1 mb-1"
             />
@@ -60,7 +60,7 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
             {currentSkill.name}
           </span>
           <img
-            src={`/assets/attackType/${currentSkill.atkType}.png`}
+            src={`/assets/attackType/${currentSkill.atkType}.webp`}
             alt="attackTypeImg"
             className="inline-block w-auto h-8 ml-[1px] mb-1"
           />
@@ -73,7 +73,7 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
               <span className="pr-1">정신력 소모량</span>
               <span className="flex items-center gap-1">
                 <img
-                  src={`/assets/정신 소모량.png`}
+                  src={`/assets/정신 소모량.webp`}
                   alt="attackTypeImg"
                   className="inline-block w-auto h-5 ml-[1px] mb-1"
                 />
@@ -84,7 +84,7 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
             <span className="">
               공격 레벨{" "}
               <img
-                src={`/assets/공격 레벨.png`}
+                src={`/assets/공격 레벨.webp`}
                 alt="attackTypeImg"
                 className="inline-block w-auto h-5 pr-1 mb-1"
               />
@@ -124,7 +124,7 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
               return (
                 <div className="flex items-start" key={index}>
                   <img
-                    src={`/assets/coin/coin${index + 1}.png`}
+                    src={`/assets/coin/coin${index + 1}.webp`}
                     alt="coinImg"
                     className="mr-1 mt-0.5"
                     style={{ width: "auto", height: "16px" }}

@@ -106,7 +106,7 @@ const FilterButtonGroup = ({
           <FilterButton
             key={`button:${index}`}
             name={item.name}
-            imgSrc={src + item.name + ".png"}
+            imgSrc={src + item.name + ".webp"}
             type={buttonType}
             isSelected={buttons[index].isSelected}
             onClick={() => toggleButton(item.name)}

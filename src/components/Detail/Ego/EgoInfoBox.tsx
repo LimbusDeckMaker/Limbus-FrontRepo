@@ -16,13 +16,13 @@ interface EgoInfoBoxProps {
 
 // TODO: 이미지 경로 변경된 점 있어서 머지 후 수정 필요
 const resourseImg = [
-  "/assets/resource/분노.png",
-  "/assets/resource/색욕.png",
-  "/assets/resource/나태.png",
-  "/assets/resource/탐식.png",
-  "/assets/resource/우울.png",
-  "/assets/resource/오만.png",
-  "/assets/resource/질투.png",
+  "/assets/resource/분노.webp",
+  "/assets/resource/색욕.webp",
+  "/assets/resource/나태.webp",
+  "/assets/resource/탐식.webp",
+  "/assets/resource/우울.webp",
+  "/assets/resource/오만.webp",
+  "/assets/resource/질투.webp",
 ];
 
 const EgoInfoBox = ({
@@ -118,7 +118,7 @@ const EgoInfoBox = ({
         <img src={zoomImage} alt="profile" className="h-auto w-2/5" />
 
         <img
-          src={`/assets/common/${grade}.png`}
+          src={`/assets/common/${grade}.webp`}
           alt="grade"
           className=" h-auto"
           style={{ width: "40%" }}

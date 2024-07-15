@@ -52,7 +52,7 @@ const Footer = () => {
       </div>
       <div className="flex justify-between items-center mt-4">
         <img
-          src="/assets/logo2.png"
+          src="/assets/logo2.webp"
           alt="footer_logo"
           className="w-8 h-8 md:w-10 md:h-10"
         />

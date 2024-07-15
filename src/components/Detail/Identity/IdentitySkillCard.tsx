@@ -45,7 +45,7 @@ const IdentitySkillCard = ({
           {currentSkill.resource !== "없음" && (
             //  자원 이미지
             <img
-              src={`/assets/resource/${currentSkill.resource}.png`}
+              src={`/assets/resource/${currentSkill.resource}.webp`}
               alt="resourceImg"
               className="inline-block w-auto h-6 mr-1 mb-1"
             />
@@ -55,7 +55,7 @@ const IdentitySkillCard = ({
           <span>{currentSkill.name}</span>
           {/* 공격 타입 이미지 */}
           <img
-            src={`/assets/attackType/${currentSkill.type}.png`}
+            src={`/assets/attackType/${currentSkill.type}.webp`}
             alt="attackTypeImg"
             className="inline-block w-auto h-8 ml-[1px] mb-1"
           />
@@ -69,7 +69,7 @@ const IdentitySkillCard = ({
               {[...Array(currentSkill.coinNum)].map((_, index) => (
                 <img
                   key={index}
-                  src={`/assets/coin/normal_coin.png`}
+                  src={`/assets/coin/normal_coin.webp`}
                   alt="coinImg"
                   className="w-auto h-[1em] mr-[2px]"
                 />
@@ -84,15 +84,15 @@ const IdentitySkillCard = ({
                 ></div>
               ))}
             </span>
-            {/* 만약 type 이 DEFENSE면 /assets/방어코인.png를 사용 */}
+            {/* 만약 type 이 DEFENSE면 /assets/방어코인.webp 사용 */}
 
             <span className="">
               {type === "DEFENSE" ? "방어 레벨" : "공격 레벨"}{" "}
               <img
                 src={
                   type === "DEFENSE"
-                    ? "/assets/방어코인.png"
-                    : "/assets/공격 레벨.png"
+                    ? "/assets/방어코인.webp"
+                    : "/assets/공격 레벨.webp"
                 }
                 alt={type === "DEFENSE" ? "defenseTypeImg" : "attackTypeImg"}
                 className="inline-block w-auto h-5 pr-1 mb-1"
@@ -124,7 +124,7 @@ const IdentitySkillCard = ({
               return (
                 <div className="flex items-start" key={index}>
                   <img
-                    src={`/assets/coin/coin${index + 1}.png`}
+                    src={`/assets/coin/coin${index + 1}.webp`}
                     alt="coinImg"
                     className="mr-1 mt-0.5 w-auto h-4"
                   />
