@@ -1,43 +1,43 @@
 import React from "react";
 
-// import YouTube from "react-youtube";
-// import SiteLink from "@components/SiteLink";
-// import ThumbnailCard from "@components/ThumbnailCard";
-// import { useQuery } from "@tanstack/react-query";
-// import { Main_Keys } from "@constants/queryKeys";
-// import { getNews, getYoutube } from "@apis/mainApi";
-import Notice from "@components/Notice";
+import YouTube from "react-youtube";
+import SiteLink from "@components/SiteLink";
+import ThumbnailCard from "@components/ThumbnailCard";
+import { useQuery } from "@tanstack/react-query";
+import { Main_Keys } from "@constants/queryKeys";
+import { getNews, getYoutube } from "@apis/mainApi";
+//import Notice from "@components/Notice";
 
-// interface News {
-//   title: string;
-//   url: string;
-//   release: string;
-//   imageUrl: string;
-// }
+interface News {
+  title: string;
+  url: string;
+  release: string;
+  imageUrl: string;
+}
 
 const MainPage = () => {
-  // const { data } = useQuery({
-  //   queryKey: Main_Keys.youtube,
-  //   queryFn: getYoutube,
-  //   staleTime: 1000 * 60 * 30,
-  //   refetchOnWindowFocus: false,
-  //   placeholderData: {
-  //     videoId: "HTRQgFYCXHY", // 기본값 설정
-  //   },
-  // });
+  const { data } = useQuery({
+    queryKey: Main_Keys.youtube,
+    queryFn: getYoutube,
+    staleTime: 1000 * 60 * 30,
+    refetchOnWindowFocus: false,
+    placeholderData: {
+      videoId: "HTRQgFYCXHY", // 기본값 설정
+    },
+  });
 
-  // const { data: news } = useQuery({
-  //   queryKey: Main_Keys.news,
-  //   queryFn: getNews,
-  //   staleTime: 1000 * 60 * 30,
-  //   refetchOnWindowFocus: false,
-  //   placeholderData: [],
-  // });
+  const { data: news } = useQuery({
+    queryKey: Main_Keys.news,
+    queryFn: getNews,
+    staleTime: 1000 * 60 * 30,
+    refetchOnWindowFocus: false,
+    placeholderData: [],
+  });
 
   return (
     <div className="font-sans font-bold text-primary-100 py-4 md:py-20">
-      <Notice />
-      {/* <div className="flex flex-col md:flex-row items-center justify-center lg:w-3/4 mx-auto gap-4">
+      {/* <Notice /> */}
+      <div className="flex flex-col md:flex-row items-center justify-center lg:w-3/4 mx-auto gap-4">
         <div className="flex flex-col gap-4 items-center justify-center w-11/12 md:w-1/2 md:mx-auto">
           <div className="bg-primary-400 w-full mx-auto p-2 md:p-4">
             <div className="pb-2">
@@ -81,7 +81,7 @@ const MainPage = () => {
             />
           ))}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
