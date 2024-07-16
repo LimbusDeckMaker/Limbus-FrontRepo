@@ -2,7 +2,7 @@ const Preparing = () => {
   return (
     <div className="h-screen text-center font-title py-20 px-10">
       <img
-        src="/assets/logo2.png"
+        src="/assets/logo2.webp"
         alt="logo"
         className="w-40 mx-auto my-4 hover:animate-bounce"
       />

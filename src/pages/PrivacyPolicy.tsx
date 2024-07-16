@@ -34,7 +34,7 @@ const PrivacyPolicy = () => {
           Privacy Policy for Baslimbus.info
         </DialogHeader>
         <DialogBody placeholder="" className="bg-primary-450">
-          <div className="text-primary-100">
+          <div className="text-primary-100 text-xs md:text-sm">
             <p>
               <p className="text-lg">Usage of Analytics Data</p>
             </p>
