@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import nav from "@constants/nav.json";
 import { FaGithub } from "react-icons/fa";
 import PrivacyPolicy from "@pages/PrivacyPolicy";
-import Donation from "@pages/Donation";
+// import Donation from "@pages/Donation";
 
 const Footer = () => {
   return (
@@ -57,7 +57,21 @@ const Footer = () => {
             className="p-1 font-light text-xs md:text-sm text-primary-100"
             placeholder="Policy"
           >
-            <Donation />
+            <Typography
+              as="li"
+              variant="small"
+              className="p-1 font-light text-xs md:text-sm text-primary-100 cursor-pointer"
+              placeholder=""
+            >
+              <a
+                href="https://www.patreon.com/BreadAndSoup"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                후원하기
+              </a>
+            </Typography>
+            {/* <Donation /> */}
           </Typography>
           <Typography
             as="li"
