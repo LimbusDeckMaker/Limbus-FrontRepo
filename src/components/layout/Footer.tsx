@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import nav from "@constants/nav.json";
 import { FaGithub } from "react-icons/fa";
 import PrivacyPolicy from "@pages/PrivacyPolicy";
-import Donation from "@pages/Donation";
+// import Donation from "@pages/Donation";
 
 const Footer = () => {
   return (
@@ -45,7 +45,7 @@ const Footer = () => {
       </div>
       <div className="flex justify-between items-center mt-4">
         <img
-          src="/assets/logo2.webp"
+          src="/assets/logo3.webp"
           alt="footer_logo"
           className="w-8 h-8 md:w-10 md:h-10"
         />
@@ -57,7 +57,21 @@ const Footer = () => {
             className="p-1 font-light text-xs md:text-sm text-primary-100"
             placeholder="Policy"
           >
-            <Donation />
+            <Typography
+              as="li"
+              variant="small"
+              className="p-1 font-light text-xs md:text-sm text-primary-100 cursor-pointer"
+              placeholder=""
+            >
+              <a
+                href="https://www.patreon.com/BreadAndSoup"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                후원하기
+              </a>
+            </Typography>
+            {/* <Donation /> */}
           </Typography>
           <Typography
             as="li"

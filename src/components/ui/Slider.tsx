@@ -42,7 +42,7 @@ const Slider = ({ name, minValue, maxValue, isIdentityPage = true }: Props) => {
   return (
     <div className="md:flex md:gap-2">
       <div className="w-full flex gap-1 items-center lg:gap-2">
-        <div className="text-xs lg:text-sm text-primary-300 w-4">
+        <div className="text-xs lg:text-sm text-primary-200 w-4">
           {value[0]}
         </div>
         <RangeSlider
@@ -52,7 +52,7 @@ const Slider = ({ name, minValue, maxValue, isIdentityPage = true }: Props) => {
           value={value}
           onInput={handleChange}
         />
-        <div className="text-xs lg:text-sm text-primary-300 w-3">
+        <div className="text-xs lg:text-sm text-primary-200 w-3">
           {value[1]}
         </div>
       </div>

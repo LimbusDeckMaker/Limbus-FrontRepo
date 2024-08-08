@@ -1,6 +1,4 @@
 [
   { "title": "인격", "link": "/identity" },
-  { "title": "에고", "link": "/ego" },
-  { "title": "덱 빌딩", "link": "/building" },
-  { "title": "티어리스트", "link": "/tier" }
+  { "title": "에고", "link": "/ego" }
 ]
