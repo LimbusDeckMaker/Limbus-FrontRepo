@@ -12,7 +12,7 @@ const TierLine = ({ title, data, color, isSync }: TierLineProps) => {
   return (
     <div className="flex">
       <div
-        className={`text-xl font-semibold w-24 h-auto flex items-center justify-center ${color}`}
+        className={`text-sm lg:text-xl font-semibold w-16 lg:w-24 h-auto flex items-center justify-center ${color}`}
       >
         {title}
       </div>

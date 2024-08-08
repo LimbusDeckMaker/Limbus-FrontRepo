@@ -179,7 +179,7 @@ const TierTable = () => {
           isSync={isSync}
         />
       </div>
-      <div className="flex justify-end gap-2 text-xs text-white font-sansLight my-2">
+      <div className="flex flex-col md:flex-row justify-end gap-2 text-xs text-white font-sansLight my-2">
         <div className="flex items-center gap-1">
           <div className="bg-green-900 w-3 h-3"></div>
           <span>발푸르기스의 밤 한정</span>

@@ -30,7 +30,7 @@ const TierCard = ({ data, isSync }: { data: TierData; isSync: boolean }) => {
 
   return (
     <Link to={`/identity/${data.id}`}>
-      <li key={data.id} className="relative h-24 w-40">
+      <li key={data.id} className="relative h-16 w-28 md:h-24 md:w-40">
         <div className="h-full w-full overflow-hidden flex items-center justify-center">
           <img
             src={isSync ? data.afterImage : data.beforeImage}
@@ -39,7 +39,7 @@ const TierCard = ({ data, isSync }: { data: TierData; isSync: boolean }) => {
           />
         </div>
         <div
-          className={`absolute bottom-0 w-full h-2/5 flex flex-col items-end justify-center text-white text-xs font-sansLight pr-2 ${getBackgroundColor()}`}
+          className={`absolute bottom-0 w-full h-2/5 flex flex-col items-end justify-center text-white text-[8px] leading-tight tracking-tighter md:text-xs font-sansLight pr-2 ${getBackgroundColor()}`}
         >
           <span>{data.name}</span>
           <span>{data.character}</span>
