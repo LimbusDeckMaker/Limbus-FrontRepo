@@ -1,4 +1,6 @@
 [
   { "title": "인격", "link": "/identity" },
-  { "title": "에고", "link": "/ego" }
+  { "title": "에고", "link": "/ego" },
+  { "title": "리세 티어표", "link": "/tier" },
+  { "title": "키워드 분류", "link": "/keyword" }
 ]

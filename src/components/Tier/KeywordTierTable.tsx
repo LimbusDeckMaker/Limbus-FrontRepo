@@ -8,7 +8,7 @@ import TierLine from "./TierLine";
 import { Button, Tooltip } from "@material-tailwind/react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 
-const TierTable = () => {
+const KeywordTierTable = () => {
   const [sortedDataS, setSortedDataS] = useState<TierData[]>([]);
   const [sortedDataA, setSortedDataA] = useState<TierData[]>([]);
   const [sortedDataB, setSortedDataB] = useState<TierData[]>([]);
@@ -16,15 +16,13 @@ const TierTable = () => {
   const [sortedDataD, setSortedDataD] = useState<TierData[]>([]);
   const [sortedDataE, setSortedDataE] = useState<TierData[]>([]);
   const [sortedDataF, setSortedDataF] = useState<TierData[]>([]);
-  const [sortedDataG, setSortedDataG] = useState<TierData[]>([]);
-  const [sortedDataH, setSortedDataH] = useState<TierData[]>([]);
   const [isSync, setIsSync] = useState(false);
 
   // 필터링 옵션
   const options: IdentityOptions = {
     sinner: [],
     season: [],
-    grade: ["3"],
+    grade: [],
     affiliation: [],
     keyword: [],
     etcKeyword: [],
@@ -52,32 +50,27 @@ const TierTable = () => {
   // 분류 기준
   // 여기서 id만 설정하면 티어 바꿀 수 있음
 
-  // S: 100 약상, 72 쥐싱, 102 선장마엘, 61 디로쟈
-  const S = [100, 72, 102, 61];
+  // 출혈: 100 약상, 102 선장마엘, 27 퀴히스, 30 콩루, 10 쥐파, 6 중돈, 65 료슈, 20 갈그렉, 72 쥐싱,
+  //      64 흑슈, 34 갈루, 101 약티스, 57 흑로쟈, 82 피상, 90 흑그렉, 48 뫼르소
+  const S = [100, 102, 27, 30, 10, 6, 65, 20, 72, 64, 34, 101, 57, 82, 90, 48];
 
-  // A: 27 퀴히스, 75 섕싱, 98 넬슈, 23 r히스
-  const A = [27, 75, 98, 23];
+  // 화상: 103 런싱, 40 리우마엘, 91 리쟈, 83 마티스, 92 리슈
+  const A = [103, 40, 91, 83, 92];
 
-  // B: 30 콩루, 85 디루, 114 디뫼, 32 k루, 20 갈그렉, 94 치티스, 96 퐁그렉
-  const B = [7, 85, 114, 32, 20, 94, 96];
+  // 진동: 13 후파우, 53 어티스, 110 탐루, 112 티돈, 93 외히스, 113 티로쟈, 111 유슈, 37 대리마엘
+  const B = [13, 53, 110, 112, 93, 113, 111, 37];
 
-  // C: 115 떱티스, 81 떱상, 66 떱슈, 3 떱돈, 6 중돈, 10 쥐파, 79 동상
-  const C = [115, 81, 66, 3, 6, 10, 79];
+  // 파열: 12 세파우, 32 k루, 44 떱르소, 84 초돈, 26 셉히스, 52 셉티스, 95 데뫼, 18 장그렉
+  const C = [12, 32, 44, 84, 26, 52, 95, 18];
 
-  // D: 91 리쟈, 40 리우마엘, 12 세파우
-  const D = [91, 40, 12];
+  // 침잠: 61 디로쟈, 114 디뫼, 85 디루, 94 치티스, 41 해녀마엘, 79 동상, 96 퐁그렉
+  const D = [61, 114, 85, 94, 41, 79, 96];
 
-  // E: 78 검상, 110 탐루, 93 외히스, 38 r스마엘
-  const E = [78, 110, 93, 38];
+  // 호흡: 88 검르소, 98 넬슈, 75 섕싱, 78 검상, 89 검파우, 87 검돈, 54 섕티스
+  const E = [88, 98, 75, 78, 89, 87, 54];
 
-  // F: 19 츠그렉, 5 섕돈, 52 셉티스, 59 장로쟈
-  const F = [19, 5, 52, 59];
-
-  // G: 112 티돈, 47 코뫼, 44 떱뫼, 57 흑로쟈, 64흑슈
-  const G = [112, 47, 44, 57, 64];
-
-  // H: 71 검싱, 16 쥐그렉, 45 N르소, 25 여히스
-  const H = [71, 16, 45, 25];
+  // 충전: 115 떱티스, 81 떱상, 66 떱슈, 3 떱돈, 38 순록마엘, 23 r히스, 47 코뫼
+  const F = [115, 81, 66, 3, 38, 23, 47];
 
   // 분류 함수
   const sortData = (data: TierData[], criteria: number[]) => {
@@ -95,8 +88,6 @@ const TierTable = () => {
     setSortedDataD(sortData(data, D));
     setSortedDataE(sortData(data, E));
     setSortedDataF(sortData(data, F));
-    setSortedDataG(sortData(data, G));
-    setSortedDataH(sortData(data, H));
   }, [data]);
 
   return (
@@ -125,57 +116,45 @@ const TierTable = () => {
 
       <div className="flex flex-col gap-2">
         <TierLine
-          title="S+"
+          title="출혈"
           color="bg-res-red"
           data={sortedDataS}
           isSync={isSync}
         />
         <TierLine
-          title="S"
+          title="화상"
           color="bg-res-orange"
           data={sortedDataA}
           isSync={isSync}
         />
         <TierLine
-          title="A"
+          title="진동"
           color="bg-res-yellow"
           data={sortedDataB}
           isSync={isSync}
         />
         <TierLine
-          title="B"
+          title="파열"
           color="bg-res-green"
           data={sortedDataC}
           isSync={isSync}
         />
         <TierLine
-          title="C"
+          title="침잠"
           color="bg-res-blue"
           data={sortedDataD}
           isSync={isSync}
         />
         <TierLine
-          title="D"
+          title="호흡"
           color="bg-res-navy"
           data={sortedDataE}
           isSync={isSync}
         />
         <TierLine
-          title="E"
+          title="충전"
           color="bg-res-purple"
           data={sortedDataF}
-          isSync={isSync}
-        />
-        <TierLine
-          title="F"
-          color="bg-gray-700"
-          data={sortedDataG}
-          isSync={isSync}
-        />
-        <TierLine
-          title="X"
-          color="bg-gray-900"
-          data={sortedDataH}
           isSync={isSync}
         />
       </div>
@@ -197,4 +176,4 @@ const TierTable = () => {
   );
 };
 
-export default TierTable;
+export default KeywordTierTable;
