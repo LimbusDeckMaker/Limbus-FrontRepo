@@ -4,6 +4,8 @@ import Banner from "@components/Main/Banner";
 import NewsCard from "@components/Main/NewsCard";
 import YoutubePlay from "@components/Main/YoutubePlay";
 import MenuCard from "@components/Main/MenuCard";
+import SiteButton from "@components/Main/SiteButton";
+import { FaSquareXTwitter, FaSquareYoutube } from "react-icons/fa6";
 
 const MainPage = () => {
   return (
@@ -26,6 +28,30 @@ const MainPage = () => {
         <MenuCard menu={menu[1]} />
         <MenuCard menu={menu[2]} />
         <MenuCard menu={menu[3]} />
+      </div>
+      <div className="flex gap-6 mx-auto">
+        <SiteButton
+          name={"공식 홈페이지"}
+          link={"https://limbuscompany.kr"}
+          icon={
+            <img
+              src="https://encrypted-tbn0.gstatic.com/favicon-tbn?q=tbn:ANd9GcShROIHRbR4rWXlRoqw87jfeT3592yG1IN18E6titTVZNKsz9YNygkYhSM9e5Ts1xgDedkpjShwJIMaqDHd1mMn0GObkYg0hVPXAeMOndnEhZI1PpqaqKbEVQ"
+              alt="LCB favicon"
+              width={23}
+              height={23}
+            />
+          }
+        />
+        <SiteButton
+          name={"@LimbusCompany_B"}
+          link={"https://twitter.com/LimbusCompany_B"}
+          icon={<FaSquareXTwitter size={25} className="text-primary-500" />}
+        />
+        <SiteButton
+          name={"ProjectMoon 유튜브"}
+          link={"https://www.youtube.com/channel/UCpqyr6h4RCXCEswHlkSjykA"}
+          icon={<FaSquareYoutube size={25} className="text-primary-500" />}
+        />
       </div>
     </div>
   );
