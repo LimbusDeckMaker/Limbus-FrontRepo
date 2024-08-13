@@ -34,7 +34,7 @@ const IdentitySkillCard = ({
   const currentSkill = skill[synchronization];
 
   return (
-    <div className="p-3 bg-primary-500 mb-2">
+    <div className="p-3 bg-primary-450 rounded-md mb-2 border border-primary-300">
       <div className="xl:flex xl:gap-3 items-center pb-2 lg:pb-4 ">
         {/* 스킬 이름 */}
         <div
@@ -50,7 +50,7 @@ const IdentitySkillCard = ({
               className="inline-block w-auto h-6 mr-1 mb-1"
             />
           )}
-          <span className="pr-4">{type}</span>{" "}
+          <span className="pr-2">{type}</span>{" "}
           {/* 1 Skill, 2 Skill, 3 Skill, DEFENSE */}
           <span>{currentSkill.name}</span>
           {/* 공격 타입 이미지 */}
@@ -112,7 +112,7 @@ const IdentitySkillCard = ({
         </div>
       </div>
 
-      <div className="text-xs sm:text-sm font-sansLight">
+      <div className="text-xs sm:text-sm">
         <KeywordHighlighted text={currentSkill.normalEffect} />
         <div>
           {[...Array(currentSkill.coinNum)].map((_, index) => {

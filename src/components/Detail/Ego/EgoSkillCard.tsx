@@ -35,8 +35,8 @@ const EgoSkillCard = ({ type, synchronization, skill }: SkillCardProps) => {
 
   return (
     <div
-      className={`p-3 mb-2 bg-primary-500 ${
-        type === "Corrosion" && "shadow-inner-black"
+      className={`p-3 mb-2 bg-primary-450 rounded-md border-primary-300 border ${
+        type === "Corrosion" && "shadow-inner-black border-primary-450"
       }`}
     >
       <div className="xl:flex xl:gap-3 items-center pb-2 lg:pb-4">
