@@ -13,3 +13,12 @@ export interface IdentityOptions {
   minWeight: number;
   maxWeight: number;
 }
+
+export interface TierData {
+  id: number;
+  name: string;
+  character: string;
+  season: number;
+  beforeImage: string;
+  afterImage: string;
+}

@@ -10,7 +10,7 @@ const KeywordHighlighted = ({ text }: KeywordHighlightedProps) => {
 
   const keywordNames = keywords.map((keyword) => keyword.name);
   const regex = new RegExp(
-    `(${keywordNames.join("|")}|\\[.*?\\]|정신력)`,
+    `(${keywordNames.join("|")}|\\[.*?\\]|정신력|\\[피아식별불가\\])`,
     "gi"
   );
 
@@ -18,7 +18,7 @@ const KeywordHighlighted = ({ text }: KeywordHighlightedProps) => {
   const lines = text.split("\n");
 
   return (
-    <span className="font-content font-thin text-brown-100">
+    <span className="font-body font-thin text-brown-100 text-xs sm:text-sm">
       {lines.map((line, lineIndex) => (
         <span key={lineIndex}>
           {line.split(regex).map((part, index) => {
@@ -33,6 +33,13 @@ const KeywordHighlighted = ({ text }: KeywordHighlightedProps) => {
                 </span>
               );
             } else if (part.match(/^\[.*?\]$/)) {
+              if (part.toLowerCase() === "[피아식별불가]") {
+                return (
+                  <span key={index} className="text-red-500">
+                    {part}
+                  </span>
+                );
+              }
               return (
                 <span key={index} className="text-orange-300">
                   {part}
