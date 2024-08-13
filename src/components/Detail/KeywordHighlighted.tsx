@@ -18,7 +18,7 @@ const KeywordHighlighted = ({ text }: KeywordHighlightedProps) => {
   const lines = text.split("\n");
 
   return (
-    <span className="font-content font-thin text-brown-100">
+    <span className="font-sansLight text-brown-100 text-xs sm:text-sm">
       {lines.map((line, lineIndex) => (
         <span key={lineIndex}>
           {line.split(regex).map((part, index) => {

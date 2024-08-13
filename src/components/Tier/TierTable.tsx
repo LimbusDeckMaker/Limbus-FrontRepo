@@ -5,7 +5,7 @@ import { IdentityOptions } from "@interfaces/identity";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import TierLine from "./TierLine";
-import { Button, Tooltip } from "@material-tailwind/react";
+import { Button, Tooltip, Spinner } from "@material-tailwind/react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 
 const TierTable = () => {
@@ -37,7 +37,7 @@ const TierTable = () => {
   };
 
   // 데이터 가져오기
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["identity", options],
     queryFn: () => getIdentity(options),
     retry: 1,
@@ -55,8 +55,8 @@ const TierTable = () => {
   // S: 100 약상, 72 쥐싱, 102 선장마엘, 61 디로쟈
   const S = [100, 72, 102, 61];
 
-  // A: 27 퀴히스, 75 섕싱, 98 넬슈, 23 r히스
-  const A = [27, 75, 98, 23];
+  // A: 27 퀴히스, 75 섕싱, 98 넬슈, 116 멀파우, 23 r히스
+  const A = [27, 75, 98, 116, 23];
 
   // B: 30 콩루, 85 디루, 114 디뫼, 32 k루, 20 갈그렉, 94 치티스, 96 퐁그렉
   const B = [7, 85, 114, 32, 20, 94, 96];
@@ -97,6 +97,7 @@ const TierTable = () => {
     setSortedDataF(sortData(data, F));
     setSortedDataG(sortData(data, G));
     setSortedDataH(sortData(data, H));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   return (
@@ -123,62 +124,69 @@ const TierTable = () => {
         </Tooltip>
       </div>
 
-      <div className="flex flex-col gap-2">
-        <TierLine
-          title="S+"
-          color="bg-res-red"
-          data={sortedDataS}
-          isSync={isSync}
-        />
-        <TierLine
-          title="S"
-          color="bg-res-orange"
-          data={sortedDataA}
-          isSync={isSync}
-        />
-        <TierLine
-          title="A"
-          color="bg-res-yellow"
-          data={sortedDataB}
-          isSync={isSync}
-        />
-        <TierLine
-          title="B"
-          color="bg-res-green"
-          data={sortedDataC}
-          isSync={isSync}
-        />
-        <TierLine
-          title="C"
-          color="bg-res-blue"
-          data={sortedDataD}
-          isSync={isSync}
-        />
-        <TierLine
-          title="D"
-          color="bg-res-navy"
-          data={sortedDataE}
-          isSync={isSync}
-        />
-        <TierLine
-          title="E"
-          color="bg-res-purple"
-          data={sortedDataF}
-          isSync={isSync}
-        />
-        <TierLine
-          title="F"
-          color="bg-gray-700"
-          data={sortedDataG}
-          isSync={isSync}
-        />
-        <TierLine
-          title="X"
-          color="bg-gray-900"
-          data={sortedDataH}
-          isSync={isSync}
-        />
-      </div>
+      {isLoading ? (
+        <div className="flex justify-center items-center h-screen">
+          <Spinner className="w-8 h-8 text-primary-200" />
+        </div>
+      ) : (
+        <div className="flex flex-col gap-2">
+          <TierLine
+            title="S+"
+            color="bg-res-red"
+            data={sortedDataS}
+            isSync={isSync}
+          />
+          <TierLine
+            title="S"
+            color="bg-res-orange"
+            data={sortedDataA}
+            isSync={isSync}
+          />
+          <TierLine
+            title="A"
+            color="bg-res-yellow"
+            data={sortedDataB}
+            isSync={isSync}
+          />
+          <TierLine
+            title="B"
+            color="bg-res-green"
+            data={sortedDataC}
+            isSync={isSync}
+          />
+          <TierLine
+            title="C"
+            color="bg-res-blue"
+            data={sortedDataD}
+            isSync={isSync}
+          />
+          <TierLine
+            title="D"
+            color="bg-res-navy"
+            data={sortedDataE}
+            isSync={isSync}
+          />
+          <TierLine
+            title="E"
+            color="bg-res-purple"
+            data={sortedDataF}
+            isSync={isSync}
+          />
+          <TierLine
+            title="F"
+            color="bg-gray-700"
+            data={sortedDataG}
+            isSync={isSync}
+          />
+          <TierLine
+            title="X"
+            color="bg-gray-900"
+            data={sortedDataH}
+            isSync={isSync}
+          />
+        </div>
+      )}
+
       <div className="flex flex-col md:flex-row justify-end gap-2 text-xs text-white font-sansLight my-2">
         <div className="flex items-center gap-1">
           <div className="bg-green-900 w-3 h-3"></div>

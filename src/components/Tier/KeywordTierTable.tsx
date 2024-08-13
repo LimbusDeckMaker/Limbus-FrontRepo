@@ -5,7 +5,7 @@ import { IdentityOptions } from "@interfaces/identity";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import TierLine from "./TierLine";
-import { Button, Tooltip } from "@material-tailwind/react";
+import { Button, Tooltip, Spinner } from "@material-tailwind/react";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 
 const KeywordTierTable = () => {
@@ -35,7 +35,7 @@ const KeywordTierTable = () => {
   };
 
   // 데이터 가져오기
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["identity", options],
     queryFn: () => getIdentity(options),
     retry: 1,
@@ -51,8 +51,10 @@ const KeywordTierTable = () => {
   // 여기서 id만 설정하면 티어 바꿀 수 있음
 
   // 출혈: 100 약상, 102 선장마엘, 27 퀴히스, 30 콩루, 10 쥐파, 6 중돈, 65 료슈, 20 갈그렉, 72 쥐싱,
-  //      64 흑슈, 34 갈루, 101 약티스, 57 흑로쟈, 82 피상, 90 흑그렉, 48 뫼르소
-  const S = [100, 102, 27, 30, 10, 6, 65, 20, 72, 64, 34, 101, 57, 82, 90, 48];
+  //      64 흑슈, 34 갈루, 101 약티스, 57 흑로쟈, 29 흑루, 82 피상, 90 흑그렉, 48 중뫼
+  const S = [
+    100, 102, 27, 30, 10, 6, 65, 20, 72, 64, 34, 101, 57, 29, 82, 90, 48,
+  ];
 
   // 화상: 103 런싱, 40 리우마엘, 91 리쟈, 83 마티스, 92 리슈
   const A = [103, 40, 91, 83, 92];
@@ -69,8 +71,8 @@ const KeywordTierTable = () => {
   // 호흡: 88 검르소, 98 넬슈, 75 섕싱, 78 검상, 89 검파우, 87 검돈, 54 섕티스
   const E = [88, 98, 75, 78, 89, 87, 54];
 
-  // 충전: 115 떱티스, 81 떱상, 66 떱슈, 3 떱돈, 38 순록마엘, 23 r히스, 47 코뫼
-  const F = [115, 81, 66, 3, 38, 23, 47];
+  // 충전: 115 떱티스, 116 멀파우, 81 떱상, 66 떱슈, 3 떱돈, 38 순록마엘, 23 r히스, 47 코뫼
+  const F = [115, 116, 81, 66, 3, 38, 23, 47];
 
   // 분류 함수
   const sortData = (data: TierData[], criteria: number[]) => {
@@ -88,6 +90,7 @@ const KeywordTierTable = () => {
     setSortedDataD(sortData(data, D));
     setSortedDataE(sortData(data, E));
     setSortedDataF(sortData(data, F));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   return (
@@ -114,50 +117,56 @@ const KeywordTierTable = () => {
         </Tooltip>
       </div>
 
-      <div className="flex flex-col gap-2">
-        <TierLine
-          title="출혈"
-          color="bg-res-red"
-          data={sortedDataS}
-          isSync={isSync}
-        />
-        <TierLine
-          title="화상"
-          color="bg-res-orange"
-          data={sortedDataA}
-          isSync={isSync}
-        />
-        <TierLine
-          title="진동"
-          color="bg-res-yellow"
-          data={sortedDataB}
-          isSync={isSync}
-        />
-        <TierLine
-          title="파열"
-          color="bg-res-green"
-          data={sortedDataC}
-          isSync={isSync}
-        />
-        <TierLine
-          title="침잠"
-          color="bg-res-blue"
-          data={sortedDataD}
-          isSync={isSync}
-        />
-        <TierLine
-          title="호흡"
-          color="bg-res-navy"
-          data={sortedDataE}
-          isSync={isSync}
-        />
-        <TierLine
-          title="충전"
-          color="bg-res-purple"
-          data={sortedDataF}
-          isSync={isSync}
-        />
-      </div>
+      {isLoading ? (
+        <div className="flex justify-center items-center h-screen">
+          <Spinner className="w-8 h-8 text-primary-200" />
+        </div>
+      ) : (
+        <div className="flex flex-col gap-2">
+          <TierLine
+            title="출혈"
+            color="bg-res-red"
+            data={sortedDataS}
+            isSync={isSync}
+          />
+          <TierLine
+            title="화상"
+            color="bg-res-orange"
+            data={sortedDataA}
+            isSync={isSync}
+          />
+          <TierLine
+            title="진동"
+            color="bg-res-yellow"
+            data={sortedDataB}
+            isSync={isSync}
+          />
+          <TierLine
+            title="파열"
+            color="bg-res-green"
+            data={sortedDataC}
+            isSync={isSync}
+          />
+          <TierLine
+            title="침잠"
+            color="bg-res-blue"
+            data={sortedDataD}
+            isSync={isSync}
+          />
+          <TierLine
+            title="호흡"
+            color="bg-res-navy"
+            data={sortedDataE}
+            isSync={isSync}
+          />
+          <TierLine
+            title="충전"
+            color="bg-res-purple"
+            data={sortedDataF}
+            isSync={isSync}
+          />
+        </div>
+      )}
       <div className="flex justify-end gap-2 text-xs text-white font-sansLight my-2">
         <div className="flex items-center gap-1">
           <div className="bg-green-900 w-3 h-3"></div>

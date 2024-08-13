@@ -112,7 +112,7 @@ const IdentitySkillCard = ({
         </div>
       </div>
 
-      <div className="text-sm sm:text-base">
+      <div className="text-xs sm:text-sm font-sansLight">
         <KeywordHighlighted text={currentSkill.normalEffect} />
         <div>
           {[...Array(currentSkill.coinNum)].map((_, index) => {
