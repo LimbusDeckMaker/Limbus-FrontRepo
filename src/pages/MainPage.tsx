@@ -10,7 +10,7 @@ import { FaSquareXTwitter, FaSquareYoutube } from "react-icons/fa6";
 const MainPage = () => {
   return (
     <div className="py-1 md:py-10 flex flex-col gap-3 md:gap-12">
-      <div className="container mx-auto">
+      <div className="w-full mx-auto">
         <Banner />
       </div>
       <div className="flex flex-col md:flex-row justify-between gap-3 md:gap-10">
@@ -23,7 +23,7 @@ const MainPage = () => {
           <NewsCard />
         </div>
       </div>
-      <div className="flex justify-between w-full h-40 gap-4">
+      <div className="flex justify-between w-full h-20 md:h-28 lg:h-40 gap-2 md:gap-4">
         <MenuCard menu={menu[0]} />
         <MenuCard menu={menu[1]} />
         <MenuCard menu={menu[2]} />
