@@ -1,89 +1,61 @@
 import React from "react";
 
-import YouTube from "react-youtube";
-import SiteLink from "@components/SiteLink";
-import ThumbnailCard from "@components/ThumbnailCard";
-import { useQuery } from "@tanstack/react-query";
-import { Main_Keys } from "@constants/queryKeys";
-import { getNews, getYoutube } from "@apis/mainApi";
-//import Notice from "@components/Notice";
-
-interface News {
-  title: string;
-  url: string;
-  release: string;
-  imageUrl: string;
-}
+import Banner from "@components/Main/Banner";
+import NewsCard from "@components/Main/NewsCard";
+import YoutubePlay from "@components/Main/YoutubePlay";
+import MenuCard from "@components/Main/MenuCard";
 
 const MainPage = () => {
-  const { data } = useQuery({
-    queryKey: Main_Keys.youtube,
-    queryFn: getYoutube,
-    staleTime: 1000 * 60 * 30,
-    refetchOnWindowFocus: false,
-    placeholderData: {
-      videoId: "HTRQgFYCXHY", // 기본값 설정
-    },
-  });
-
-  const { data: news } = useQuery({
-    queryKey: Main_Keys.news,
-    queryFn: getNews,
-    staleTime: 1000 * 60 * 30,
-    refetchOnWindowFocus: false,
-    placeholderData: [],
-  });
-
   return (
-    <div className="font-sans font-bold text-primary-100 py-4 md:py-20">
-      {/* <Notice /> */}
-      <div className="flex flex-col md:flex-row items-center justify-center lg:w-3/4 mx-auto gap-4">
-        <div className="flex flex-col gap-4 items-center justify-center w-11/12 md:w-1/2 md:mx-auto">
-          <div className="bg-primary-400 w-full mx-auto p-2 md:p-4">
-            <div className="pb-2">
-              <span className="text-base md:text-xl">최신 유튜브</span>
-            </div>
-            <YouTube
-              videoId={data?.videoId || "HTRQgFYCXHY"} // data가 없는 경우 프로젝트문 대표 영상 출력 "HTRQgFYCXHY"
-              className="aspect-video"
-              opts={{
-                width: "100%",
-                height: "100%",
-                playerVars: {
-                  autoplay: 0,
-                  controls: 1,
-                  modestbranding: 1,
-                  rel: 0,
-                  showinfo: 0,
-                },
-              }}
-            />
-          </div>
-          <div className="bg-primary-400 w-full mx-auto p-2 md:p-4">
-            <div className="pb-2">
-              <span className="text-base md:text-xl">공식사이트 바로가기</span>
-            </div>
-            <SiteLink />
-          </div>
+    <div className="py-1 md:py-10 flex flex-col gap-3 md:gap-12">
+      <div className="container mx-auto">
+        <Banner />
+      </div>
+      <div className="flex flex-col md:flex-row justify-between gap-3 md:gap-10">
+        {/* YoutubePlay가 화면의 60%를 차지하게 설정 */}
+        <div className="w-full md:w-3/5">
+          <YoutubePlay />
         </div>
-        <div className="notice-container bg-primary-400 w-11/12 md:w-1/2 mx-auto p-2 md:p-4">
-          <div className="pb-2">
-            <span className="text-base md:text-xl">최신 공지사항</span>
-          </div>
-
-          {news?.map((item: News, index: number) => (
-            <ThumbnailCard
-              title={item.title}
-              url={item.url}
-              date={item.release}
-              image={item.imageUrl}
-              key={index}
-            />
-          ))}
+        {/* NewsCard가 나머지 40%를 차지하게 설정 */}
+        <div className="w-full md:w-2/5">
+          <NewsCard />
         </div>
+      </div>
+      <div className="flex justify-between w-full h-40 gap-4">
+        <MenuCard menu={menu[0]} />
+        <MenuCard menu={menu[1]} />
+        <MenuCard menu={menu[2]} />
+        <MenuCard menu={menu[3]} />
       </div>
     </div>
   );
 };
+
+const menu = [
+  {
+    name: "인격 도감",
+    image:
+      "https://limbus-image-bucket.s3.amazonaws.com/%EC%9D%B4%EC%83%81/Identity/LCB%20%EC%88%98%EA%B0%90%EC%9E%90/10101_normal.webp",
+    link: "/identity",
+  },
+  {
+    name: "에고 도감",
+    image:
+      "https://limbus-image-bucket.s3.amazonaws.com/%EB%A1%9C%EC%9F%88/EGO/%ED%95%8F%EB%B9%9B%EC%9A%95%EB%A7%9D/20906_cg.webp",
+    link: "/ego",
+  },
+  {
+    name: "리세마라 티어표",
+    image:
+      "https://limbus-image-bucket.s3.ap-northeast-2.amazonaws.com/%ED%99%8D%EB%A3%A8/Identity/20%EA%B5%AC%20%EC%9C%A0%EB%A1%9C%EC%A7%80%EB%B9%84/10609_gacksung.webp",
+    link: "/tier",
+  },
+  {
+    name: "키워드별 인격 분류표",
+    image:
+      "https://limbus-image-bucket.s3.amazonaws.com/%EC%9D%B4%EC%8A%A4%EB%A7%88%EC%97%98/Identity/%ED%94%BC%EC%BF%BC%EB%93%9C%ED%98%B8%20%EC%84%A0%EC%9E%A5/10808_normal.webp",
+    link: "/keyword",
+  },
+];
 
 export default MainPage;
