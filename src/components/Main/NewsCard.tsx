@@ -33,7 +33,7 @@ const NewsCard = () => {
               href={news.url}
               target="_blank"
               rel="noreferrer"
-              className="text-sm truncate block w-full"
+              className="text-sm truncate block w-full hover:underline"
             >
               {news.title}
             </a>

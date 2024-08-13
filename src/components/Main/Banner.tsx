@@ -20,11 +20,11 @@ const Banner = () => {
         <div className="text-white">
           <span className="text-xs md:text-xl">신규 관리자를 위한</span>
           <h1 className="text-md md:text-4xl font-bold mb-3 md:mb-8">
-            리세마라 티어 리스트 서비스 출시
+            리세마라용 티어표 출시
           </h1>
           <Link
             to="/tier"
-            className="px-2 md:px-4 pt-2 md:pt-3 pb-1 md:pb-2 border border-white text-xs md:text-sm font-sans"
+            className="px-2 md:px-4 pt-2 md:pt-3 pb-1 md:pb-2 border border-white text-xs md:text-sm font-sans hover:animate-pulse"
           >
             바로가기
           </Link>

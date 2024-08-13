@@ -53,7 +53,7 @@ const menu = [
   {
     name: "키워드별 인격 분류표",
     image:
-      "https://limbus-image-bucket.s3.amazonaws.com/%EC%9D%B4%EC%8A%A4%EB%A7%88%EC%97%98/Identity/%ED%94%BC%EC%BF%BC%EB%93%9C%ED%98%B8%20%EC%84%A0%EC%9E%A5/10808_normal.webp",
+      "https://limbus-image-bucket.s3.amazonaws.com/%EA%B7%B8%EB%A0%88%EA%B3%A0%EB%A5%B4/Identity/%ED%9D%91%EC%9A%B4%ED%9A%8C%20%EB%B6%80%EC%A1%B0%EC%9E%A5/11208_normal.webp",
     link: "/keyword",
   },
 ];
