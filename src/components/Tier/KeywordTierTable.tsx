@@ -124,15 +124,15 @@ const KeywordTierTable = () => {
       ) : (
         <div className="flex flex-col gap-2">
           <TierLine
-            title="출혈"
+            title="화상"
             color="bg-res-red"
-            data={sortedDataS}
+            data={sortedDataA}
             isSync={isSync}
           />
           <TierLine
-            title="화상"
+            title="출혈"
             color="bg-res-orange"
-            data={sortedDataA}
+            data={sortedDataS}
             isSync={isSync}
           />
           <TierLine
