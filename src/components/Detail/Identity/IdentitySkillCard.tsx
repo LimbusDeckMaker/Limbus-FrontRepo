@@ -147,6 +147,11 @@ const IdentitySkillCard = ({
                 <br />
                 [턴 종료시] 듀라한 제거
               </span>
+              <br />
+              <br />
+              <span className="text-xs">
+                빠르게 수정하도록 하겠습니다. 불편을 드려 죄송합니다.
+              </span>
             </div>
           }
         >
