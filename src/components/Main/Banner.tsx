@@ -8,7 +8,7 @@ const Banner = () => {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url(https://limbus-image-bucket.s3.ap-northeast-2.amazonaws.com/%ED%8C%8C%EC%9A%B0%EC%8A%A4%ED%8A%B8/Identity/%EB%A9%80%ED%8B%B0%ED%81%AC%EB%9E%99%20%EC%82%AC%EB%AC%B4%EC%86%8C%20%EB%8C%80%ED%91%9C/10210_normal.webp)",
+            "url(https://limbus-image-bucket.s3.ap-northeast-2.amazonaws.com/%ED%9E%88%EC%8A%A4%ED%81%B4%EB%A6%AC%ED%94%84/Identity/%EC%99%80%EC%9D%BC%EB%93%9C%ED%97%8C%ED%8A%B8/10710_gacksung.webp)",
         }}
       ></div>
 
