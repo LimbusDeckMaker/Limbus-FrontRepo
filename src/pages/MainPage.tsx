@@ -10,12 +10,6 @@ import { FaSquareXTwitter, FaSquareYoutube } from "react-icons/fa6";
 const MainPage = () => {
   return (
     <div className="py-1 md:py-10 flex flex-col gap-3 md:gap-12">
-      <div className="w-full mx-auto text-white">
-        안녕하세요. 단빵숲 입니다. <br /> 현재 데이터베이스가 초기화 되는 문제가
-        생겨 정보 접속이 불가능합니다. <br /> 빠른 시일 내에 복구하도록
-        하겠습니다.
-        <br /> 불편을 드려 죄송합니다.
-      </div>
       <div className="w-full mx-auto">
         <Banner />
       </div>
