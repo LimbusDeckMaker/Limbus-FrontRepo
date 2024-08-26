@@ -1,6 +1,5 @@
 import React from "react";
 import KeywordHighlighted from "../KeywordHighlighted";
-import { Tooltip } from "@material-tailwind/react";
 
 interface SkillCardProps {
   type: string;
