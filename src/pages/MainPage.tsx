@@ -1,6 +1,6 @@
 import React from "react";
 
-import Banner from "@components/Main/Banner";
+import MainCarousel from "@components/Main/MainCarousel";
 import NewsCard from "@components/Main/NewsCard";
 import YoutubePlay from "@components/Main/YoutubePlay";
 import MenuCard from "@components/Main/MenuCard";
@@ -11,7 +11,7 @@ const MainPage = () => {
   return (
     <div className="py-1 md:py-10 flex flex-col gap-3 md:gap-12">
       <div className="w-full mx-auto">
-        <Banner />
+        <MainCarousel />
       </div>
       <div className="flex flex-col md:flex-row justify-between gap-3 md:gap-10">
         {/* YoutubePlay가 화면의 60%를 차지하게 설정 */}
