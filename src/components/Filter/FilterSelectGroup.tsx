@@ -1,5 +1,4 @@
 import FilterSelect from "./FilterSelect";
-import { Tooltip } from "@material-tailwind/react";
 
 interface Option {
   value: string;
