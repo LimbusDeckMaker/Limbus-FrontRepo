@@ -64,13 +64,28 @@ const Footer = () => {
               placeholder=""
             >
               <a
+                href="https://toon.at/donate/breadandsoup"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                후원하기(투네이션)
+              </a>
+            </Typography>
+            <Typography
+              as="li"
+              variant="small"
+              className="p-1 font-light text-xs md:text-sm text-primary-100 cursor-pointer"
+              placeholder=""
+            >
+              <a
                 href="https://www.patreon.com/BreadAndSoup"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                후원하기
+                후원하기(패트리온)
               </a>
             </Typography>
+
             {/* <Donation /> */}
           </Typography>
           <Typography
