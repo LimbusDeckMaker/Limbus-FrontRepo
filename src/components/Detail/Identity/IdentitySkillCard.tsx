@@ -60,6 +60,7 @@ const IdentitySkillCard = ({
             className="inline-block w-auto h-8 ml-[1px] mb-1"
           />
         </div>
+
         {/* 스킬 스펙 */}
         <div className=" items-center text-primary-100 text-xs lg:text-base">
           {/* 윗단 */}

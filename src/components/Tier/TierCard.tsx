@@ -3,7 +3,7 @@ import { TierData } from "@interfaces/identity";
 import { Link } from "react-router-dom";
 
 // 발푸밤
-const walpurgisIds = [13, 34, 83, 84, 103]; // 후파우, 갈루, 마티스, 초돈, 런싱
+const walpurgisIds = [13, 34, 83, 84, 103, 119, 120]; // 후파우, 갈루, 마티스, 초돈, 런싱, 죽나상, 적슈
 
 // 이번 시즌 자판기 획득 불가(전 시즌 인격에서 통상 제외)
 const previousSeasonIds = [6, 20, 27, 48, 82, 102];
