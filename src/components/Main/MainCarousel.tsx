@@ -33,7 +33,7 @@ const MainCarousel = () => {
       <Banner
         imageUrl="https://limbus-image-bucket.s3.ap-northeast-2.amazonaws.com/%EB%A3%8C%EC%8A%88/Identity/%EB%A1%9C%EB%B3%B4%ED%86%A0%EB%AF%B8%20E.G.O::%EC%A0%81%EC%95%88%20%C2%B7%20%EC%B0%B8%ED%9A%8C/10410_gacksung.webp"
         spanText="신규 관리자를 위한"
-        headingText="리세마라용 티어표 출시"
+        headingText="리세마라용 티어표 출시 (발푸밤 포함)"
         linkPath="/tier"
         linkText="리세 티어표 바로가기"
       />
