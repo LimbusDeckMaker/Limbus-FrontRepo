@@ -20,15 +20,6 @@ const MainCarousel = () => {
         </div>
       )}
     >
-      {/* 업데이트 */}
-      <Banner
-        imageUrl="https://limbus-image-bucket.s3.ap-northeast-2.amazonaws.com/%EC%9D%B4%EC%83%81/Identity/%EB%A1%9C%EB%B3%B4%ED%86%A0%EB%AF%B8%20E.G.O::%EC%97%84%EC%88%99%ED%95%9C%20%EC%95%A0%EB%8F%84/10110_gacksung.webp"
-        spanText="9월 5일 업데이트"
-        headingText="제4회 발푸르기스의 밤 정보 추가 완료"
-        linkPath="/identity"
-        linkText="인격 정보 바로가기"
-      />
-
       {/* 리세 홍보 */}
       <Banner
         imageUrl="https://limbus-image-bucket.s3.ap-northeast-2.amazonaws.com/%EB%A3%8C%EC%8A%88/Identity/%EB%A1%9C%EB%B3%B4%ED%86%A0%EB%AF%B8%20E.G.O::%EC%A0%81%EC%95%88%20%C2%B7%20%EC%B0%B8%ED%9A%8C/10410_gacksung.webp"
@@ -36,6 +27,15 @@ const MainCarousel = () => {
         headingText="리세마라용 티어표 출시 (발푸밤 포함)"
         linkPath="/tier"
         linkText="리세 티어표 바로가기"
+      />
+
+      {/* 업데이트 */}
+      <Banner
+        imageUrl="https://limbus-image-bucket.s3.ap-northeast-2.amazonaws.com/%EC%9D%B4%EC%83%81/Identity/%EB%A1%9C%EB%B3%B4%ED%86%A0%EB%AF%B8%20E.G.O::%EC%97%84%EC%88%99%ED%95%9C%20%EC%95%A0%EB%8F%84/10110_gacksung.webp"
+        spanText="9월 5일 업데이트"
+        headingText="제4회 발푸르기스의 밤 정보 추가 완료"
+        linkPath="/identity"
+        linkText="인격 정보 바로가기"
       />
     </Carousel>
   );
