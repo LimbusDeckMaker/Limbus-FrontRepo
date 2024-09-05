@@ -22,16 +22,16 @@ const MainCarousel = () => {
     >
       {/* 업데이트 */}
       <Banner
-        imageUrl="https://limbus-image-bucket.s3.amazonaws.com/%EC%98%A4%ED%8B%B0%EC%8A%A4/Identity/W%EC%82%AC%203%EB%93%B1%EA%B8%89%20%EC%A0%95%EB%A6%AC%20%EC%9A%94%EC%9B%90%20%ED%8C%80%EC%9E%A5/11110_gacksung.webp"
-        spanText="8월 27일 업데이트"
-        headingText="소속 검색 기능 수정완료!"
+        imageUrl="https://limbus-image-bucket.s3.ap-northeast-2.amazonaws.com/%EC%9D%B4%EC%83%81/Identity/%EB%A1%9C%EB%B3%B4%ED%86%A0%EB%AF%B8%20E.G.O::%EC%97%84%EC%88%99%ED%95%9C%20%EC%95%A0%EB%8F%84/10110_gacksung.webp"
+        spanText="9월 5일 업데이트"
+        headingText="제4회 발푸르기스의 밤 정보 추가 완료"
         linkPath="/identity"
         linkText="인격 정보 바로가기"
       />
 
       {/* 리세 홍보 */}
       <Banner
-        imageUrl="https://limbus-image-bucket.s3.ap-northeast-2.amazonaws.com/%ED%9E%88%EC%8A%A4%ED%81%B4%EB%A6%AC%ED%94%84/Identity/%EC%99%80%EC%9D%BC%EB%93%9C%ED%97%8C%ED%8A%B8/10710_gacksung.webp"
+        imageUrl="https://limbus-image-bucket.s3.ap-northeast-2.amazonaws.com/%EB%A3%8C%EC%8A%88/Identity/%EB%A1%9C%EB%B3%B4%ED%86%A0%EB%AF%B8%20E.G.O::%EC%A0%81%EC%95%88%20%C2%B7%20%EC%B0%B8%ED%9A%8C/10410_gacksung.webp"
         spanText="신규 관리자를 위한"
         headingText="리세마라용 티어표 출시"
         linkPath="/tier"
