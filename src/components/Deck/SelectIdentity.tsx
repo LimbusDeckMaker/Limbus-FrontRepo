@@ -4,9 +4,10 @@ import { useState } from "react";
 interface Props {
   identities: Identity[];
   setMine: (mine: number[]) => void;
+  setIsResult: (isResult: boolean) => void;
 }
 
-const SelectIdentity = ({ identities, setMine }: Props) => {
+const SelectIdentity = ({ identities, setMine, setIsResult }: Props) => {
   const [myList, setMyList] = useState<number[]>([]);
   const sinners = [
     "이상",
@@ -31,6 +32,11 @@ const SelectIdentity = ({ identities, setMine }: Props) => {
         return [...prev, identity.id]; // 존재하지 않으면 추가
       }
     });
+  };
+
+  const handleSave = () => {
+    setMine(myList);
+    setIsResult(true);
   };
 
   return (
@@ -76,9 +82,15 @@ const SelectIdentity = ({ identities, setMine }: Props) => {
           </ul>
         </div>
       ))}
-      <Button onClick={() => setMine(myList)} placeholder={undefined}>
-        Save
-      </Button>
+      <div className="flex justify-end">
+        <Button
+          onClick={handleSave}
+          placeholder={undefined}
+          className="bg-primary-300"
+        >
+          저장하기
+        </Button>
+      </div>
     </div>
   );
 };

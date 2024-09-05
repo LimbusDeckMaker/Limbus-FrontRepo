@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const DeckListPage = () => {
   const [mine, setMine] = useState<number[]>([]);
+  const [isResult, setIsResult] = useState(false);
 
   const { data } = useQuery({
     queryKey: ["allIdentity"],
@@ -23,8 +24,23 @@ const DeckListPage = () => {
   return (
     <div>
       <h1>Deck List</h1>
-      <SelectIdentity identities={data} setMine={setMine} />
-      <ShowIdentity identities={data} mine={mine} />
+      {isResult ? (
+        <div>
+          <ShowIdentity
+            identities={data}
+            mine={mine}
+            setIsResult={setIsResult}
+          />
+        </div>
+      ) : (
+        <div>
+          <SelectIdentity
+            identities={data}
+            setMine={setMine}
+            setIsResult={setIsResult}
+          />
+        </div>
+      )}
     </div>
   );
 };
