@@ -52,13 +52,11 @@ const Footer = () => {
 
         <div className="flex items-center">
           <Typography
-            as="li"
             variant="small"
             className="p-1 font-light text-xs md:text-sm text-primary-100"
             placeholder="Policy"
           >
             <Typography
-              as="li"
               variant="small"
               className="p-1 font-light text-xs md:text-sm text-primary-100 cursor-pointer"
               placeholder=""
@@ -72,7 +70,6 @@ const Footer = () => {
               </a>
             </Typography>
             <Typography
-              as="li"
               variant="small"
               className="p-1 font-light text-xs md:text-sm text-primary-100 cursor-pointer"
               placeholder=""
@@ -89,7 +86,6 @@ const Footer = () => {
             {/* <Donation /> */}
           </Typography>
           <Typography
-            as="li"
             variant="small"
             className="p-1 font-light text-xs md:text-sm text-primary-100"
             placeholder="Policy"

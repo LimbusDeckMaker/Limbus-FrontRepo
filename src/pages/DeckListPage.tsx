@@ -23,24 +23,25 @@ const DeckListPage = () => {
 
   return (
     <div>
-      <h1>Deck List</h1>
-      {isResult ? (
-        <div>
+      <h1 className="text-lg md:text-2xl font-bold text-primary-100 font-sans">
+        인격 한 눈에 보기
+      </h1>
+
+      <div>
+        {isResult ? (
           <ShowIdentity
             identities={data}
             mine={mine}
             setIsResult={setIsResult}
           />
-        </div>
-      ) : (
-        <div>
+        ) : (
           <SelectIdentity
             identities={data}
             setMine={setMine}
             setIsResult={setIsResult}
           />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

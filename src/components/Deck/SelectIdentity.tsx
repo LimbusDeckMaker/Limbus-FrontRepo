@@ -37,10 +37,15 @@ const SelectIdentity = ({ identities, setMine, setIsResult }: Props) => {
   const handleSave = () => {
     setMine(myList);
     setIsResult(true);
+    window.scrollTo(0, 0);
   };
 
   return (
     <div>
+      <p className="font-sansLight text-white text-xs md:text-sm mb-10">
+        내가 보유한 인격을 모두 골라보세요. 아래 저장하기 버튼을 누르면 내가
+        가진 인격을 키워드별로 볼 수 있어요.
+      </p>
       {sinners.map((sinnerType) => (
         <div key={sinnerType} className="my-2">
           <h3 className="text-primary-100">{sinnerType}</h3>
@@ -82,7 +87,7 @@ const SelectIdentity = ({ identities, setMine, setIsResult }: Props) => {
           </ul>
         </div>
       ))}
-      <div className="flex justify-end">
+      <div className="flex justify-end mt-4">
         <Button
           onClick={handleSave}
           placeholder={undefined}
