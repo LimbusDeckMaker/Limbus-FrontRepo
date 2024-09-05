@@ -3,11 +3,11 @@ import { useState } from "react";
 
 interface Props {
   identities: Identity[];
-  setMine: (mine: string[]) => void;
+  setMine: (mine: number[]) => void;
 }
 
 const SelectIdentity = ({ identities, setMine }: Props) => {
-  const [myList, setMyList] = useState<string[]>([]);
+  const [myList, setMyList] = useState<number[]>([]);
   const sinners = [
     "이상",
     "파우스트",

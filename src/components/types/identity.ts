@@ -1,5 +1,5 @@
 interface Identity {
-  id: string;
+  id: number;
   name: string;
   character: string;
   grade: number;

@@ -1,13 +1,14 @@
 import { getAllIdentity } from "@apis/dictionaryApi";
 import { queryClient } from "@apis/queryClient";
 import SelectIdentity from "@components/Deck/SelectIdentity";
+import ShowIdentity from "@components/Deck/ShowIdentity";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 const DeckListPage = () => {
-  const [mine, setMine] = useState<string[]>([]);
+  const [mine, setMine] = useState<number[]>([]);
 
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ["allIdentity"],
     queryFn: () => getAllIdentity(),
     retry: 1,
@@ -23,11 +24,7 @@ const DeckListPage = () => {
     <div>
       <h1>Deck List</h1>
       <SelectIdentity identities={data} setMine={setMine} />
-      <ul>
-        {mine.map((id) => (
-          <li key={id}>{id}</li>
-        ))}
-      </ul>
+      <ShowIdentity identities={data} mine={mine} />
     </div>
   );
 };
