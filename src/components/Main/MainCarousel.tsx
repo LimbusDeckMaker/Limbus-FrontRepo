@@ -37,6 +37,15 @@ const MainCarousel = () => {
         linkPath="/identity"
         linkText="인격 정보 바로가기"
       />
+
+      {/* 아 천장 ㅋㅋ */}
+      <Banner
+        imageUrl={""}
+        spanText="텅텅이 4번 나옴 아나운서 중복 삭제좀"
+        headingText="아 천장이네 ㅋㅋ"
+        linkPath="/identity/25"
+        linkText="..."
+      />
     </Carousel>
   );
 };
