@@ -9,6 +9,7 @@ import EgoDetailPage from "@pages/EgoDetailPage";
 import EgoPage from "@pages/EgoPage";
 import TierListPage from "@pages/TierListPage";
 import KeywordTierListPage from "@pages/KeywordTierListPage";
+import DeckListPage from "@pages/DeckListPage";
 // import Preparing from "@components/Preparing";
 
 const Router = () => {
@@ -25,6 +26,7 @@ const Router = () => {
           <Route path="/tier" element={<Preparing />} /> */}
           <Route path="/tier" element={<TierListPage />} />
           <Route path="/keyword" element={<KeywordTierListPage />} />
+          <Route path="/deck" element={<DeckListPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
