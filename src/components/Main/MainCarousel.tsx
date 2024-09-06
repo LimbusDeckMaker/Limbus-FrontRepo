@@ -38,13 +38,13 @@ const MainCarousel = () => {
         linkText="인격 정보 바로가기"
       />
 
-      {/* 아 천장 ㅋㅋ */}
+      {/* 신규 기능 */}
       <Banner
-        imageUrl={""}
-        spanText="텅텅이 4번 나옴 아나운서 중복 삭제좀"
-        headingText="아 천장이네 ㅋㅋ"
-        linkPath="/identity/25"
-        linkText="..."
+        imageUrl="https://limbus-image-bucket.s3.amazonaws.com/%EB%A1%9C%EC%9F%88/Identity/%EB%82%A8%EB%B6%80%20%EB%A6%AC%EC%9A%B0%20%ED%98%91%ED%9A%8C%204%EA%B3%BC%20%EB%B6%80%EC%9E%A5/10908_normal.webp"
+        spanText="내가 가진 인격 키워드를 모르겠다고?"
+        headingText="내 인격 분류 기능 추가"
+        linkPath="/identity"
+        linkText="바로가기"
       />
     </Carousel>
   );

@@ -77,3 +77,9 @@ export const getEgo = (options: EgoOptions) => {
 
   return instance.get(uri).then((res) => res.data);
 };
+
+export const getAllIdentity = () => {
+  return instance
+    .get(`/dictionary/identity?minSpeed=1&maxSpeed=9&minWeight=1&maxWeight=9`)
+    .then((res) => res.data);
+};
