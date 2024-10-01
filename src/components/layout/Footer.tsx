@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 import nav from "@constants/nav.json";
 // import { FaGithub } from "react-icons/fa";
 import PrivacyPolicy from "@pages/PrivacyPolicy";
-// import Donation from "@pages/Donation";
 
 const Footer = () => {
   return (
