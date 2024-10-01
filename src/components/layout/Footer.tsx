@@ -1,9 +1,9 @@
 import React from "react";
 
-import { IconButton, Typography } from "@material-tailwind/react";
-import { Link, NavLink } from "react-router-dom";
+import { Typography } from "@material-tailwind/react";
+import { NavLink } from "react-router-dom";
 import nav from "@constants/nav.json";
-import { FaGithub } from "react-icons/fa";
+// import { FaGithub } from "react-icons/fa";
 import PrivacyPolicy from "@pages/PrivacyPolicy";
 // import Donation from "@pages/Donation";
 
@@ -92,11 +92,11 @@ const Footer = () => {
           >
             <PrivacyPolicy />
           </Typography>
-          <IconButton variant="text" placeholder={undefined}>
+          {/* <IconButton variant="text" placeholder={undefined}>
             <Link to="https://github.com/LimbusDeckMaker" target="_blank">
               <FaGithub size={25} className="text-primary-200" />
             </Link>
-          </IconButton>
+          </IconButton> */}
           {/* <IconButton variant="text" placeholder={undefined}>
           <Link to="https://github.com/LimbusDeckMaker" target="_blank">
             <FaYoutube size={25} className="text-primary-200" />
