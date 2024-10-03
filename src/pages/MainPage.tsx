@@ -10,6 +10,15 @@ import { FaSquareXTwitter, FaSquareYoutube } from "react-icons/fa6";
 const MainPage = () => {
   return (
     <div className="py-1 md:py-10 flex flex-col gap-3 md:gap-12">
+      <div>
+        <h3 className="text-lg md:text-xl font-bold text-center text-white">
+          안녕하세요. 단빵숲 입니다. 현재 데이터베이스 관련 에러로 인해 '서부
+          츠바이 협회 3과' 이스마엘 데이터가 추가되지 않고 있습니다.
+          <br /> 빠른 시일 내에 복구하도록 하겠습니다.
+          <br />
+          불편을 드려 죄송합니다.
+        </h3>
+      </div>
       <div className="w-full mx-auto">
         <MainCarousel />
       </div>
