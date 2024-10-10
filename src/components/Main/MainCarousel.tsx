@@ -22,21 +22,28 @@ const MainCarousel = () => {
     >
       {/* 업데이트 */}
       <Banner
-        imageUrl="https://limbus-image-bucket.s3.ap-northeast-2.amazonaws.com/%EC%9D%B4%EC%8A%A4%EB%A7%88%EC%97%98/Identity/%EC%84%9C%EB%B6%80%20%EC%B8%A0%EB%B0%94%EC%9D%B4%20%ED%98%91%ED%9A%8C%203%EA%B3%BC/10810_gacksung.webp"
-        spanText="10월 3일 업데이트"
-        headingText="서부 츠바이 협회 3과 이스마엘 추가"
-        linkPath="/identity/122"
+        imageUrl="https://limbus-image-bucket.s3.ap-northeast-2.amazonaws.com/%EB%AB%BC%EB%A5%B4%EC%86%8C/Identity/%EC%84%9C%EB%B6%80%20%EC%84%95%ED%81%AC%20%ED%98%91%ED%9A%8C%203%EA%B3%BC/10511_gacksung.webp"
+        spanText="10월 10일 업데이트"
+        headingText="서부 섕크 협회 3과 뫼르소 추가"
+        linkPath="/identity/123"
+        linkText="인격 정보 바로가기"
+      />
+      <Banner
+        imageUrl="https://limbus-image-bucket.s3.ap-northeast-2.amazonaws.com/%EC%8B%B1%ED%81%B4%EB%A0%88%EC%96%B4/Identity/%EC%84%9C%EB%B6%80%20%EC%B8%A0%EB%B0%94%EC%9D%B4%20%ED%98%91%ED%9A%8C%203%EA%B3%BC/11010_gacksung.webp"
+        spanText="10월 10일 업데이트"
+        headingText="서부 츠바이 협회 3과 싱클레어 추가"
+        linkPath="/identity/124"
         linkText="인격 정보 바로가기"
       />
 
       {/* 신규 기능 */}
-      <Banner
+      {/* <Banner
         imageUrl="https://limbus-image-bucket.s3.ap-northeast-2.amazonaws.com/%EC%9D%B4%EC%8A%A4%EB%A7%88%EC%97%98/Identity/%EC%84%9C%EB%B6%80%20%EC%B8%A0%EB%B0%94%EC%9D%B4%20%ED%98%91%ED%9A%8C%203%EA%B3%BC/10810_normal.webp"
         spanText="내가 가진 인격 키워드를 모르겠다고?"
         headingText="내 인격 분류 기능 추가"
         linkPath="/deck"
         linkText="인격 분류 바로가기"
-      />
+      /> */}
 
       {/* 발푸밤 리세 홍보 */}
       {/* <Banner

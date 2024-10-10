@@ -93,7 +93,13 @@ const Filter = () => {
       />
       <FilterButtonGroup
         title="시즌"
-        content={[{ name: "1" }, { name: "2" }, { name: "3" }, { name: "4" }]}
+        content={[
+          { name: "1" },
+          { name: "2" },
+          { name: "3" },
+          { name: "4" },
+          { name: "5" },
+        ]}
         src=""
         buttonType="text"
         propertyToSaveTo="season"

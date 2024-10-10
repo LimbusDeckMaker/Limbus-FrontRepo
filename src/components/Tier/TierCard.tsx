@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 const walpurgisIds = [13, 34, 83, 84, 103, 119, 120]; // 후파우, 갈루, 마티스, 초돈, 런싱, 죽나상, 적슈
 
 // 이번 시즌 자판기 획득 불가(전 시즌 인격에서 통상 제외)
-const previousSeasonIds = [6, 20, 27, 48, 82, 102];
+const previousSeasonIds = [94, 95, 96, 97, 98, 99, 118];
 
 // 이번 시즌 추출 및 자판기 획득 불가(전 시즌 이벤트 인격)
-const previousEvent = [87, 88, 89, 90]; // 검돈, 검르소, 검파우, 흑그렉
+const previousEvent = [116, 117, 110, 111]; // 멀파우, 멀히스, 탐루, 유슈
 
 const TierCard = ({ data, isSync }: { data: TierData; isSync: boolean }) => {
   const isWalpurgis = walpurgisIds.includes(data.id);
