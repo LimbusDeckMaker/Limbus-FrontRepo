@@ -10,14 +10,7 @@ import { FaSquareXTwitter, FaSquareYoutube } from "react-icons/fa6";
 const MainPage = () => {
   return (
     <div className="py-1 md:py-10 flex flex-col gap-3 md:gap-12">
-      <div className="text-white">
-        안녕하세요. 단테의 빵과 수프 입니다.
-        <br />
-        10월 10일 업데이트로 인격의 레벨이 50레벨로 확장되었습니다. 현재
-        데이터를 업데이트 중이며, 빠른 시일 내에 완료하도록 하겠습니다.
-        <br />
-        감사합니다.
-      </div>
+
       <div className="w-full mx-auto">
         <MainCarousel />
       </div>
